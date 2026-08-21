@@ -325,9 +325,9 @@ export default function App() {
               );
             })()}
 
-            {/* Tab Switcher */}
-            <div className="mb-8 overflow-x-auto pb-1">
-              <div className="inline-flex bg-stone-200/60 p-1 rounded-lg border border-stone-200 gap-0.5 min-w-max">
+            {/* Responsive Tab Switcher - Auto-adjusts to screen size without horizontal scrollbar */}
+            <div className="mb-8 w-full">
+              <div className="bg-stone-200/60 p-1 rounded-xl border border-stone-200 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:flex lg:flex-wrap gap-1 w-full">
                 {(['captions', 'comments', 'hashtags', 'alttext', 'cover', 'brandkit', 'bios', 'usernames', 'resizer', 'grid', 'planner', 'downloader'] as const).map((tab) => {
                   const isActive = activeTab === tab;
                   const labels = {
@@ -348,11 +348,12 @@ export default function App() {
                     <button
                       key={tab}
                       onClick={() => handleTabChange(tab)}
-                      className={`px-3 py-1.5 rounded-md text-xs font-medium transition-colors cursor-pointer ${
+                      className={`px-2 py-1.5 rounded-lg text-xs font-medium transition-colors text-center cursor-pointer truncate lg:flex-1 lg:min-w-[70px] ${
                         isActive 
-                          ? 'bg-white text-stone-900 shadow-xs' 
-                          : 'text-stone-600 hover:text-stone-900 hover:bg-stone-100/60'
+                          ? 'bg-white text-stone-900 shadow-xs font-semibold' 
+                          : 'text-stone-600 hover:text-stone-900 hover:bg-stone-100/70'
                       }`}
+                      title={labels[tab]}
                     >
                       {labels[tab]}
                     </button>

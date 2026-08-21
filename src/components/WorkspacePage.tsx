@@ -348,7 +348,7 @@ export function WorkspacePage({ setActivePage, setActiveTab }: WorkspacePageProp
       </div>
 
       {/* Category Filter Chips */}
-      <div className="flex gap-2 overflow-x-auto pb-4 mb-8 scrollbar-none">
+      <div className="flex flex-wrap gap-2 pb-2 mb-8">
         {[
           { id: 'all', label: 'All Items', count: totalSavedCount },
           { id: 'captions', label: 'Captions', count: data.captions.length, icon: MessageSquare },

@@ -512,7 +512,7 @@ export function PhotoResizer() {
         </h2>
 
         {selectedImage && (
-          <div className="flex bg-stone-100 p-1 rounded-lg border border-stone-200 self-start sm:self-auto overflow-x-auto max-w-full">
+          <div className="flex flex-wrap bg-stone-100 p-1 rounded-lg border border-stone-200 self-start sm:self-auto max-w-full gap-1">
             <button
               onClick={() => setActiveTab('resize')}
               className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-colors whitespace-nowrap ${
