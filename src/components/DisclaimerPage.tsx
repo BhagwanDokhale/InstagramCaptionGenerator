@@ -1,92 +1,102 @@
 import { SEO } from './SEO';
-import { ShieldCheck, Cpu, AlertTriangle, Download, Info } from 'lucide-react';
+import { AlertTriangle, ShieldCheck, Cpu, Download, Info } from 'lucide-react';
 
 export function DisclaimerPage() {
   return (
-    <div className="max-w-4xl mx-auto w-full px-4 py-8 md:py-14 space-y-8">
+    <div className="max-w-4xl mx-auto w-full px-4 py-12 md:py-20">
       <SEO 
         title="Disclaimer | GrowthCaption"
         description="GrowthCaption media and content disclaimer regarding Instagram platform integration and public web tools."
         url="https://growthcaption.com/disclaimer"
       />
-
-      {/* Header */}
-      <div className="text-left pb-6 border-b border-stone-200">
-        <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-stone-500 mb-2">
-          <Info size={14} className="text-stone-700" />
-          <span>Disclosures & Compliance</span>
-        </div>
-        <h1 className="text-2xl md:text-3xl font-semibold tracking-tight text-stone-900 mb-2">
+      <div className="text-center mb-12">
+        <h1 className="text-4xl md:text-5xl font-sans font-bold tracking-tight text-stone-900 mb-4">
           Disclaimer
         </h1>
-        <p className="text-stone-500 text-xs md:text-sm max-w-xl">
+        <p className="text-stone-500 font-medium text-sm md:text-base max-w-xl mx-auto leading-relaxed">
           Important disclosures regarding our service independence, AI technology usage, and platform responsibilities.
         </p>
       </div>
 
-      <div className="bg-white rounded-xl p-6 md:p-8 border border-stone-200 shadow-2xs space-y-6 text-stone-700">
+      <div className="bg-white rounded-3xl p-8 md:p-12 border border-stone-200/80 shadow-[0_8px_30px_rgb(0,0,0,0.02)] space-y-8">
         
         {/* Independence & Non-Affiliation */}
-        <div className="space-y-2">
-          <div className="flex items-center gap-2 text-stone-900 font-semibold text-sm">
-            <ShieldCheck size={16} className="text-stone-700 shrink-0" />
+        <div className="space-y-3">
+          <div className="flex items-center gap-2.5 text-stone-900 font-bold text-lg">
+            <div className="w-8 h-8 rounded-xl bg-indigo-50 flex items-center justify-center text-indigo-600 shrink-0">
+              <ShieldCheck size={18} />
+            </div>
             <h2>1. Independent Entity & Non-Affiliation</h2>
           </div>
-          <p className="text-xs md:text-sm text-stone-600 leading-relaxed pl-6">
-            <strong className="text-stone-900">GrowthCaption is an independent platform</strong> and software service created to assist social media creators, marketers, and individuals.
+          <p className="text-stone-600 text-xs md:text-sm leading-relaxed pl-10 font-medium">
+            <strong>GrowthCaption is an independent platform</strong> and software service created to assist social media creators, marketers, and individuals. 
           </p>
-          <p className="text-xs md:text-sm text-stone-600 leading-relaxed pl-6">
-            GrowthCaption is <strong className="text-stone-900">not affiliated, associated, authorized, endorsed by, or in any way officially connected with Instagram, Meta Platforms, Inc.</strong>, or any of their subsidiaries or affiliates. All product names, logos, brands, and trademarks referenced on this website are the property of their respective owners.
+          <p className="text-stone-600 text-xs md:text-sm leading-relaxed pl-10 font-medium">
+            GrowthCaption is <strong>not affiliated, associated, authorized, endorsed by, or in any way officially connected with Instagram, Meta Platforms, Inc.</strong>, or any of their subsidiaries or affiliates. The official Instagram website can be found at <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-indigo-600 hover:underline font-semibold">https://instagram.com</a>. All product names, logos, brands, and trademarks referenced on this website are the property of their respective owners.
           </p>
         </div>
 
-        {/* AI Output Notice */}
-        <div className="space-y-2 pt-4 border-t border-stone-100">
-          <div className="flex items-center gap-2 text-stone-900 font-semibold text-sm">
-            <Cpu size={16} className="text-stone-700 shrink-0" />
-            <h2>2. Artificial Intelligence Output & Suggestions</h2>
+        {/* AI Output Notice & Errors */}
+        <div className="space-y-3 pt-6 border-t border-stone-100">
+          <div className="flex items-center gap-2.5 text-stone-900 font-bold text-lg">
+            <div className="w-8 h-8 rounded-xl bg-amber-50 flex items-center justify-center text-amber-600 shrink-0">
+              <Cpu size={18} />
+            </div>
+            <h2>2. Artificial Intelligence Output & Potential Errors</h2>
           </div>
-          <p className="text-xs md:text-sm text-stone-600 leading-relaxed pl-6">
-            Our platform utilizes artificial intelligence (AI) models to generate captions, bios, usernames, hashtags, alt text, and brand assets. While we strive for high quality and relevance:
+          <p className="text-stone-600 text-xs md:text-sm leading-relaxed pl-10 font-medium">
+            Our platform utilizes advanced artificial intelligence (AI) algorithms to generate captions, bios, usernames, hashtags, alt text, and brand assets. While we strive for high quality and relevance:
           </p>
-          <ul className="list-disc pl-11 text-xs md:text-sm text-stone-600 space-y-1">
-            <li>AI outputs can contain errors, inaccuracies, or unexpected language.</li>
+          <ul className="list-disc pl-16 text-stone-600 text-xs md:text-sm space-y-1.5 font-medium">
+            <li>AI outputs can contain errors, factual inaccuracies, outdated information, or unexpected language.</li>
             <li>Generative AI models produce probabilistic suggestions based on patterns rather than verified facts.</li>
-            <li>We do not guarantee specific social media algorithm performance or engagement rates.</li>
+            <li>We do not guarantee specific social media algorithm performance, engagement rates, virality, or search engine ranking gains resulting from generated content.</li>
           </ul>
         </div>
 
         {/* User Content Review Responsibility */}
-        <div className="space-y-2 pt-4 border-t border-stone-100">
-          <div className="flex items-center gap-2 text-stone-900 font-semibold text-sm">
-            <AlertTriangle size={16} className="text-stone-700 shrink-0" />
-            <h2>3. User Review Responsibility</h2>
+        <div className="space-y-3 pt-6 border-t border-stone-100">
+          <div className="flex items-center gap-2.5 text-stone-900 font-bold text-lg">
+            <div className="w-8 h-8 rounded-xl bg-rose-50 flex items-center justify-center text-rose-500 shrink-0">
+              <AlertTriangle size={18} />
+            </div>
+            <h2>3. User Responsibility to Review & Verify Content</h2>
           </div>
-          <p className="text-xs md:text-sm text-stone-600 leading-relaxed pl-6">
-            <strong className="text-stone-900">Users are strictly responsible for reviewing, editing, and verifying all generated content</strong> before publishing or using it in any personal or commercial context. GrowthCaption assumes no liability for the publication of unverified AI-generated text or assets.
+          <p className="text-stone-600 text-xs md:text-sm leading-relaxed pl-10 font-medium">
+            <strong>Users are strictly responsible for reviewing, editing, and verifying all generated content</strong> before publishing, distributing, or using it in any personal, public, or commercial context.
+          </p>
+          <p className="text-stone-600 text-xs md:text-sm leading-relaxed pl-10 font-medium">
+            GrowthCaption and its developers assume no liability or responsibility for any damages, claim, penalties, loss of reputation, or platform account actions resulting from the use or publication of unverified AI-generated text or assets.
           </p>
         </div>
 
-        {/* Media Downloader Policy */}
-        <div className="space-y-2 pt-4 border-t border-stone-100">
-          <div className="flex items-center gap-2 text-stone-900 font-semibold text-sm">
-            <Download size={16} className="text-stone-700 shrink-0" />
-            <h2>4. Media Downloader & Copyright Rights</h2>
+        {/* Media Downloader & Rights/Permissions */}
+        <div className="space-y-3 pt-6 border-t border-stone-100">
+          <div className="flex items-center gap-2.5 text-stone-900 font-bold text-lg">
+            <div className="w-8 h-8 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-600 shrink-0">
+              <Download size={18} />
+            </div>
+            <h2>4. Media Downloader & Copyright Rights / Permissions</h2>
           </div>
-          <p className="text-xs md:text-sm text-stone-600 leading-relaxed pl-6">
-            Our Reels Downloader and visual media utilities are designed solely for lawful, personal, backup, or authorized content creation workflows. Users are solely responsible for obtaining necessary rights and permissions before downloading or reposting third-party content.
+          <p className="text-stone-600 text-xs md:text-sm leading-relaxed pl-10 font-medium">
+            Our Reels Downloader and visual media utilities are designed solely for lawful, personal, backup, or authorized content creation workflows.
           </p>
+          <ul className="list-disc pl-16 text-stone-600 text-xs md:text-sm space-y-1.5 font-medium">
+            <li><strong>Downloader users are solely responsible for obtaining all necessary rights, licenses, and permissions</strong> from original copyright holders before downloading, saving, distributing, or reposting any media content.</li>
+            <li>GrowthCaption does not store, host, or claim ownership over any third-party media extracted using our downloader utility.</li>
+            <li>Users must adhere to copyright laws, intellectual property rights, and Instagram's Terms of Service when handling third-party media.</li>
+          </ul>
         </div>
 
         {/* Contact Support Note */}
-        <div className="pt-4 border-t border-stone-100">
-          <div className="bg-stone-50 border border-stone-200 p-4 rounded-lg flex items-start gap-2.5">
-            <Info size={16} className="text-stone-700 shrink-0 mt-0.5" />
-            <div className="text-xs text-stone-600 leading-relaxed">
-              <p className="font-semibold text-stone-900 text-xs mb-0.5">Questions or Inquiries?</p>
+        <div className="pt-6 border-t border-stone-100">
+          <div className="bg-stone-50 border border-stone-200/80 p-5 rounded-2xl flex items-start gap-3">
+            <Info size={18} className="text-indigo-600 shrink-0 mt-0.5" />
+            <div className="text-xs font-medium text-stone-600 leading-relaxed">
+              <p className="font-bold text-stone-900 text-sm mb-1">Questions or Legal Inquiries?</p>
               <p>
-                If you have questions regarding this Disclaimer, please contact us at{' '}
-                <a href="mailto:bhagwan5.dokhale@gmail.com" className="text-stone-900 hover:underline font-semibold">
+                If you have any questions regarding this Disclaimer or need to report concerns, please contact us at{' '}
+                <a href="mailto:bhagwan5.dokhale@gmail.com" className="text-indigo-600 hover:text-indigo-700 font-bold underline">
                   bhagwan5.dokhale@gmail.com
                 </a>.
               </p>
