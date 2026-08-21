@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f43f5e" />
+      <stop offset="50%" stop-color="#7c3aed" />
+      <stop offset="100%" stop-color="#4f46e5" />
+    </linearGradient>
+    <linearGradient id="textGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#f8fafc" />
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#0f172a" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+  <!-- Background Squircle -->
+  <rect x="0" y="0" width="512" height="512" rx="120" fill="url(#bgGrad)" />
+  <!-- Inner Rim Highlight -->
+  <rect x="12" y="12" width="488" height="488" rx="108" fill="none" stroke="#ffffff" stroke-opacity="0.22" stroke-width="8" />
+  <!-- Main GC Typography -->
+  <text x="256" y="328" 
+        font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" 
+        font-weight="900" 
+        font-size="240" 
+        letter-spacing="-6"
+        text-anchor="middle" 
+        fill="url(#textGrad)" 
+        filter="url(#shadow)">GC</text>
+  <!-- Sparkle Accent -->
+  <path d="M 385 105 Q 385 130 410 130 Q 385 130 385 155 Q 385 130 360 130 Q 385 130 385 105 Z" fill="#ffffff" opacity="0.95" />
+</svg>

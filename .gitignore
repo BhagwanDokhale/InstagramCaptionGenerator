@@ -1,0 +1,21 @@
+node_modules/
+build/
+dist/
+coverage/
+.DS_Store
+*.log
+.env*
+!.env.example
+
+# Temporary testing scripts
+test_*.js
+find_*.js
+search_*.js
+dump_*.js
+inspect_*.js
+print_*.js
+ig.html
+embed_dump.html
+snapsave_output.txt
+snapsave_decoded.txt
+test.js

@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Google Analytics (gtag.js) - Initialized only after explicit user consent -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      window.initGrowthAnalytics = function() {
+        if (window._gtagLoaded) return;
+        try {
+          if (localStorage.getItem('cookie-consent') !== 'true') return;
+        } catch (e) {
+          return;
+        }
+        window._gtagLoaded = true;
+        window['ga-disable-G-YK9Y29ZBST'] = false;
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-YK9Y29ZBST';
+        document.head.appendChild(script);
+        gtag('config', 'G-YK9Y29ZBST');
+      };
+
+      window.disableGrowthAnalytics = function() {
+        window['ga-disable-G-YK9Y29ZBST'] = true;
+      };
+
+      // Check if user previously granted analytics consent
+      try {
+        if (localStorage.getItem('cookie-consent') === 'true') {
+          window.initGrowthAnalytics();
+        } else if (localStorage.getItem('cookie-consent') === 'false') {
+          window.disableGrowthAnalytics();
+        }
+      } catch (e) {}
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="Instagram Creator Tools, Instagram Caption Generator, Instagram Bio Generator, Hashtag Generator, Reels Downloader" />
+    <meta name="author" content="GrowthCaption" />
+    <meta name="robots" content="index, follow" />
+    <script>
+      // Gracefully suppress expected WebSocket HMR, iframe stylesheet inspection errors & third-party browser extension noise
+      (function() {
+        var ignorePatterns = ['websocket', 'WebSocket', 'web socket', 'vite-hmr', '[vite]', 'cssrules', 'cssstylesheet', 'inlining remote css', '[bhk]', 'merchantid'];
+        function shouldIgnore(msg) {
+          if (!msg) return false;
+          return ignorePatterns.some(function(pat) {
+            return String(msg).toLowerCase().indexOf(pat.toLowerCase()) !== -1;
+          });
+        }
+        var origError = console.error;
+        console.error = function() {
+          var args = Array.prototype.slice.call(arguments);
+          if (args[0] && shouldIgnore(args[0])) return;
+          origError.apply(console, arguments);
+        };
+        var origWarn = console.warn;
+        console.warn = function() {
+          var args = Array.prototype.slice.call(arguments);
+          if (args[0] && shouldIgnore(args[0])) return;
+          origWarn.apply(console, arguments);
+        };
+        window.addEventListener('unhandledrejection', function(event) {
+          var msg = (event.reason && event.reason.message) || String(event.reason || '');
+          if (shouldIgnore(msg)) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+        }, { capture: true });
+        window.addEventListener('error', function(event) {
+          var msg = event.message || '';
+          if (shouldIgnore(msg)) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+        }, { capture: true });
+      })();
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <meta name="description" content="Free Instagram Creator Tools for creating, organizing, and reusing social content." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://growthcaption.com/" />
+    <meta property="og:site_name" content="GrowthCaption" />
+    <meta property="og:title" content="Instagram Creator Tools – Captions, Hashtags, Bios & More | GrowthCaption" />
+    <meta property="og:description" content="Free Instagram Creator Tools for creating, organizing, and reusing social content." />
+    <meta property="og:image" content="https://growthcaption.com/og-image.jpg" />
+    <meta property="og:image:secure_url" content="https://growthcaption.com/og-image.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Instagram Creator Tools – Captions, Hashtags, Bios & More | GrowthCaption" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Instagram Creator Tools – Captions, Hashtags, Bios & More | GrowthCaption" />
+    <meta name="twitter:description" content="Free Instagram Creator Tools for creating, organizing, and reusing social content." />
+    <meta name="twitter:image" content="https://growthcaption.com/og-image.jpg" />
+    <link rel="canonical" href="https://growthcaption.com/" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <title>Instagram Creator Tools – Captions, Hashtags, Bios & More | GrowthCaption</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://growthcaption.com/#organization",
+          "name": "GrowthCaption",
+          "url": "https://growthcaption.com/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://growthcaption.com/favicon.svg"
+          },
+          "sameAs": [
+            "https://instagram.com/growthcaption"
+          ],
+          "description": "GrowthCaption provides free Instagram Creator Tools for creating, organizing, and reusing social content."
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://growthcaption.com/#website",
+          "url": "https://growthcaption.com/",
+          "name": "GrowthCaption",
+          "alternateName": "GrowthCaption",
+          "description": "Free Instagram Creator Tools for creating, organizing, and reusing social content.",
+          "publisher": {
+            "@id": "https://growthcaption.com/#organization"
+          }
+        }
+      ]
+    }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

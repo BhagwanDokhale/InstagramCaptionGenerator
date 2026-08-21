@@ -1,0 +1,33 @@
+# GrowthCaption
+
+> GrowthCaption provides free Instagram creator tools for creating, organizing, and reusing social content.
+
+GrowthCaption is a web platform designed for creators, social media managers, and marketers to create, organize, and reuse Instagram captions, aesthetic bios, creative usernames, hashtag stacks, reel covers, and photo layouts.
+
+## Core AI Generators & Creator Tools
+
+- [AI Caption Generator](https://growthcaption.com/tools/caption-generator): Generate Instagram caption suggestions with customized tones, emojis, and hashtags.
+- [AI Comment Generator](https://growthcaption.com/tools/comment-generator): Generate thoughtful, supportive comment ideas for Instagram posts and Reels.
+- [Instagram Bio Generator](https://growthcaption.com/tools/bio-generator): Create clean, well-structured Instagram bio suggestions with custom CTAs.
+- [Username Generator](https://growthcaption.com/tools/username-generator): Generate creative, memorable Instagram username ideas tailored to your niche.
+- [Hashtag Generator](https://growthcaption.com/tools/hashtag-generator): Generate relevant hashtag ideas based on your post topic and niche.
+- [Reels Downloader](https://growthcaption.com/tools/reels-downloader): Download available media from supported public Instagram Reels and carousel posts for offline viewing and reference.
+- [Photo Resizer](https://growthcaption.com/tools/photo-resizer): Crop and resize photos specifically for Instagram posts, stories, and profile pictures.
+- [Reel Cover Maker](https://growthcaption.com/tools/reel-cover-maker): Design vertical 9:16 Reel cover graphics with live 1:1 grid safe-zone overlays.
+- [Grid Planner](https://growthcaption.com/tools/feed-planner): Drag-and-drop to visually plan and preview your 3x3 Instagram feed layout.
+- [Grid Maker](https://growthcaption.com/tools/grid-maker): Split panoramic images into 3x1 or 3x3 grid tile sequences for Instagram.
+- [Alt Text Generator](https://growthcaption.com/tools/alt-text-generator): Generate concise, accessibility-friendly image alt text descriptions.
+- [Brand Kit Generator](https://growthcaption.com/tools/brand-kit-generator): Synthesize cohesive brand color palettes, font pairings, and brand guidelines.
+- [Creator Workspace](https://growthcaption.com/workspace): Save, organize, and reuse your favorite creator content in one local workspace.
+
+## Information & Documentation
+
+- [About Us](https://growthcaption.com/about-us): Mission, story, and background of GrowthCaption.
+- [How to Use](https://growthcaption.com/how-to-use): Comprehensive step-by-step usage guide for all tools.
+- [FAQ](https://growthcaption.com/faq): Answers to common questions regarding our AI generators and data privacy.
+- [Blog](https://growthcaption.com/blog): Social media content guides, Instagram formatting tips, and creation guides.
+- [Contact Us](https://growthcaption.com/contact): Customer support, feedback, and feature requests.
+- [Sitemap](https://growthcaption.com/sitemap): HTML sitemap listing all pages, tools, and blog posts.
+- [XML Sitemap](https://growthcaption.com/sitemap.xml): Machine-readable XML sitemap for search engine crawlers.
+- [Privacy Policy](https://growthcaption.com/privacy-policy): Data handling, privacy commitments, and cookie disclosures.
+- [Terms & Conditions](https://growthcaption.com/terms-and-conditions): Service terms, usage licenses, and disclaimers.
