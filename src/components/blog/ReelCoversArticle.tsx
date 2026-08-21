@@ -54,7 +54,7 @@ export const ReelCoversArticle: React.FC = () => {
         <p>
           When a Reel plays in full-screen mode or appears in the dedicated Reels tab, it renders in vertical <strong>9:16 aspect ratio (1080x1920 pixels)</strong>. However, when someone views your main profile feed, Instagram crops that exact same cover into a square <strong>1:1 aspect ratio (1080x1080 pixels)</strong> located directly in the vertical center of the frame.
         </p>
-        <div className="bg-stone-50 border border-stone-200/80 rounded-2xl p-5 my-4 space-y-3">
+        <div className="bg-stone-50 border border-stone-200/80 rounded-xl p-5 my-4 space-y-3">
           <p className="font-bold text-stone-900">Dimensions & Aspect Ratio Breakdown:</p>
           <ul className="list-disc list-inside space-y-2 text-stone-700 text-xs md:text-sm font-medium">
             <li><strong className="text-stone-900">Full Reel Canvas:</strong> 1080px width × 1920px height (9:16 ratio).</li>
@@ -68,7 +68,7 @@ export const ReelCoversArticle: React.FC = () => {
       {/* Safe Zone */}
       <section id="cover-sec-3" className="space-y-4 pt-4">
         <h2 className="text-xl md:text-2xl font-bold text-stone-950 border-b border-stone-200 pb-2 flex items-center gap-2">
-          <span className="text-indigo-600">The Golden Rule:</span> Understanding the 1:1 Safe Zone
+          <span className="text-stone-900">The Golden Rule:</span> Understanding the 1:1 Safe Zone
         </h2>
         <p>
           If you place your primary text title, brand logo, or main subject's head outside the central 1080x1080 safe zone, those critical elements will get sliced off when viewed on your main profile page.
@@ -116,7 +116,7 @@ export const ReelCoversArticle: React.FC = () => {
         <p>
           When placing text over photographic backgrounds, busy background details often degrade text legibility. To guarantee WCAG-compliant contrast:
         </p>
-        <div className="bg-indigo-50/50 border border-indigo-100 rounded-2xl p-4 my-3 text-xs md:text-sm text-indigo-950 space-y-2">
+        <div className="bg-stone-50 border border-stone-200 rounded-xl p-4 my-3 text-xs md:text-sm text-stone-900 space-y-2">
           <p className="font-bold">3 Text Container Solutions:</p>
           <ul className="list-disc list-inside space-y-1 text-indigo-900">
             <li><strong>Solid Background Pill:</strong> Enclose each line of text inside a solid rounded rectangle container.</li>
@@ -153,27 +153,27 @@ export const ReelCoversArticle: React.FC = () => {
       </section>
 
       {/* Tool Section */}
-      <section id="cover-sec-12" className="space-y-4 pt-6 bg-gradient-to-br from-indigo-50/60 to-rose-50/40 p-6 rounded-3xl border border-indigo-100">
-        <div className="flex items-center gap-2 text-indigo-950 font-bold text-lg">
-          <Sparkles className="text-rose-500 animate-pulse" size={20} />
+      <section id="cover-sec-12" className="space-y-4 pt-6 bg-stone-50 p-6 rounded-xl border border-stone-200">
+        <div className="flex items-center gap-2 text-stone-900 font-bold text-lg">
+          <Sparkles className="text-stone-700" size={18} />
           <h2>Designing Perfect Covers with GrowthCaption Reel Cover Maker</h2>
         </div>
         <p>
           Stop struggling with complex graphic editing software or guessing safe zone boundaries. GrowthCaption’s <InternalLink href="/tools/reel-cover">Reel Cover Maker</InternalLink> gives you a free, browser-based design studio tailored specifically for Instagram Reels.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-          <div className="bg-white p-4 rounded-2xl border border-stone-200/80 shadow-2xs">
+          <div className="bg-white p-4 rounded-xl border border-stone-200 shadow-2xs">
             <p className="font-bold text-stone-900 text-sm mb-1 flex items-center gap-1.5">
-              <Eye size={16} className="text-indigo-600" />
+              <Eye size={16} className="text-stone-700" />
               <span>Live Safe Zone Toggle</span>
             </p>
             <p className="text-xs text-stone-600">
               Instantly toggle between 9:16 full-screen preview and 1:1 profile grid preview.
             </p>
           </div>
-          <div className="bg-white p-4 rounded-2xl border border-stone-200/80 shadow-2xs">
+          <div className="bg-white p-4 rounded-xl border border-stone-200 shadow-2xs">
             <p className="font-bold text-stone-900 text-sm mb-1 flex items-center gap-1.5">
-              <ImageIcon size={16} className="text-rose-500" />
+              <ImageIcon size={16} className="text-stone-700" />
               <span>Aesthetic Backdrops & Fonts</span>
             </p>
             <p className="text-xs text-stone-600">
@@ -182,7 +182,7 @@ export const ReelCoversArticle: React.FC = () => {
           </div>
         </div>
         <div className="pt-2">
-          <InternalLink href="/tools/reel-cover" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-indigo-600 text-white font-bold text-xs uppercase tracking-wider hover:bg-indigo-700 transition-all no-underline">
+          <InternalLink href="/tools/reel-cover" className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-stone-900 text-white font-medium text-xs hover:bg-stone-800 transition-colors no-underline">
             <span>Create Free Reel Cover Now</span>
             <ArrowRight size={14} />
           </InternalLink>
@@ -192,17 +192,17 @@ export const ReelCoversArticle: React.FC = () => {
       {/* FAQ & Checklist */}
       <section id="cover-sec-13" className="space-y-4 pt-6">
         <h2 className="text-2xl font-bold text-stone-950 border-b border-stone-200 pb-2 flex items-center gap-2">
-          <HelpCircle className="text-indigo-600" size={22} />
+          <HelpCircle className="text-stone-700" size={20} />
           Frequently Asked Questions About Reel Covers
         </h2>
         <div className="space-y-4">
-          <div className="bg-stone-50 p-4 rounded-2xl border border-stone-200/60">
+          <div className="bg-stone-50 p-4 rounded-xl border border-stone-200/80">
             <h3 className="font-bold text-stone-900 text-sm md:text-base">Q: Can I change a Reel cover after publishing?</h3>
             <p className="text-xs md:text-sm text-stone-600 mt-1">
               Yes! Tap the three dots on your published Reel, select "Edit", and tap "Cover" to upload a new image from your camera roll anytime.
             </p>
           </div>
-          <div className="bg-stone-50 p-4 rounded-2xl border border-stone-200/60">
+          <div className="bg-stone-50 p-4 rounded-xl border border-stone-200/80">
             <h3 className="font-bold text-stone-900 text-sm md:text-base">Q: What file format and dimensions should I export?</h3>
             <p className="text-xs md:text-sm text-stone-600 mt-1">
               Export high-resolution PNG or JPG images at 1080x1920 pixels resolution (9:16 aspect ratio).
@@ -215,7 +215,7 @@ export const ReelCoversArticle: React.FC = () => {
         <h2 className="text-2xl font-bold text-stone-950 border-b border-stone-200 pb-2">
           Reel Cover Pre-Publishing Audit Checklist
         </h2>
-        <div className="bg-stone-50 p-5 rounded-2xl border border-stone-200/80 space-y-3">
+        <div className="bg-stone-50 p-5 rounded-xl border border-stone-200/80 space-y-3">
           <ul className="space-y-2 text-xs md:text-sm text-stone-700">
             <li className="flex items-center gap-2">
               <CheckCircle2 size={16} className="text-emerald-600 shrink-0" />

@@ -487,7 +487,7 @@ export function HashtagGenerator() {
                   <div className="space-y-1">
                     <span className="text-xs text-stone-400 font-medium">Audience Focus</span>
                     <div className="text-sm font-semibold text-stone-100">
-                      {result.analytics.audienceFocus || result.analytics.potentialReach || 'Targeted Community'}
+                      {result.analytics.audienceFocus || result.analytics.contentFocus || 'Targeted Community'}
                     </div>
                   </div>
                 </div>

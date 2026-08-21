@@ -48,7 +48,7 @@ export const ReelsArticle: React.FC = () => {
         <p>
           Top creators rarely generate video ideas out of thin air. Instead, they systematically analyze popular video structures, trending audio clips, transition techniques, and storytelling hooks across their industry.
         </p>
-        <div className="bg-stone-50 border border-stone-200/80 rounded-2xl p-5 my-4 space-y-3">
+        <div className="bg-stone-50 border border-stone-200/80 rounded-xl p-5 my-4 space-y-3">
           <p className="font-bold text-stone-900">Key Reasons to Maintain an Archive of Saved Reels:</p>
           <ul className="list-disc list-inside space-y-2 text-stone-700 text-xs md:text-sm">
             <li><strong className="text-stone-900">Creative Trend Analysis:</strong> Study pacing, cuts, lighting setups, and text placement from top-performing creators.</li>
@@ -62,7 +62,7 @@ export const ReelsArticle: React.FC = () => {
       {/* Method 1 */}
       <section id="reels-sec-3" className="space-y-4 pt-4">
         <h2 className="text-xl md:text-2xl font-bold text-stone-950 border-b border-stone-200 pb-2 flex items-center gap-2">
-          <span className="text-indigo-600">Method 1:</span> Native In-App Bookmarking & Collections
+          <span className="text-stone-900">Method 1:</span> Native In-App Bookmarking & Collections
         </h2>
         <p>
           The simplest and safest method to archive any Reel is directly inside the official Instagram mobile app using native bookmarking.
@@ -70,9 +70,9 @@ export const ReelsArticle: React.FC = () => {
         <p>
           When watching a Reel, tap the bookmark icon or the three-dot menu icon in the bottom corner and select "Save". This immediately adds the video to your private Saved tab.
         </p>
-        <div className="bg-indigo-50/50 border border-indigo-100 rounded-2xl p-4 my-3 text-xs md:text-sm text-indigo-950 space-y-2">
+        <div className="bg-stone-50 border border-stone-200 rounded-xl p-4 my-3 text-xs md:text-sm text-stone-900 space-y-2">
           <p className="font-bold">Pro-Tip: Organize into Custom Collections</p>
-          <p>
+          <p className="text-stone-600">
             Do not dump all saved Reels into one generic folder. Create categorized Collections (e.g. "Hook Ideas", "Recipe Inspo", "Transition Effects", "Competitor Research"). This makes retrieving specific videos effortless.
           </p>
         </div>
@@ -81,7 +81,7 @@ export const ReelsArticle: React.FC = () => {
       {/* Method 2 */}
       <section id="reels-sec-4" className="space-y-4 pt-4">
         <h2 className="text-xl md:text-2xl font-bold text-stone-950 border-b border-stone-200 pb-2 flex items-center gap-2">
-          <span className="text-indigo-600">Method 2:</span> Downloading Public Reels via Web Utilities
+          <span className="text-stone-900">Method 2:</span> Downloading Public Reels via Web Utilities
         </h2>
         <p>
           When you need the actual MP4 video file saved directly to your phone's camera roll or desktop hard drive for offline viewing or editing reference, web-based extraction tools are the preferred solution.
@@ -101,7 +101,7 @@ export const ReelsArticle: React.FC = () => {
       {/* Method 3 */}
       <section id="reels-sec-5" className="space-y-4 pt-4">
         <h2 className="text-xl md:text-2xl font-bold text-stone-950 border-b border-stone-200 pb-2 flex items-center gap-2">
-          <span className="text-indigo-600">Method 3:</span> Native Screen Recording Strategies
+          <span className="text-stone-900">Method 3:</span> Native Screen Recording Strategies
         </h2>
         <p>
           If you only need a short snippet of a video for personal reference, iOS and Android both feature built-in screen recording tools.
@@ -113,14 +113,14 @@ export const ReelsArticle: React.FC = () => {
 
       {/* Security Risks */}
       <section id="reels-sec-6" className="space-y-4 pt-4">
-        <h2 className="text-xl md:text-2xl font-bold text-stone-950 border-b border-stone-200 pb-2 flex items-center gap-2 text-rose-900">
-          <ShieldCheck className="text-rose-600" size={22} />
+        <h2 className="text-xl md:text-2xl font-bold text-stone-950 border-b border-stone-200 pb-2 flex items-center gap-2 text-stone-900">
+          <ShieldCheck className="text-amber-700" size={20} />
           Critical Security Risks of Unverified Third-Party Apps
         </h2>
         <p>
           A word of caution regarding mobile app stores: hundreds of third-party "Instagram Downloader" mobile apps flood app stores every year. Many of these apps contain malicious tracking code or violate Instagram policies.
         </p>
-        <div className="bg-rose-50/70 border border-rose-200 p-5 rounded-2xl space-y-2">
+        <div className="bg-amber-50/70 border border-amber-200 p-5 rounded-xl space-y-2">
           <p className="font-bold text-rose-950 text-sm">3 Red Flags to Avoid At All Costs:</p>
           <ul className="list-disc list-inside space-y-1 text-xs md:text-sm text-rose-900">
             <li><strong>Password Requests:</strong> Never enter your Instagram password or 2FA codes into an external app to download a public video. Public videos do not require login credentials.</li>
@@ -156,9 +156,9 @@ export const ReelsArticle: React.FC = () => {
         <p>
           If you reference or feature another creator’s video concept in your own content, always provide prominent credit:
         </p>
-        <div className="bg-stone-50 border border-stone-200/80 p-4 rounded-2xl text-xs md:text-sm text-stone-800 space-y-1">
+        <div className="bg-stone-50 border border-stone-200/80 p-4 rounded-xl text-xs md:text-sm text-stone-800 space-y-1">
           <p className="font-bold">Gold Standard Attribution Formula:</p>
-          <p className="font-mono text-indigo-900 bg-white p-2.5 rounded-xl border border-stone-200">
+          <p className="font-mono text-stone-900 bg-white p-2.5 rounded-lg border border-stone-200">
             "Concept inspired by @OriginalCreatorHandle 💡 Check out their original Reel!"
           </p>
         </div>
@@ -178,9 +178,9 @@ export const ReelsArticle: React.FC = () => {
       </section>
 
       {/* Tool Section */}
-      <section id="reels-sec-12" className="space-y-4 pt-6 bg-gradient-to-br from-indigo-50/60 to-rose-50/40 p-6 rounded-3xl border border-indigo-100">
-        <div className="flex items-center gap-2 text-indigo-950 font-bold text-lg">
-          <Download className="text-rose-500 animate-pulse" size={20} />
+      <section id="reels-sec-12" className="space-y-4 pt-6 bg-stone-50 p-6 rounded-xl border border-stone-200">
+        <div className="flex items-center gap-2 text-stone-900 font-bold text-lg">
+          <Download className="text-stone-700" size={18} />
           <h2>Using GrowthCaption’s Free Reels Downloader Tool</h2>
         </div>
         <p>
@@ -190,7 +190,7 @@ export const ReelsArticle: React.FC = () => {
           No account registration or login credentials are required. Retrieve available public media directly in your browser on desktop, tablet, or mobile.
         </p>
         <div className="pt-2">
-          <InternalLink href="/tools/reels-downloader" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-indigo-600 text-white font-bold text-xs uppercase tracking-wider hover:bg-indigo-700 transition-all no-underline">
+          <InternalLink href="/tools/reels-downloader" className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-stone-900 text-white font-medium text-xs hover:bg-stone-800 transition-colors no-underline">
             <span>Access Reels Downloader Tool</span>
             <ArrowRight size={14} />
           </InternalLink>
@@ -200,17 +200,17 @@ export const ReelsArticle: React.FC = () => {
       {/* FAQ & Summary */}
       <section id="reels-sec-13" className="space-y-4 pt-6">
         <h2 className="text-2xl font-bold text-stone-950 border-b border-stone-200 pb-2 flex items-center gap-2">
-          <HelpCircle className="text-indigo-600" size={22} />
+          <HelpCircle className="text-stone-700" size={20} />
           Frequently Asked Questions About Saving Reels
         </h2>
         <div className="space-y-4">
-          <div className="bg-stone-50 p-4 rounded-2xl border border-stone-200/60">
+          <div className="bg-stone-50 p-4 rounded-xl border border-stone-200/80">
             <h3 className="font-bold text-stone-900 text-sm md:text-base">Q: Does Instagram notify creators when you download their Reel?</h3>
             <p className="text-xs md:text-sm text-stone-600 mt-1">
               No. Instagram does not notify users when their public Reels are saved, bookmarked, or downloaded via third-party web tools.
             </p>
           </div>
-          <div className="bg-stone-50 p-4 rounded-2xl border border-stone-200/60">
+          <div className="bg-stone-50 p-4 rounded-xl border border-stone-200/80">
             <h3 className="font-bold text-stone-900 text-sm md:text-base">Q: Can I download videos from private Instagram accounts?</h3>
             <p className="text-xs md:text-sm text-stone-600 mt-1">
               No. Private accounts are protected by privacy encryption. Web download tools can only process public links that do not require login authorization.
@@ -223,7 +223,7 @@ export const ReelsArticle: React.FC = () => {
         <h2 className="text-2xl font-bold text-stone-950 border-b border-stone-200 pb-2">
           Final Safety & Research Checklist
         </h2>
-        <div className="bg-stone-50 p-5 rounded-2xl border border-stone-200/80 space-y-3">
+        <div className="bg-stone-50 p-5 rounded-xl border border-stone-200/80 space-y-3">
           <ul className="space-y-2 text-xs md:text-sm text-stone-700">
             <li className="flex items-center gap-2">
               <CheckCircle2 size={16} className="text-emerald-600 shrink-0" />

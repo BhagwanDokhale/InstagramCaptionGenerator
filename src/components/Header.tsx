@@ -46,18 +46,18 @@ export function Header({ setActivePage, setActiveTab }: HeaderProps) {
   ];
 
   const tools = [
-    { name: 'Caption Generator', href: '/tools/caption-generator', tab: 'captions' as const, icon: MessageSquare },
-    { name: 'Comment Generator', href: '/tools/comment-generator', tab: 'comments' as const, icon: MessageCircle },
-    { name: 'Hashtag Generator', href: '/tools/hashtag-generator', tab: 'hashtags' as const, icon: Hash },
-    { name: 'ALT Text Generator', href: '/tools/alt-text-generator', tab: 'alttext' as const, icon: Eye },
-    { name: 'Reel Cover Maker', href: '/tools/reel-cover-maker', tab: 'cover' as const, icon: Smartphone },
-    { name: 'Brand Kit Generator', href: '/tools/brand-kit-generator', tab: 'brandkit' as const, icon: Palette },
-    { name: 'Bio Generator', href: '/tools/bio-generator', tab: 'bios' as const, icon: User },
-    { name: 'Username Generator', href: '/tools/username-generator', tab: 'usernames' as const, icon: User },
-    { name: 'Photo Resizer', href: '/tools/photo-resizer', tab: 'resizer' as const, icon: Minimize },
-    { name: 'Grid Maker', href: '/tools/grid-maker', tab: 'grid' as const, icon: Grid },
-    { name: 'Feed Planner', href: '/tools/feed-planner', tab: 'planner' as const, icon: Calendar },
-    { name: 'Reels Downloader', href: '/tools/reels-downloader', tab: 'downloader' as const, icon: Download },
+    { name: 'Caption Generator', href: '/tools/caption-generator', tab: 'captions' as const, icon: MessageSquare, color: 'text-rose-500' },
+    { name: 'Comment Generator', href: '/tools/comment-generator', tab: 'comments' as const, icon: MessageCircle, color: 'text-pink-500' },
+    { name: 'Hashtag Generator', href: '/tools/hashtag-generator', tab: 'hashtags' as const, icon: Hash, color: 'text-violet-600' },
+    { name: 'ALT Text Generator', href: '/tools/alt-text-generator', tab: 'alttext' as const, icon: Eye, color: 'text-teal-600' },
+    { name: 'Reel Cover Maker', href: '/tools/reel-cover-maker', tab: 'cover' as const, icon: Smartphone, color: 'text-indigo-600' },
+    { name: 'Brand Kit Generator', href: '/tools/brand-kit-generator', tab: 'brandkit' as const, icon: Palette, color: 'text-fuchsia-600' },
+    { name: 'Bio Generator', href: '/tools/bio-generator', tab: 'bios' as const, icon: User, color: 'text-emerald-600' },
+    { name: 'Username Generator', href: '/tools/username-generator', tab: 'usernames' as const, icon: User, color: 'text-sky-600' },
+    { name: 'Photo Resizer', href: '/tools/photo-resizer', tab: 'resizer' as const, icon: Minimize, color: 'text-blue-600' },
+    { name: 'Grid Maker', href: '/tools/grid-maker', tab: 'grid' as const, icon: Grid, color: 'text-purple-600' },
+    { name: 'Feed Planner', href: '/tools/feed-planner', tab: 'planner' as const, icon: Calendar, color: 'text-amber-600' },
+    { name: 'Reels Downloader', href: '/tools/reels-downloader', tab: 'downloader' as const, icon: Download, color: 'text-rose-600' },
   ];
 
   return (
@@ -123,7 +123,7 @@ export function Header({ setActivePage, setActiveTab }: HeaderProps) {
                     onClick={handleLinkClick(tool.href, 'home', tool.tab)}
                     className="flex items-center gap-2.5 px-3 py-1.5 hover:bg-stone-50 rounded-lg text-left w-full transition-colors cursor-pointer text-stone-700 hover:text-stone-900"
                   >
-                    <Icon size={13} className="text-stone-400 shrink-0" />
+                    <Icon size={13} className={`${tool.color} shrink-0`} />
                     <span className="text-xs font-medium truncate">{tool.name}</span>
                   </a>
                 );
@@ -230,7 +230,7 @@ export function Header({ setActivePage, setActiveTab }: HeaderProps) {
                     onClick={handleLinkClick(tool.href, 'home', tool.tab)}
                     className="flex items-center gap-2 text-left text-xs font-medium text-stone-600 hover:text-stone-900 py-1.5 px-1 cursor-pointer"
                   >
-                    <Icon size={13} className="text-stone-400 shrink-0" />
+                    <Icon size={13} className={`${tool.color} shrink-0`} />
                     <span>{tool.name}</span>
                   </a>
                 );

@@ -51,7 +51,7 @@ export interface HashtagsResponse {
     audienceFocus: string;
     topNicheTips: string;
     difficulty?: string;
-    potentialReach?: string;
+    contentFocus?: string;
   };
 }
 

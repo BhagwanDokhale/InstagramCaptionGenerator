@@ -52,7 +52,7 @@ export const BioArticle: React.FC = () => {
         <p>
           Start with absolute clarity. State your primary role, industry, or creative focus in straightforward, plain language. If you offer specialized services, be direct about your domain expertise.
         </p>
-        <div className="bg-stone-50 border border-stone-200/80 rounded-2xl p-5 my-4 space-y-3">
+        <div className="bg-stone-50 border border-stone-200/80 rounded-xl p-5 my-4 space-y-3">
           <p className="font-bold text-stone-900">Clear Profile Bio Examples Across Niches:</p>
           <ul className="list-disc list-inside space-y-2 text-stone-700 font-medium pl-2">
             <li><strong className="text-stone-900">E-Commerce:</strong> "Sustainable activewear designed for outdoor movement & daily comfort."</li>
@@ -156,7 +156,7 @@ export const BioArticle: React.FC = () => {
         <p>
           However, balance is critical. Oversaturating every single word with colorful emojis creates visual clutter and makes your account look spammy or unprofessional.
         </p>
-        <div className="bg-white border border-stone-200 rounded-2xl p-5 my-4 space-y-3 shadow-2xs">
+        <div className="bg-white border border-stone-200 rounded-xl p-5 my-4 space-y-3 shadow-2xs">
           <p className="font-bold text-stone-900 text-sm">Effective Emoji Pairings for Bio Bullet Points:</p>
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs md:text-sm text-stone-700">
             <li>📍 <strong>Location:</strong> "Based in Austin, TX"</li>
@@ -253,9 +253,9 @@ export const BioArticle: React.FC = () => {
       </section>
 
       {/* AI Tools Section */}
-      <section id="bio-sec-12" className="space-y-4 pt-6 bg-gradient-to-br from-indigo-50/60 to-rose-50/40 p-6 rounded-3xl border border-indigo-100">
-        <div className="flex items-center gap-2 text-indigo-950 font-bold text-lg">
-          <Sparkles className="text-rose-500 animate-pulse" size={20} />
+      <section id="bio-sec-12" className="space-y-4 pt-6 bg-stone-50 p-6 rounded-xl border border-stone-200">
+        <div className="flex items-center gap-2 text-stone-900 font-bold text-lg">
+          <Sparkles className="text-stone-700" size={18} />
           <h2>Leveraging AI Tools for Effortless Bio Creation</h2>
         </div>
         <p>
@@ -265,7 +265,7 @@ export const BioArticle: React.FC = () => {
           By simply inputting your niche, tone preference (e.g., Professional, Friendly, Witty, or Minimalist), and key offer, our AI engine synthesizes dozens of perfectly formatted bio variations instantly. You can test multiple hooks, tweak emojis, and copy formatted text straight into your Instagram app in seconds.
         </p>
         <div className="pt-2">
-          <InternalLink href="/tools/bio-generator" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-indigo-600 text-white font-bold text-xs uppercase tracking-wider hover:bg-indigo-700 transition-all no-underline">
+          <InternalLink href="/tools/bio-generator" className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-stone-900 text-white font-medium text-xs hover:bg-stone-800 transition-colors no-underline">
             <span>Try AI Bio Generator Now</span>
             <ArrowRight size={14} />
           </InternalLink>
@@ -275,23 +275,23 @@ export const BioArticle: React.FC = () => {
       {/* FAQ Section */}
       <section id="bio-sec-13" className="space-y-4 pt-6">
         <h2 className="text-2xl font-bold text-stone-950 border-b border-stone-200 pb-2 flex items-center gap-2">
-          <HelpCircle className="text-indigo-600" size={22} />
+          <HelpCircle className="text-stone-700" size={20} />
           Frequently Asked Questions About Instagram Bios
         </h2>
         <div className="space-y-4">
-          <div className="bg-stone-50 p-4 rounded-2xl border border-stone-200/60">
+          <div className="bg-stone-50 p-4 rounded-xl border border-stone-200/80">
             <h3 className="font-bold text-stone-900 text-sm md:text-base">Q: How long can an Instagram bio be?</h3>
             <p className="text-xs md:text-sm text-stone-600 mt-1">
               An Instagram bio has a strict character limit of 150 characters. This includes letters, numbers, spaces, line breaks, and emojis.
             </p>
           </div>
-          <div className="bg-stone-50 p-4 rounded-2xl border border-stone-200/60">
+          <div className="bg-stone-50 p-4 rounded-xl border border-stone-200/80">
             <h3 className="font-bold text-stone-900 text-sm md:text-base">Q: Should I use custom fonts in my Instagram bio?</h3>
             <p className="text-xs md:text-sm text-stone-600 mt-1">
               Use custom unicode fonts sparingly (for example, on a single word or header). Overusing stylized script fonts can create accessibility issues for people using screen readers and may prevent text from being properly recognized by search tools.
             </p>
           </div>
-          <div className="bg-stone-50 p-4 rounded-2xl border border-stone-200/60">
+          <div className="bg-stone-50 p-4 rounded-xl border border-stone-200/80">
             <h3 className="font-bold text-stone-900 text-sm md:text-base">Q: How often should I change my bio?</h3>
             <p className="text-xs md:text-sm text-stone-600 mt-1">
               We recommend reviewing your bio quarterly or whenever you launch a major campaign, release a new freebie, or update your core business offerings.
@@ -308,7 +308,7 @@ export const BioArticle: React.FC = () => {
         <p>
           Before saving your updated profile in the Instagram app, run through this quick audit checklist to ensure your bio is clear and readable:
         </p>
-        <div className="bg-stone-50 p-5 rounded-2xl border border-stone-200/80 space-y-3">
+        <div className="bg-stone-50 p-5 rounded-xl border border-stone-200/80 space-y-3">
           <ul className="space-y-2 text-xs md:text-sm text-stone-700">
             <li className="flex items-center gap-2">
               <CheckCircle2 size={16} className="text-emerald-600 shrink-0" />

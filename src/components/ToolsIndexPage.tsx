@@ -28,7 +28,9 @@ export function ToolsIndexPage({ setActivePage, setActiveTab }: ToolsIndexPagePr
       href: '/tools/caption-generator',
       tab: 'captions' as const,
       icon: MessageSquare,
-      category: 'Content Generation'
+      category: 'Content Generation',
+      iconColor: 'text-rose-500',
+      badgeBg: 'bg-rose-50 border-rose-200/80'
     },
     {
       name: 'AI Comment Generator',
@@ -36,7 +38,9 @@ export function ToolsIndexPage({ setActivePage, setActiveTab }: ToolsIndexPagePr
       href: '/tools/comment-generator',
       tab: 'comments' as const,
       icon: MessageCircle,
-      category: 'Engagement & Community'
+      category: 'Engagement & Community',
+      iconColor: 'text-pink-500',
+      badgeBg: 'bg-pink-50 border-pink-200/80'
     },
     {
       name: 'AI Hashtag Generator',
@@ -44,7 +48,9 @@ export function ToolsIndexPage({ setActivePage, setActiveTab }: ToolsIndexPagePr
       href: '/tools/hashtag-generator',
       tab: 'hashtags' as const,
       icon: Hash,
-      category: 'Discovery & Hashtags'
+      category: 'Discovery & Hashtags',
+      iconColor: 'text-violet-600',
+      badgeBg: 'bg-violet-50 border-violet-200/80'
     },
     {
       name: 'AI ALT Text Generator',
@@ -52,7 +58,9 @@ export function ToolsIndexPage({ setActivePage, setActiveTab }: ToolsIndexPagePr
       href: '/tools/alt-text-generator',
       tab: 'alttext' as const,
       icon: Eye,
-      category: 'Accessibility & Descriptions'
+      category: 'Accessibility & Descriptions',
+      iconColor: 'text-teal-600',
+      badgeBg: 'bg-teal-50 border-teal-200/80'
     },
     {
       name: 'Instagram Reel Cover Maker',
@@ -60,7 +68,9 @@ export function ToolsIndexPage({ setActivePage, setActiveTab }: ToolsIndexPagePr
       href: '/tools/reel-cover-maker',
       tab: 'cover' as const,
       icon: Smartphone,
-      category: 'Graphics & Layout'
+      category: 'Graphics & Layout',
+      iconColor: 'text-indigo-600',
+      badgeBg: 'bg-indigo-50 border-indigo-200/80'
     },
     {
       name: 'AI Brand Kit Generator',
@@ -68,7 +78,9 @@ export function ToolsIndexPage({ setActivePage, setActiveTab }: ToolsIndexPagePr
       href: '/tools/brand-kit-generator',
       tab: 'brandkit' as const,
       icon: Palette,
-      category: 'Branding & Aesthetics'
+      category: 'Branding & Aesthetics',
+      iconColor: 'text-fuchsia-600',
+      badgeBg: 'bg-fuchsia-50 border-fuchsia-200/80'
     },
     {
       name: 'AI Bio Generator',
@@ -76,7 +88,9 @@ export function ToolsIndexPage({ setActivePage, setActiveTab }: ToolsIndexPagePr
       href: '/tools/bio-generator',
       tab: 'bios' as const,
       icon: User,
-      category: 'Profile Setup'
+      category: 'Profile Setup',
+      iconColor: 'text-emerald-600',
+      badgeBg: 'bg-emerald-50 border-emerald-200/80'
     },
     {
       name: 'AI Username Generator',
@@ -84,7 +98,9 @@ export function ToolsIndexPage({ setActivePage, setActiveTab }: ToolsIndexPagePr
       href: '/tools/username-generator',
       tab: 'usernames' as const,
       icon: User,
-      category: 'Profile Setup'
+      category: 'Profile Setup',
+      iconColor: 'text-sky-600',
+      badgeBg: 'bg-sky-50 border-sky-200/80'
     },
     {
       name: 'Instagram Photo Resizer',
@@ -92,7 +108,9 @@ export function ToolsIndexPage({ setActivePage, setActiveTab }: ToolsIndexPagePr
       href: '/tools/photo-resizer',
       tab: 'resizer' as const,
       icon: Minimize,
-      category: 'Image Formatting'
+      category: 'Image Formatting',
+      iconColor: 'text-blue-600',
+      badgeBg: 'bg-blue-50 border-blue-200/80'
     },
     {
       name: 'Instagram Grid Maker',
@@ -100,7 +118,9 @@ export function ToolsIndexPage({ setActivePage, setActiveTab }: ToolsIndexPagePr
       href: '/tools/grid-maker',
       tab: 'grid' as const,
       icon: Grid,
-      category: 'Grid Aesthetics'
+      category: 'Grid Aesthetics',
+      iconColor: 'text-purple-600',
+      badgeBg: 'bg-purple-50 border-purple-200/80'
     },
     {
       name: 'Instagram Feed Planner',
@@ -108,7 +128,9 @@ export function ToolsIndexPage({ setActivePage, setActiveTab }: ToolsIndexPagePr
       href: '/tools/feed-planner',
       tab: 'planner' as const,
       icon: Calendar,
-      category: 'Feed Planning'
+      category: 'Feed Planning',
+      iconColor: 'text-amber-600',
+      badgeBg: 'bg-amber-50 border-amber-200/80'
     },
     {
       name: 'Instagram Reels Downloader',
@@ -116,7 +138,9 @@ export function ToolsIndexPage({ setActivePage, setActiveTab }: ToolsIndexPagePr
       href: '/tools/reels-downloader',
       tab: 'downloader' as const,
       icon: Download,
-      category: 'Media Utilities'
+      category: 'Media Utilities',
+      iconColor: 'text-rose-600',
+      badgeBg: 'bg-rose-50 border-rose-200/80'
     }
   ];
 
@@ -157,7 +181,7 @@ export function ToolsIndexPage({ setActivePage, setActiveTab }: ToolsIndexPagePr
             >
               <div>
                 <div className="flex items-center justify-between mb-3">
-                  <div className="w-8 h-8 rounded-lg bg-stone-50 border border-stone-200 flex items-center justify-center text-stone-700">
+                  <div className={`w-8 h-8 rounded-lg border flex items-center justify-center ${tool.badgeBg} ${tool.iconColor}`}>
                     <Icon size={16} />
                   </div>
                   <span className="text-[10px] font-medium text-stone-500 bg-stone-100 px-2 py-0.5 rounded">

@@ -31,9 +31,9 @@ export const TableOfContents: React.FC<TableOfContentsProps> = ({ items }) => {
   if (!items || items.length === 0) return null;
 
   return (
-    <div className="bg-stone-50 border border-stone-200 rounded-2xl p-5 md:p-6 my-8">
+    <div className="bg-stone-50 border border-stone-200 rounded-xl p-5 md:p-6 my-8">
       <div className="flex items-center gap-2 mb-4 text-stone-900 font-bold text-sm uppercase tracking-wider border-b border-stone-200 pb-3">
-        <ListOrdered size={18} className="text-indigo-600 shrink-0" />
+        <ListOrdered size={16} className="text-stone-700 shrink-0" />
         <span>Table of Contents</span>
       </div>
       <nav aria-label="Table of Contents">
@@ -43,9 +43,9 @@ export const TableOfContents: React.FC<TableOfContentsProps> = ({ items }) => {
               <a
                 href={`#${item.id}`}
                 onClick={(e) => handleScroll(item.id, e)}
-                className="hover:text-indigo-600 hover:underline transition-colors flex items-start gap-2 py-0.5"
+                className="hover:text-stone-900 hover:underline transition-colors flex items-start gap-2 py-0.5"
               >
-                <span className="text-indigo-600 font-bold shrink-0">{idx + 1}.</span>
+                <span className="text-stone-500 font-bold shrink-0">{idx + 1}.</span>
                 <span className="line-clamp-2">{item.title}</span>
               </a>
             </li>
