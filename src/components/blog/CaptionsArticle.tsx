@@ -52,7 +52,7 @@ export const CaptionsArticle: React.FC = () => {
         <p>
           When a user stops scrolling to read a thoughtful caption, tap "...more", and read the complete message, they spend more time with your content. Engaging content that encourages saves, shares, and comments can also help your posts reach interested audiences through Instagram's recommendation and search features.
         </p>
-        <div className="bg-stone-50 border border-stone-200/80 rounded-xl p-5 my-4 space-y-3">
+        <div className="bg-stone-50 border border-stone-200/80 rounded-2xl p-5 my-4 space-y-3">
           <p className="font-bold text-stone-900">Key Post Interaction Factors:</p>
           <ul className="list-disc list-inside space-y-2 text-stone-700 text-xs md:text-sm">
             <li><strong className="text-stone-900">Saves:</strong> Users bookmark helpful recipes, tutorials, or guides to reference later.</li>
@@ -83,7 +83,7 @@ export const CaptionsArticle: React.FC = () => {
         <p>
           Your opening sentence sets the context. Rather than generic opening remarks, summarize the most interesting insight or question right at the start.
         </p>
-        <div className="bg-stone-50 border border-stone-200 rounded-xl p-4 my-3 text-xs md:text-sm text-stone-900 space-y-2">
+        <div className="bg-indigo-50/50 border border-indigo-100 rounded-2xl p-4 my-3 text-xs md:text-sm text-indigo-950 space-y-2">
           <p className="font-bold">5 Common Hook Formats:</p>
           <ul className="list-disc list-inside space-y-1 text-indigo-900">
             <li><strong>The Contrarian Perspective:</strong> "Why posting every single day might not be necessary for community growth."</li>
@@ -145,7 +145,7 @@ export const CaptionsArticle: React.FC = () => {
         <p>
           Never end a caption without instructing your audience on what step to take next. Tailor your CTA to your specific goal for the post:
         </p>
-        <div className="bg-white border border-stone-200 rounded-xl p-5 my-3 space-y-3 shadow-2xs">
+        <div className="bg-white border border-stone-200 rounded-2xl p-5 my-3 space-y-3 shadow-2xs">
           <p className="font-bold text-stone-900 text-sm">Targeted CTA Examples:</p>
           <ul className="space-y-2 text-xs md:text-sm text-stone-700">
             <li><strong>For Comment Engagement:</strong> "Which of these 5 tools have you tried? Drop a comment below! 👇"</li>
@@ -203,16 +203,16 @@ export const CaptionsArticle: React.FC = () => {
         </ul>
       </section>
 
-      <section id="cap-sec-12" className="space-y-4 pt-6 bg-stone-50 p-6 rounded-xl border border-stone-200">
-        <div className="flex items-center gap-2 text-stone-900 font-bold text-lg">
-          <Sparkles className="text-stone-700" size={18} />
+      <section id="cap-sec-12" className="space-y-4 pt-6 bg-gradient-to-br from-indigo-50/60 to-rose-50/40 p-6 rounded-3xl border border-indigo-100">
+        <div className="flex items-center gap-2 text-indigo-950 font-bold text-lg">
+          <Sparkles className="text-rose-500 animate-pulse" size={20} />
           <h2>Generating Captions with AI</h2>
         </div>
         <p>
           When you need new content ideas, GrowthCaption’s <InternalLink href="/tools/caption-generator">Instagram Caption Generator</InternalLink> allows you to enter a brief topic description, select your desired tone (Casual, Storytelling, Professional, Witty, or Aesthetic), and generate multi-option caption drafts with hooks, body copy, and CTAs in seconds.
         </p>
         <div className="pt-2">
-          <InternalLink href="/tools/caption-generator" className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-stone-900 text-white font-medium text-xs hover:bg-stone-800 transition-colors no-underline">
+          <InternalLink href="/tools/caption-generator" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-indigo-600 text-white font-bold text-xs uppercase tracking-wider hover:bg-indigo-700 transition-all no-underline">
             <span>Generate Captions Now</span>
             <ArrowRight size={14} />
           </InternalLink>
@@ -222,17 +222,17 @@ export const CaptionsArticle: React.FC = () => {
       {/* FAQ & Checklist */}
       <section id="cap-sec-13" className="space-y-4 pt-6">
         <h2 className="text-2xl font-bold text-stone-950 border-b border-stone-200 pb-2 flex items-center gap-2">
-          <HelpCircle className="text-stone-700" size={20} />
+          <HelpCircle className="text-indigo-600" size={22} />
           Frequently Asked Questions About Captions
         </h2>
         <div className="space-y-4">
-          <div className="bg-stone-50 p-4 rounded-xl border border-stone-200/80">
+          <div className="bg-stone-50 p-4 rounded-2xl border border-stone-200/60">
             <h3 className="font-bold text-stone-900 text-sm md:text-base">Q: Should hashtags go in the caption or comments?</h3>
             <p className="text-xs md:text-sm text-stone-600 mt-1">
               Instagram indexes hashtags placed in both the caption body and the first comment. You can place them at the end of your caption or in the comments depending on your layout preference.
             </p>
           </div>
-          <div className="bg-stone-50 p-4 rounded-xl border border-stone-200/80">
+          <div className="bg-stone-50 p-4 rounded-2xl border border-stone-200/60">
             <h3 className="font-bold text-stone-900 text-sm md:text-base">Q: Does editing a caption after posting affect performance?</h3>
             <p className="text-xs md:text-sm text-stone-600 mt-1">
               Correcting typos or formatting shortly after posting has minimal effect. Editing text as needed ensures your information is accurate and clear.
@@ -245,7 +245,7 @@ export const CaptionsArticle: React.FC = () => {
         <h2 className="text-2xl font-bold text-stone-950 border-b border-stone-200 pb-2">
           Summary Checklist for Caption Success
         </h2>
-        <div className="bg-stone-50 p-5 rounded-xl border border-stone-200/80 space-y-3">
+        <div className="bg-stone-50 p-5 rounded-2xl border border-stone-200/80 space-y-3">
           <ul className="space-y-2 text-xs md:text-sm text-stone-700">
             <li className="flex items-center gap-2">
               <CheckCircle2 size={16} className="text-emerald-600 shrink-0" />

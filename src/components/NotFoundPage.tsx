@@ -27,48 +27,42 @@ export function NotFoundPage({ setActivePage, setActiveTab }: NotFoundPageProps)
       description: "Generate Instagram caption ideas tailored to your tone and niche.",
       tab: "captions" as TabType,
       href: "/tools/caption-generator",
-      icon: <Sparkles className="text-rose-500 w-5 h-5" />,
-      badgeBg: "bg-rose-50 border-rose-200/80"
+      icon: <Sparkles className="text-rose-500 w-5 h-5" />
     },
     {
       title: "AI Comment Generator",
       description: "Generate witty, supportive, and engaging comments for any Instagram post.",
       tab: "comments" as TabType,
       href: "/tools/comment-generator",
-      icon: <MessageCircle className="text-pink-500 w-5 h-5" />,
-      badgeBg: "bg-pink-50 border-pink-200/80"
+      icon: <MessageCircle className="text-pink-500 w-5 h-5" />
     },
     {
       title: "AI Hashtag Generator",
       description: "Generate relevant hashtag ideas based on your post topic and niche.",
       tab: "hashtags" as TabType,
       href: "/tools/hashtag-generator",
-      icon: <Hash className="text-violet-600 w-5 h-5" />,
-      badgeBg: "bg-violet-50 border-violet-200/80"
+      icon: <Hash className="text-violet-500 w-5 h-5" />
     },
     {
       title: "Instagram Bio Generator",
       description: "Craft clear, well-structured Instagram bio suggestions for your profile.",
       tab: "bios" as TabType,
       href: "/tools/bio-generator",
-      icon: <UserCheck className="text-emerald-600 w-5 h-5" />,
-      badgeBg: "bg-emerald-50 border-emerald-200/80"
+      icon: <UserCheck className="text-emerald-500 w-5 h-5" />
     },
     {
       title: "Reels Video Downloader",
       description: "Download public Instagram Reels and video content for offline viewing.",
       tab: "downloader" as TabType,
       href: "/tools/reels-downloader",
-      icon: <Download className="text-rose-600 w-5 h-5" />,
-      badgeBg: "bg-rose-50 border-rose-200/80"
+      icon: <Download className="text-amber-500 w-5 h-5" />
     },
     {
       title: "Photo Resizer & Grid Maker",
       description: "Resize, crop, and split photos for perfect 3x3 Instagram grid layouts.",
       tab: "resizer" as TabType,
       href: "/tools/photo-resizer",
-      icon: <ImageIcon className="text-blue-600 w-5 h-5" />,
-      badgeBg: "bg-blue-50 border-blue-200/80"
+      icon: <ImageIcon className="text-indigo-500 w-5 h-5" />
     }
   ];
 
@@ -82,18 +76,18 @@ export function NotFoundPage({ setActivePage, setActiveTab }: NotFoundPageProps)
 
       <div className="text-center space-y-6 mb-12">
         {/* Badge */}
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-stone-100 border border-stone-200 text-stone-700 text-xs font-semibold uppercase tracking-wider">
-          <AlertCircle size={14} className="text-stone-600" />
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-rose-50 border border-rose-200/80 text-rose-700 text-xs font-bold uppercase tracking-widest shadow-sm">
+          <AlertCircle size={15} className="text-rose-600 animate-pulse" />
           <span>404 Error</span>
         </div>
 
         {/* Title */}
-        <h1 className="text-3xl md:text-5xl font-sans font-bold text-stone-950 tracking-tight">
+        <h1 className="text-4xl md:text-6xl font-display font-extrabold text-stone-950 tracking-tight">
           Page Not Found
         </h1>
 
-        <p className="text-stone-600 font-normal text-sm md:text-base max-w-lg mx-auto leading-relaxed">
-          The page you're looking for doesn't exist, has been removed, or moved to a new URL. Let's get you back on track with our creator tools and guides.
+        <p className="text-stone-600 font-medium text-base md:text-lg max-w-xl mx-auto leading-relaxed">
+          Oops! The page you're looking for doesn't exist, has been removed, or moved to a new URL. Let's get you back on track with our popular tools and guides.
         </p>
 
         {/* Quick action buttons */}
@@ -105,9 +99,9 @@ export function NotFoundPage({ setActivePage, setActiveTab }: NotFoundPageProps)
               e.preventDefault();
               handleNav('home', 'captions');
             }}
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-stone-900 text-white font-medium text-sm hover:bg-stone-800 transition-colors cursor-pointer shadow-2xs"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-gradient-to-r from-stone-900 to-stone-800 text-white font-bold text-sm hover:shadow-lg transition-all cursor-pointer"
           >
-            <Home size={15} />
+            <Home size={16} />
             Go to Homepage
           </a>
 
@@ -118,9 +112,9 @@ export function NotFoundPage({ setActivePage, setActiveTab }: NotFoundPageProps)
               e.preventDefault();
               handleNav('how-to');
             }}
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-white border border-stone-200 text-stone-800 font-medium text-sm hover:bg-stone-50 transition-colors cursor-pointer shadow-2xs"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-white border border-stone-200 text-stone-800 font-bold text-sm hover:bg-stone-50 transition-all cursor-pointer shadow-sm"
           >
-            <HelpCircle size={15} className="text-stone-600" />
+            <HelpCircle size={16} className="text-indigo-600" />
             How to Use
           </a>
 
@@ -131,9 +125,9 @@ export function NotFoundPage({ setActivePage, setActiveTab }: NotFoundPageProps)
               e.preventDefault();
               handleNav('blog');
             }}
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-white border border-stone-200 text-stone-800 font-medium text-sm hover:bg-stone-50 transition-colors cursor-pointer shadow-2xs"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-white border border-stone-200 text-stone-800 font-bold text-sm hover:bg-stone-50 transition-all cursor-pointer shadow-sm"
           >
-            <BookOpen size={15} className="text-stone-600" />
+            <BookOpen size={16} className="text-amber-600" />
             Creator Blog
           </a>
         </div>
@@ -142,11 +136,11 @@ export function NotFoundPage({ setActivePage, setActiveTab }: NotFoundPageProps)
       {/* Popular Tools Grid */}
       <div className="space-y-4">
         <div className="flex items-center gap-2 px-1">
-          <Layers className="text-stone-700 w-4 h-4" />
-          <h2 className="text-xs font-bold uppercase tracking-wider text-stone-700">Explore Free Instagram Creator Tools</h2>
+          <Layers className="text-indigo-600 w-5 h-5" />
+          <h2 className="text-xs font-bold uppercase tracking-wider text-stone-700">Explore Our Free Instagram Creator Tools</h2>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {POPULAR_TOOLS.map((tool) => (
             <a
               key={tool.tab}
@@ -156,20 +150,20 @@ export function NotFoundPage({ setActivePage, setActiveTab }: NotFoundPageProps)
                 e.preventDefault();
                 handleNav('home', tool.tab);
               }}
-              className="p-4 rounded-xl bg-white border border-stone-200 hover:border-stone-300 shadow-2xs transition-all group flex flex-col justify-between cursor-pointer"
+              className="p-5 rounded-2xl bg-white border border-stone-200/80 hover:border-stone-300 shadow-sm hover:shadow-md transition-all group flex flex-col justify-between cursor-pointer"
             >
               <div className="space-y-2">
-                <div className={`p-2 rounded-lg w-fit border transition-colors ${tool.badgeBg || 'bg-stone-50 border-stone-200/80'}`}>
+                <div className="p-2.5 rounded-xl bg-stone-50 w-fit border border-stone-100 group-hover:bg-stone-100 transition-colors">
                   {tool.icon}
                 </div>
-                <h3 className="font-bold text-stone-900 text-sm group-hover:text-stone-950 transition-colors flex items-center gap-1.5">
+                <h3 className="font-bold text-stone-900 text-sm group-hover:text-indigo-600 transition-colors flex items-center gap-1.5">
                   {tool.title}
                 </h3>
                 <p className="text-stone-500 text-xs leading-relaxed">
                   {tool.description}
                 </p>
               </div>
-              <div className="pt-3 flex items-center text-xs font-semibold text-stone-800 group-hover:translate-x-0.5 transition-transform">
+              <div className="pt-4 flex items-center text-xs font-bold text-indigo-600 group-hover:translate-x-1 transition-transform">
                 Open Tool <ArrowRight size={13} className="ml-1" />
               </div>
             </a>

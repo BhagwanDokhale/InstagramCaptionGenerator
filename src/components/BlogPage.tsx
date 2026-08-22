@@ -148,7 +148,7 @@ export function BlogPage({ blogSlug }: BlogPageProps) {
     const postUrl = typeof window !== 'undefined' ? `${window.location.origin}/blog/${post.slug}` : `https://growthcaption.com/blog/${post.slug}`;
     
     return (
-      <div className="max-w-2xl mx-auto w-full px-4 py-8 md:py-14">
+      <div className="max-w-3xl mx-auto w-full px-4 py-8 md:py-16">
         <SEO 
           title={`${post.title} | GrowthCaption`}
           description={post.excerpt}
@@ -187,17 +187,17 @@ export function BlogPage({ blogSlug }: BlogPageProps) {
             e.preventDefault();
             navigateTo('/blog');
           }}
-          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-stone-600 hover:text-stone-900 text-xs font-medium transition-colors mb-6 border border-stone-200 bg-white shadow-2xs"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-stone-600 hover:text-stone-900 hover:bg-stone-100/80 text-sm font-bold transition-all mb-8 cursor-pointer border border-stone-200/50 bg-white"
         >
-          <ArrowLeft size={13} />
-          <span>Back to Articles</span>
+          <ArrowLeft size={16} />
+          Back to Blog
         </a>
 
         {/* Hero banner */}
-        <figure className="aspect-[21/9] w-full rounded-xl overflow-hidden border border-stone-200 bg-stone-100 mb-2 relative">
+        <figure className="aspect-[21/9] w-full rounded-3xl overflow-hidden border border-stone-200 bg-stone-100 mb-2 relative">
           <img 
             src={post.image} 
-            alt={post.alt || post.title} 
+            alt={post.alt || `Example Instagram Caption Generator - Featured image for article ${post.title}`} 
             loading="lazy" 
             decoding="async" 
             referrerPolicy="no-referrer"
@@ -206,42 +206,41 @@ export function BlogPage({ blogSlug }: BlogPageProps) {
         </figure>
 
         {/* Image Attribution */}
-        <p className="text-[11px] text-stone-400 font-normal mb-5 text-right flex items-center justify-end gap-1">
-          <Camera size={11} className="text-stone-400 shrink-0" />
-          <span>Source: {post.imageSource}</span>
+        <p className="text-[11px] text-stone-500 font-medium mb-6 text-right italic flex items-center justify-end gap-1">
+          <Camera size={12} className="text-stone-400 shrink-0" />
+          <span>Image Source: {post.imageSource}</span>
         </p>
 
         {/* Meta Info */}
-        <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs text-stone-500 mb-5 border-b border-stone-200 pb-4">
-          <span className="font-medium text-stone-700">{post.date}</span>
-          <span>•</span>
-          <span className="flex items-center gap-1"><Clock size={12} className="text-stone-400" /> {post.readingTime}</span>
-          <span>•</span>
-          <span className="flex items-center gap-1.5">
+        <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs font-bold text-stone-500 mb-6 border-b border-stone-200/80 pb-6">
+          <span className="text-rose-500 uppercase tracking-widest">{post.date}</span>
+          <span className="flex items-center gap-1.5"><Clock size={14} className="text-stone-400" /> {post.readingTime}</span>
+          <span className="flex items-center gap-2">
             <img 
               src="/author-bhagwan.jpg" 
               alt={post.author} 
-              className="w-4 h-4 rounded-full object-cover border border-stone-200 shrink-0" 
+              className="w-5 h-5 rounded-full object-cover border border-stone-200 shadow-2xs shrink-0" 
               loading="lazy" 
               referrerPolicy="no-referrer" 
             />
-            <span>{post.author}</span>
+            <span>By {post.author}</span>
           </span>
+          <span className="font-mono bg-stone-100 px-2 py-0.5 rounded text-[10px]">{post.wordCount} words</span>
         </div>
 
         {/* Title */}
-        <h1 className="text-2xl md:text-3xl font-semibold tracking-tight text-stone-950 mb-6 leading-tight">
+        <h1 className="text-3xl md:text-4xl font-sans font-extrabold tracking-tight text-stone-950 mb-8 leading-tight">
           {post.title}
         </h1>
 
         {/* Content */}
-        <article className="prose max-w-none text-stone-800 text-sm leading-relaxed mb-10">
+        <article className="prose max-w-none text-stone-800 mb-12">
           {getArticleRenderer(activePostIndex)}
         </article>
 
         {/* Author Box */}
-        <div className="bg-stone-50 rounded-xl border border-stone-200 p-5 mb-8 flex flex-col sm:flex-row gap-4 items-start">
-          <div className="relative w-12 h-12 rounded-lg overflow-hidden border border-stone-200 shrink-0 bg-stone-100">
+        <div className="bg-stone-50 rounded-3xl border border-stone-200/80 p-6 md:p-8 mb-12 flex flex-col sm:flex-row gap-6 items-start">
+          <div className="relative w-16 h-16 rounded-2xl overflow-hidden border border-stone-200 shadow-sm shrink-0 bg-stone-100">
             <img 
               id="blog-author-avatar"
               src="/author-bhagwan.jpg" 
@@ -251,36 +250,36 @@ export function BlogPage({ blogSlug }: BlogPageProps) {
               referrerPolicy="no-referrer"
             />
           </div>
-          <div className="flex-1 space-y-1.5">
+          <div className="flex-1 space-y-3">
             <div className="flex items-center gap-2">
-              <span className="text-[10px] font-semibold uppercase tracking-wider text-stone-500">Author</span>
+              <span className="text-xs font-bold uppercase tracking-wider text-stone-400">About the Author</span>
             </div>
             <div>
-              <h3 className="text-sm font-semibold text-stone-900 leading-tight">
+              <h3 className="text-lg font-sans font-extrabold text-stone-900 leading-tight">
                 Bhagwan Dokhale
               </h3>
-              <p className="text-xs text-stone-500">
+              <p className="text-xs font-bold text-indigo-600 uppercase tracking-widest mt-1">
                 Creator of GrowthCaption
               </p>
             </div>
-            <p className="text-xs text-stone-600 leading-relaxed">
-              Building practical software utilities to help creators and marketers design and scale social content.
+            <p className="text-sm text-stone-600 leading-relaxed max-w-2xl">
+              I create practical tools and resources to help creators, social media managers and businesses improve their social media content.
             </p>
-            <div className="pt-2 border-t border-stone-200 flex flex-wrap gap-x-4 gap-y-1 text-xs text-stone-600">
+            <div className="pt-3 border-t border-stone-200/60 flex flex-wrap gap-x-6 gap-y-2 text-xs font-bold text-stone-600">
               <a 
                 href="https://growthcaption.com" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="flex items-center gap-1 hover:text-stone-900 transition-colors"
+                className="flex items-center gap-1.5 hover:text-indigo-600 transition-colors"
               >
-                <Globe size={12} className="text-stone-400" />
-                <span>growthcaption.com</span>
+                <Globe size={14} className="text-stone-400" />
+                <span>growthCaption.com</span>
               </a>
               <a 
                 href="mailto:bhagwan5.dokhale@gmail.com" 
-                className="flex items-center gap-1 hover:text-stone-900 transition-colors"
+                className="flex items-center gap-1.5 hover:text-indigo-600 transition-colors"
               >
-                <Mail size={12} className="text-stone-400" />
+                <Mail size={14} className="text-stone-400" />
                 <span>bhagwan5.dokhale@gmail.com</span>
               </a>
             </div>
@@ -288,13 +287,13 @@ export function BlogPage({ blogSlug }: BlogPageProps) {
         </div>
 
         {/* Sharing and call to actions */}
-        <div className="pt-6 border-t border-stone-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="pt-8 border-t border-stone-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
           <button 
             onClick={handleShare}
-            className="inline-flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-lg bg-stone-100 hover:bg-stone-200 text-stone-800 text-xs font-medium transition-colors cursor-pointer"
+            className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-indigo-50 border border-indigo-100 text-indigo-700 hover:bg-indigo-100/50 text-sm font-bold transition-all cursor-pointer"
           >
-            <Share2 size={13} />
-            <span>{copied ? 'Link Copied' : 'Share Article'}</span>
+            <Share2 size={16} />
+            {copied ? 'Link Copied!' : 'Share Article'}
           </button>
 
           <a 
@@ -304,11 +303,11 @@ export function BlogPage({ blogSlug }: BlogPageProps) {
               e.preventDefault();
               navigateTo('/tools/caption-generator');
             }}
-            className="flex items-center gap-2 p-3 bg-stone-50 rounded-lg border border-stone-200 hover:border-stone-300 transition-colors cursor-pointer"
+            className="flex items-center gap-3 bg-gradient-to-r from-rose-50 to-indigo-50/50 p-4 rounded-2xl border border-indigo-100/30 hover:border-indigo-200 transition-all cursor-pointer"
           >
-            <Sparkles size={14} className="text-stone-700 shrink-0" />
-            <p className="text-xs text-stone-700">
-              Explore our <span className="font-semibold text-stone-900 underline">AI creator utilities</span>
+            <Sparkles size={18} className="text-rose-500 animate-pulse shrink-0" />
+            <p className="text-xs font-bold text-stone-700">
+              Need ideas? Use our <span className="text-indigo-600">AI caption and bio generator</span> tools on the home page!
             </p>
           </a>
         </div>
@@ -317,26 +316,22 @@ export function BlogPage({ blogSlug }: BlogPageProps) {
   }
 
   return (
-    <div className="max-w-5xl mx-auto w-full px-4 py-10 md:py-16">
+    <div className="max-w-5xl mx-auto w-full px-4 py-12 md:py-20">
       <SEO 
         title="Instagram Creator Blog & Guides | GrowthCaption"
         description="Practical guides covering Instagram captions, bios, hashtags, visual content, branding, and content planning."
         url="https://growthcaption.com/blog"
       />
-      <div className="text-left mb-8 pb-6 border-b border-stone-200">
-        <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-stone-500 mb-2">
-          <BookOpen size={14} className="text-stone-700" />
-          <span>Guides & Resources</span>
-        </div>
-        <h1 className="text-2xl md:text-3xl font-semibold tracking-tight text-stone-900 mb-2">
-          Creator Guides & Strategy
+      <div className="text-center mb-12">
+        <h1 className="text-4xl md:text-5xl font-sans font-bold tracking-tight text-stone-900 mb-4">
+          Creator Blog & Guides
         </h1>
-        <p className="text-stone-500 text-sm max-w-xl">
-          Practical tutorials covering caption writing, bio design, hashtag research, visual brand identity, and feed layout planning.
+        <p className="text-stone-500 font-medium text-base md:text-lg flex items-center justify-center gap-2">
+          <BookOpen size={18} className="text-indigo-600" /> Practical guides covering captions, bios, hashtags, branding, and feed planning.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {posts.map((post, i) => (
           <a 
             key={i} 
@@ -346,29 +341,29 @@ export function BlogPage({ blogSlug }: BlogPageProps) {
               e.preventDefault();
               navigateTo(`/blog/${post.slug}`);
             }}
-            className="bg-white rounded-xl border border-stone-200 shadow-2xs relative flex flex-col overflow-hidden hover:border-stone-300 transition-colors cursor-pointer group"
+            className="bg-white rounded-3xl border border-stone-200/80 shadow-[0_8px_30px_rgb(0,0,0,0.02)] relative flex flex-col overflow-hidden hover:-translate-y-1 transition-all cursor-pointer group"
           >
             <figure className="aspect-video w-full border-b border-stone-100 bg-stone-100 overflow-hidden relative">
               <img 
                 src={post.image} 
-                alt={post.alt || post.title} 
+                alt={post.alt || `Example Instagram Caption Generator - Blog card thumbnail for ${post.title}`} 
                 loading="lazy" 
                 decoding="async" 
                 referrerPolicy="no-referrer"
-                className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-300" 
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
               />
             </figure>
-            <div className="p-4 flex flex-col flex-1">
-              <div className="flex justify-between items-center mb-2">
-                <span className="text-[11px] font-medium text-stone-500">{post.date}</span>
-                <span className="text-[10px] text-stone-500 px-2 py-0.5 bg-stone-100 rounded">{post.readingTime}</span>
+            <div className="p-6 flex flex-col flex-1">
+              <div className="flex justify-between items-center mb-4">
+                <span className="text-xs font-bold text-rose-500 uppercase tracking-widest">{post.date}</span>
+                <span className="text-[10px] font-bold font-mono px-2.5 py-1 bg-indigo-50/50 text-indigo-700 rounded-lg border border-indigo-100/40">{post.readingTime}</span>
               </div>
-              <h2 className="text-sm font-semibold text-stone-900 mb-1.5 leading-snug group-hover:text-stone-700 transition-colors">{post.title}</h2>
-              <p className="text-xs text-stone-500 leading-relaxed mb-4 flex-1">{post.excerpt}</p>
+              <h2 className="text-lg font-bold text-stone-900 mb-3 leading-tight group-hover:text-indigo-600 transition-colors">{post.title}</h2>
+              <p className="text-xs font-medium text-stone-500 leading-relaxed mb-6 flex-1">{post.excerpt}</p>
               
-              <div className="pt-3 border-t border-stone-100 flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <div className="w-5 h-5 rounded-full overflow-hidden border border-stone-200 shrink-0 bg-stone-100">
+              <div className="pt-4 border-t border-stone-100 flex items-center justify-between">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-8 h-8 rounded-full overflow-hidden border border-stone-200/80 shadow-2xs shrink-0 bg-stone-100">
                     <img 
                       src="/author-bhagwan.jpg" 
                       alt={post.author} 
@@ -377,9 +372,9 @@ export function BlogPage({ blogSlug }: BlogPageProps) {
                       referrerPolicy="no-referrer" 
                     />
                   </div>
-                  <span className="text-xs text-stone-700 font-medium">{post.author}</span>
+                  <span className="text-xs font-bold text-stone-850">{post.author}</span>
                 </div>
-                <span className="text-xs font-semibold text-stone-900 group-hover:underline">Read →</span>
+                <span className="text-xs font-bold text-indigo-600 group-hover:text-indigo-700 underline">Read Article</span>
               </div>
             </div>
           </a>

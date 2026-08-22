@@ -63,54 +63,49 @@ export function SitemapPage({ setActivePage, setActiveTab }: SitemapPageProps) {
   ];
 
   return (
-    <div className="max-w-4xl mx-auto w-full px-4 py-8 md:py-14 space-y-8">
+    <div className="max-w-4xl mx-auto w-full px-4 py-12 md:py-20">
       <SEO 
         title="HTML Sitemap | GrowthCaption"
         description="Complete overview of all tools, guides, legal pages, and blog posts available on GrowthCaption."
         url="https://growthcaption.com/sitemap"
       />
       
-      {/* Header */}
-      <div className="text-left pb-6 border-b border-stone-200">
-        <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-stone-500 mb-2">
-          <Compass size={14} className="text-stone-700" />
-          <span>Site Directory</span>
-        </div>
-        <h1 className="text-2xl md:text-3xl font-semibold tracking-tight text-stone-900 mb-2">
+      <div className="text-center mb-16">
+        <h1 className="text-4xl md:text-5xl font-sans font-bold tracking-tight text-stone-900 mb-4">
           Sitemap
         </h1>
-        <p className="text-stone-500 text-xs md:text-sm max-w-xl">
-          Complete index of all generator tools, documentation tutorials, blog guides, and policy resources on GrowthCaption.
+        <p className="text-stone-500 font-medium text-base md:text-lg flex items-center justify-center gap-2">
+          <Compass size={18} className="text-indigo-600" /> A comprehensive overview of everything on GrowthCaption.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
         
         {/* Main Pages */}
-        <section className="bg-white rounded-xl p-5 border border-stone-200 shadow-2xs space-y-4">
-          <h2 className="text-xs font-semibold uppercase tracking-wider text-stone-600 flex items-center gap-2 border-b border-stone-100 pb-2.5">
-            <Info className="text-stone-600" size={14} />
-            <span>Main Pages & Navigation</span>
+        <section className="bg-white rounded-3xl p-8 border border-stone-200/80 shadow-[0_8px_30px_rgb(0,0,0,0.02)]">
+          <h2 className="text-lg font-bold text-stone-900 mb-6 flex items-center gap-3 border-b border-stone-100 pb-3">
+            <Info className="text-indigo-600" size={20} />
+            Main Pages & Content
           </h2>
-          <ul className="space-y-1.5">
+          <ul className="space-y-4">
             {mainPages.map((item) => (
-              <li key={item.name}>
+              <li key={item.name} className="group">
                 <a
                   href={item.href}
                   onClick={handleLinkClick(item.href, item.page)}
-                  className="p-2.5 rounded-lg border border-transparent hover:border-stone-200 hover:bg-stone-50 transition-colors flex items-start gap-2.5 cursor-pointer block group"
+                  className="w-full text-left p-3.5 rounded-2xl border border-transparent hover:border-stone-200/60 hover:bg-stone-50/50 transition-all flex items-start gap-3.5 cursor-pointer block"
                 >
-                  <div className="w-6 h-6 rounded-md bg-stone-100 flex items-center justify-center text-stone-600 shrink-0 mt-0.5">
-                    <LinkIcon size={12} />
+                  <div className="w-8 h-8 rounded-xl bg-indigo-50 flex items-center justify-center text-indigo-600 shrink-0 group-hover:scale-105 transition-transform">
+                    <LinkIcon size={14} />
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center justify-between">
-                      <span className="text-xs font-medium text-stone-900 group-hover:text-stone-950">
+                      <span className="text-sm font-bold text-stone-900 group-hover:text-indigo-600 transition-colors">
                         {item.name}
                       </span>
-                      <ArrowRight size={11} className="text-stone-400 opacity-0 group-hover:opacity-100 transition-opacity" />
+                      <ArrowRight size={14} className="text-stone-400 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                     </div>
-                    <p className="text-[11px] text-stone-500 leading-snug mt-0.5">
+                    <p className="text-xs text-stone-500 leading-relaxed mt-1">
                       {item.desc}
                     </p>
                   </div>
@@ -121,30 +116,30 @@ export function SitemapPage({ setActivePage, setActiveTab }: SitemapPageProps) {
         </section>
 
         {/* Generative & Visual Tools */}
-        <section className="bg-white rounded-xl p-5 border border-stone-200 shadow-2xs space-y-4">
-          <h2 className="text-xs font-semibold uppercase tracking-wider text-stone-600 flex items-center gap-2 border-b border-stone-100 pb-2.5">
-            <Sparkles className="text-stone-600" size={14} />
-            <span>Creator Tools & Utilities</span>
+        <section className="bg-white rounded-3xl p-8 border border-stone-200/80 shadow-[0_8px_30px_rgb(0,0,0,0.02)]">
+          <h2 className="text-lg font-bold text-stone-900 mb-6 flex items-center gap-3 border-b border-stone-100 pb-3">
+            <Sparkles className="text-rose-500 animate-pulse" size={20} />
+            AI & Social Media Tools
           </h2>
-          <ul className="space-y-1.5">
+          <ul className="space-y-4">
             {tools.map((item) => (
-              <li key={item.name}>
+              <li key={item.name} className="group">
                 <a
                   href={item.href}
                   onClick={handleLinkClick(item.href, 'home', item.tab)}
-                  className="p-2.5 rounded-lg border border-transparent hover:border-stone-200 hover:bg-stone-50 transition-colors flex items-start gap-2.5 cursor-pointer block group"
+                  className="w-full text-left p-3.5 rounded-2xl border border-transparent hover:border-stone-200/60 hover:bg-stone-50/50 transition-all flex items-start gap-3.5 cursor-pointer block"
                 >
-                  <div className="w-6 h-6 rounded-md bg-stone-100 flex items-center justify-center text-stone-600 shrink-0 mt-0.5">
-                    <LinkIcon size={12} />
+                  <div className="w-8 h-8 rounded-xl bg-rose-50 flex items-center justify-center text-rose-500 shrink-0 group-hover:scale-105 transition-transform">
+                    <LinkIcon size={14} />
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center justify-between">
-                      <span className="text-xs font-medium text-stone-900 group-hover:text-stone-950">
+                      <span className="text-sm font-bold text-stone-900 group-hover:text-indigo-600 transition-colors">
                         {item.name}
                       </span>
-                      <ArrowRight size={11} className="text-stone-400 opacity-0 group-hover:opacity-100 transition-opacity" />
+                      <ArrowRight size={14} className="text-stone-400 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                     </div>
-                    <p className="text-[11px] text-stone-500 leading-snug mt-0.5">
+                    <p className="text-xs text-stone-500 leading-relaxed mt-1">
                       {item.desc}
                     </p>
                   </div>
@@ -154,31 +149,31 @@ export function SitemapPage({ setActivePage, setActiveTab }: SitemapPageProps) {
           </ul>
         </section>
 
-        {/* Blog Articles */}
-        <section className="bg-white rounded-xl p-5 border border-stone-200 shadow-2xs space-y-4 md:col-span-2">
-          <h2 className="text-xs font-semibold uppercase tracking-wider text-stone-600 flex items-center gap-2 border-b border-stone-100 pb-2.5">
-            <BookOpen className="text-stone-600" size={14} />
-            <span>Blog Articles & Guides</span>
+        {/* Legal & Compliance */}
+        <section className="bg-white rounded-3xl p-8 border border-stone-200/80 shadow-[0_8px_30px_rgb(0,0,0,0.02)] md:col-span-2">
+          <h2 className="text-lg font-bold text-stone-900 mb-6 flex items-center gap-3 border-b border-stone-100 pb-3">
+            <BookOpen className="text-violet-600" size={20} />
+            Blog Articles & Guides
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {blogArticles.map((item) => (
-              <div key={item.name}>
+              <div key={item.name} className="group">
                 <a
                   href={item.href}
                   onClick={handleLinkClick(item.href, 'blog')}
-                  className="p-2.5 rounded-lg border border-transparent hover:border-stone-200 hover:bg-stone-50 transition-colors flex items-start gap-2.5 cursor-pointer block group"
+                  className="w-full text-left p-3.5 rounded-2xl border border-transparent hover:border-stone-200/60 hover:bg-stone-50/50 transition-all flex items-start gap-3.5 cursor-pointer block"
                 >
-                  <div className="w-6 h-6 rounded-md bg-stone-100 flex items-center justify-center text-stone-600 shrink-0 mt-0.5">
-                    <LinkIcon size={12} />
+                  <div className="w-8 h-8 rounded-xl bg-violet-50 flex items-center justify-center text-violet-600 shrink-0 group-hover:scale-105 transition-transform">
+                    <LinkIcon size={14} />
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center justify-between">
-                      <span className="text-xs font-medium text-stone-900 group-hover:text-stone-950">
+                      <span className="text-sm font-bold text-stone-900 group-hover:text-indigo-600 transition-colors">
                         {item.name}
                       </span>
-                      <ArrowRight size={11} className="text-stone-400 opacity-0 group-hover:opacity-100 transition-opacity" />
+                      <ArrowRight size={14} className="text-stone-400 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                     </div>
-                    <p className="text-[11px] text-stone-500 leading-snug mt-0.5">
+                    <p className="text-xs text-stone-500 leading-relaxed mt-1">
                       {item.desc}
                     </p>
                   </div>
@@ -188,31 +183,31 @@ export function SitemapPage({ setActivePage, setActiveTab }: SitemapPageProps) {
           </div>
         </section>
 
-        {/* Legal & Trust */}
-        <section className="bg-white rounded-xl p-5 border border-stone-200 shadow-2xs space-y-4 md:col-span-2">
-          <h2 className="text-xs font-semibold uppercase tracking-wider text-stone-600 flex items-center gap-2 border-b border-stone-100 pb-2.5">
-            <Shield className="text-stone-600" size={14} />
-            <span>Legal & Privacy Policies</span>
+        {/* Legal & Compliance */}
+        <section className="bg-white rounded-3xl p-8 border border-stone-200/80 shadow-[0_8px_30px_rgb(0,0,0,0.02)] md:col-span-2">
+          <h2 className="text-lg font-bold text-stone-900 mb-6 flex items-center gap-3 border-b border-stone-100 pb-3">
+            <Shield className="text-emerald-600" size={20} />
+            Legal & Trust
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {legalPages.map((item) => (
-              <div key={item.name}>
+              <div key={item.name} className="group">
                 <a
                   href={item.href}
                   onClick={handleLinkClick(item.href, item.page)}
-                  className="p-2.5 rounded-lg border border-transparent hover:border-stone-200 hover:bg-stone-50 transition-colors flex items-start gap-2.5 cursor-pointer block group"
+                  className="w-full text-left p-3.5 rounded-2xl border border-transparent hover:border-stone-200/60 hover:bg-stone-50/50 transition-all flex items-start gap-3.5 cursor-pointer block"
                 >
-                  <div className="w-6 h-6 rounded-md bg-stone-100 flex items-center justify-center text-stone-600 shrink-0 mt-0.5">
-                    <LinkIcon size={12} />
+                  <div className="w-8 h-8 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-600 shrink-0 group-hover:scale-105 transition-transform">
+                    <LinkIcon size={14} />
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center justify-between">
-                      <span className="text-xs font-medium text-stone-900 group-hover:text-stone-950">
+                      <span className="text-sm font-bold text-stone-900 group-hover:text-indigo-600 transition-colors">
                         {item.name}
                       </span>
-                      <ArrowRight size={11} className="text-stone-400 opacity-0 group-hover:opacity-100 transition-opacity" />
+                      <ArrowRight size={14} className="text-stone-400 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                     </div>
-                    <p className="text-[11px] text-stone-500 leading-snug mt-0.5">
+                    <p className="text-xs text-stone-500 leading-relaxed mt-1">
                       {item.desc}
                     </p>
                   </div>
@@ -226,3 +221,4 @@ export function SitemapPage({ setActivePage, setActiveTab }: SitemapPageProps) {
     </div>
   );
 }
+

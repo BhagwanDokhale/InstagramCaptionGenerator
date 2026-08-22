@@ -1,5 +1,5 @@
 import React from 'react';
-import { MessageSquare, MessageCircle, Hash, Eye, Smartphone, Palette, User, Minimize, Grid, Calendar, Download, ArrowRight, ShieldCheck, Layers } from 'lucide-react';
+import { Sparkles, MessageSquare, MessageCircle, Hash, Eye, Smartphone, Palette, User, Minimize, Grid, Calendar, Download, ArrowRight, ShieldCheck } from 'lucide-react';
 import { PageType } from '../types';
 import { SEO } from './SEO';
 import { Breadcrumbs } from './Breadcrumbs';
@@ -28,9 +28,8 @@ export function ToolsIndexPage({ setActivePage, setActiveTab }: ToolsIndexPagePr
       href: '/tools/caption-generator',
       tab: 'captions' as const,
       icon: MessageSquare,
-      category: 'Content Generation',
-      iconColor: 'text-rose-500',
-      badgeBg: 'bg-rose-50 border-rose-200/80'
+      color: 'text-rose-500 bg-rose-50 border-rose-100',
+      category: 'Content Generation'
     },
     {
       name: 'AI Comment Generator',
@@ -38,9 +37,8 @@ export function ToolsIndexPage({ setActivePage, setActiveTab }: ToolsIndexPagePr
       href: '/tools/comment-generator',
       tab: 'comments' as const,
       icon: MessageCircle,
-      category: 'Engagement & Community',
-      iconColor: 'text-pink-500',
-      badgeBg: 'bg-pink-50 border-pink-200/80'
+      color: 'text-pink-500 bg-pink-50 border-pink-100',
+      category: 'Engagement & Community'
     },
     {
       name: 'AI Hashtag Generator',
@@ -48,9 +46,8 @@ export function ToolsIndexPage({ setActivePage, setActiveTab }: ToolsIndexPagePr
       href: '/tools/hashtag-generator',
       tab: 'hashtags' as const,
       icon: Hash,
-      category: 'Discovery & Hashtags',
-      iconColor: 'text-violet-600',
-      badgeBg: 'bg-violet-50 border-violet-200/80'
+      color: 'text-violet-500 bg-violet-50 border-violet-100',
+      category: 'Discovery & Hashtags'
     },
     {
       name: 'AI ALT Text Generator',
@@ -58,29 +55,8 @@ export function ToolsIndexPage({ setActivePage, setActiveTab }: ToolsIndexPagePr
       href: '/tools/alt-text-generator',
       tab: 'alttext' as const,
       icon: Eye,
-      category: 'Accessibility & Descriptions',
-      iconColor: 'text-teal-600',
-      badgeBg: 'bg-teal-50 border-teal-200/80'
-    },
-    {
-      name: 'Instagram Reel Cover Maker',
-      desc: 'Design 9:16 vertical Reel covers with visual safe-zone guides so text stays visible in the 1:1 profile grid.',
-      href: '/tools/reel-cover-maker',
-      tab: 'cover' as const,
-      icon: Smartphone,
-      category: 'Graphics & Layout',
-      iconColor: 'text-indigo-600',
-      badgeBg: 'bg-indigo-50 border-indigo-200/80'
-    },
-    {
-      name: 'AI Brand Kit Generator',
-      desc: 'Build cohesive color palettes, font pairs, taglines, and brand voice guidelines for your Instagram profile.',
-      href: '/tools/brand-kit-generator',
-      tab: 'brandkit' as const,
-      icon: Palette,
-      category: 'Branding & Aesthetics',
-      iconColor: 'text-fuchsia-600',
-      badgeBg: 'bg-fuchsia-50 border-fuchsia-200/80'
+      color: 'text-indigo-500 bg-indigo-50 border-indigo-100',
+      category: 'Accessibility & Descriptions'
     },
     {
       name: 'AI Bio Generator',
@@ -88,9 +64,8 @@ export function ToolsIndexPage({ setActivePage, setActiveTab }: ToolsIndexPagePr
       href: '/tools/bio-generator',
       tab: 'bios' as const,
       icon: User,
-      category: 'Profile Setup',
-      iconColor: 'text-emerald-600',
-      badgeBg: 'bg-emerald-50 border-emerald-200/80'
+      color: 'text-amber-500 bg-amber-50 border-amber-100',
+      category: 'Profile Setup'
     },
     {
       name: 'AI Username Generator',
@@ -98,9 +73,17 @@ export function ToolsIndexPage({ setActivePage, setActiveTab }: ToolsIndexPagePr
       href: '/tools/username-generator',
       tab: 'usernames' as const,
       icon: User,
-      category: 'Profile Setup',
-      iconColor: 'text-sky-600',
-      badgeBg: 'bg-sky-50 border-sky-200/80'
+      color: 'text-emerald-500 bg-emerald-50 border-emerald-100',
+      category: 'Profile Setup'
+    },
+    {
+      name: 'AI Brand Kit Generator',
+      desc: 'Build cohesive color palettes, font pairs, taglines, and brand voice guidelines for your Instagram profile.',
+      href: '/tools/brand-kit-generator',
+      tab: 'brandkit' as const,
+      icon: Palette,
+      color: 'text-indigo-600 bg-indigo-50 border-indigo-100',
+      category: 'Branding & Aesthetics'
     },
     {
       name: 'Instagram Photo Resizer',
@@ -108,9 +91,17 @@ export function ToolsIndexPage({ setActivePage, setActiveTab }: ToolsIndexPagePr
       href: '/tools/photo-resizer',
       tab: 'resizer' as const,
       icon: Minimize,
-      category: 'Image Formatting',
-      iconColor: 'text-blue-600',
-      badgeBg: 'bg-blue-50 border-blue-200/80'
+      color: 'text-sky-500 bg-sky-50 border-sky-100',
+      category: 'Image Formatting'
+    },
+    {
+      name: 'Instagram Reel Cover Maker',
+      desc: 'Design 9:16 vertical Reel covers with visual safe-zone guides so text stays visible in the 1:1 profile grid.',
+      href: '/tools/reel-cover-maker',
+      tab: 'cover' as const,
+      icon: Smartphone,
+      color: 'text-purple-500 bg-purple-50 border-purple-100',
+      category: 'Graphics & Layout'
     },
     {
       name: 'Instagram Grid Maker',
@@ -118,9 +109,8 @@ export function ToolsIndexPage({ setActivePage, setActiveTab }: ToolsIndexPagePr
       href: '/tools/grid-maker',
       tab: 'grid' as const,
       icon: Grid,
-      category: 'Grid Aesthetics',
-      iconColor: 'text-purple-600',
-      badgeBg: 'bg-purple-50 border-purple-200/80'
+      color: 'text-cyan-500 bg-cyan-50 border-cyan-100',
+      category: 'Grid Aesthetics'
     },
     {
       name: 'Instagram Feed Planner',
@@ -128,9 +118,8 @@ export function ToolsIndexPage({ setActivePage, setActiveTab }: ToolsIndexPagePr
       href: '/tools/feed-planner',
       tab: 'planner' as const,
       icon: Calendar,
-      category: 'Feed Planning',
-      iconColor: 'text-amber-600',
-      badgeBg: 'bg-amber-50 border-amber-200/80'
+      color: 'text-teal-500 bg-teal-50 border-teal-100',
+      category: 'Feed Planning'
     },
     {
       name: 'Instagram Reels Downloader',
@@ -138,14 +127,13 @@ export function ToolsIndexPage({ setActivePage, setActiveTab }: ToolsIndexPagePr
       href: '/tools/reels-downloader',
       tab: 'downloader' as const,
       icon: Download,
-      category: 'Media Utilities',
-      iconColor: 'text-rose-600',
-      badgeBg: 'bg-rose-50 border-rose-200/80'
+      color: 'text-pink-500 bg-pink-50 border-pink-100',
+      category: 'Media Utilities'
     }
   ];
 
   return (
-    <div className="max-w-5xl mx-auto px-4 py-8 md:py-14 w-full space-y-8">
+    <div className="max-w-5xl mx-auto px-4 py-12 md:py-16 w-full">
       <SEO 
         title="Instagram Creator Tools – Captions, Hashtags, Bios & More | GrowthCaption"
         description="Explore free Instagram creator tools for captions, hashtags, bios, usernames, visual content, branding, and content planning."
@@ -155,21 +143,21 @@ export function ToolsIndexPage({ setActivePage, setActiveTab }: ToolsIndexPagePr
       <Breadcrumbs setActivePage={setActivePage} setActiveTab={setActiveTab} />
 
       {/* Header */}
-      <div className="text-left pb-6 border-b border-stone-200">
-        <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-stone-500 mb-2">
-          <Layers size={14} className="text-stone-700" />
-          <span>Creator Suite Directory</span>
+      <header className="text-center mb-14 flex flex-col items-center">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-pill text-indigo-800 text-xs font-bold uppercase tracking-widest mb-6 shadow-sm shadow-indigo-100/10 border border-white/80 bg-gradient-to-r from-rose-50/80 via-white/90 to-indigo-50/80">
+          <Sparkles size={14} className="text-rose-500 animate-pulse" />
+          <span>GrowthCaption Creator Suite</span>
         </div>
-        <h1 className="text-2xl md:text-3xl font-semibold tracking-tight text-stone-900 mb-2">
+        <h1 className="text-4xl md:text-5.5xl font-display font-extrabold tracking-tight text-stone-950 mb-4 max-w-3xl leading-[1.1]">
           Instagram Creator Tools
         </h1>
-        <p className="text-stone-500 text-xs md:text-sm max-w-2xl leading-relaxed">
-          Comprehensive suite of 12 client-side utilities and AI helpers to compose, format, organize, and publish social media content.
+        <p className="text-stone-600 text-base md:text-lg max-w-2xl mx-auto leading-relaxed font-medium">
+          Free Instagram Creator Tools for creating, organizing, and reusing social content.
         </p>
-      </div>
+      </header>
 
       {/* Tools Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
         {toolsList.map((tool) => {
           const Icon = tool.icon;
           return (
@@ -177,28 +165,28 @@ export function ToolsIndexPage({ setActivePage, setActiveTab }: ToolsIndexPagePr
               key={tool.tab}
               href={tool.href}
               onClick={handleToolClick(tool.href, tool.tab)}
-              className="group bg-white p-5 rounded-xl border border-stone-200 shadow-2xs hover:border-stone-300 transition-colors flex flex-col justify-between cursor-pointer"
+              className="group glass-card p-6 rounded-3xl border border-stone-200/80 bg-white/70 hover:bg-white hover:border-indigo-200 shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between cursor-pointer"
             >
               <div>
-                <div className="flex items-center justify-between mb-3">
-                  <div className={`w-8 h-8 rounded-lg border flex items-center justify-center ${tool.badgeBg} ${tool.iconColor}`}>
-                    <Icon size={16} />
+                <div className="flex items-center justify-between mb-4">
+                  <div className={`w-11 h-11 rounded-2xl ${tool.color} border flex items-center justify-center shadow-xs group-hover:scale-110 transition-transform duration-300`}>
+                    <Icon size={20} />
                   </div>
-                  <span className="text-[10px] font-medium text-stone-500 bg-stone-100 px-2 py-0.5 rounded">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-stone-400 bg-stone-100 px-2.5 py-1 rounded-lg">
                     {tool.category}
                   </span>
                 </div>
-                <h2 className="text-sm font-semibold text-stone-900 group-hover:text-stone-950 transition-colors mb-1.5">
+                <h2 className="text-lg font-bold text-stone-900 group-hover:text-indigo-600 transition-colors mb-2">
                   {tool.name}
                 </h2>
-                <p className="text-stone-500 text-xs leading-relaxed font-normal mb-4">
+                <p className="text-stone-500 text-xs leading-relaxed font-normal mb-6">
                   {tool.desc}
                 </p>
               </div>
 
-              <div className="flex items-center text-xs font-medium text-stone-800 pt-3 border-t border-stone-100">
+              <div className="flex items-center text-xs font-bold text-indigo-600 group-hover:text-indigo-700 pt-3 border-t border-stone-100">
                 <span>Open Tool</span>
-                <ArrowRight size={12} className="ml-1 text-stone-400 group-hover:translate-x-0.5 transition-transform" />
+                <ArrowRight size={14} className="ml-1.5 group-hover:translate-x-1 transition-transform" />
               </div>
             </a>
           );
@@ -206,15 +194,15 @@ export function ToolsIndexPage({ setActivePage, setActiveTab }: ToolsIndexPagePr
       </div>
 
       {/* Trust & Features Section */}
-      <div className="bg-white rounded-xl p-6 border border-stone-200 shadow-2xs text-left sm:text-center max-w-3xl mx-auto space-y-2">
-        <div className="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-stone-100 text-stone-800 mb-1">
-          <ShieldCheck size={18} />
+      <div className="glass-card rounded-3xl p-8 md:p-10 border border-white/80 bg-white/60 text-center max-w-3xl mx-auto">
+        <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-indigo-50 text-indigo-600 mb-4">
+          <ShieldCheck size={24} />
         </div>
-        <h2 className="text-sm font-semibold text-stone-900">
-          Free & Privacy-Focused
+        <h2 className="text-xl font-bold text-stone-900 mb-2">
+          Free, Fast & No Registration Required
         </h2>
-        <p className="text-stone-500 text-xs leading-relaxed max-w-lg mx-auto">
-          All GrowthCaption tools are free to use directly in your browser. No mandatory sign-ups, subscriptions, or hidden walls.
+        <p className="text-stone-500 text-sm leading-relaxed max-w-xl mx-auto">
+          All GrowthCaption tools are free to use directly in your browser. No sign-ups, no subscriptions, and no hidden fees.
         </p>
       </div>
     </div>

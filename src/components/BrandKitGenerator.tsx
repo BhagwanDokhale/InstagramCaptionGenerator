@@ -357,71 +357,71 @@ ${brandKit.gridTheme}
   };
 
   return (
-    <div className="w-full max-w-5xl mx-auto space-y-8" id="brand-kit-section">
+    <div className="w-full max-w-5xl mx-auto space-y-10" id="brand-kit-section">
       {/* Intro info bar */}
-      <div className="bg-white p-5 rounded-xl border border-stone-200 shadow-xs flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+      <div className="glass-card p-6 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.02)] border border-white/80 bg-white/75 backdrop-blur-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
         <div className="space-y-1 md:max-w-xl">
-          <h2 className="text-xs font-semibold uppercase tracking-wider text-stone-600 flex items-center gap-2">
-            <Palette size={15} className="text-stone-700" />
+          <h2 className="text-sm font-bold uppercase tracking-wider text-stone-500 flex items-center gap-2">
+            <Palette size={16} className="text-violet-500" />
             Social Brand Identity Generator
           </h2>
-          <p className="text-stone-500 text-xs leading-relaxed">
-            Formulate a coherent Instagram brand identity: color combinations, font pairings, brand voice guidelines, and bio layouts.
+          <p className="text-stone-500 text-xs md:text-sm leading-relaxed">
+            Instantly formulate a coherent Instagram brand identity. Design color combinations, pair web fonts, establish voice styles, and formulate clear bio layouts that fit cleanly on your feed.
           </p>
         </div>
-        <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-stone-100 text-stone-700 text-xs font-medium border border-stone-200">
-          <Sparkles size={12} className="text-stone-600" />
-          <span>Palette & Style Curation</span>
+        <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gradient-to-r from-violet-50 to-indigo-50 text-violet-700 text-xs font-bold border border-violet-100/80 shadow-xs">
+          <Sparkles size={13} className="text-violet-600 animate-pulse" />
+          <span>Professional Palette Curation</span>
         </div>
       </div>
 
       {/* Main interactive container */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
         
         {/* Left Side: Setup Form */}
-        <div className="lg:col-span-5 bg-white p-5 md:p-6 rounded-xl border border-stone-200 shadow-xs space-y-5">
-          <h3 className="text-xs font-semibold uppercase tracking-wider text-stone-600 pb-3 border-b border-stone-100 flex items-center gap-2">
-            <Sliders size={14} className="text-stone-700" />
+        <div className="lg:col-span-5 glass-card p-6 md:p-8 rounded-2xl shadow-[0_12px_40px_rgba(0,0,0,0.03)] border border-white/80 bg-white/75 backdrop-blur-xl space-y-6">
+          <h3 className="text-lg font-bold text-stone-900 pb-3 border-b border-stone-100 flex items-center gap-2">
+            <Sliders size={18} className="text-rose-500" />
             Configure Brand
           </h3>
 
-          <form onSubmit={handleGenerate} className="space-y-4">
+          <form onSubmit={handleGenerate} className="space-y-5">
             {/* Brand Name Input */}
-            <div className="space-y-1.5">
-              <label className="block text-xs font-semibold uppercase tracking-wider text-stone-600">
-                Brand Name <span className="text-stone-400">*</span>
+            <div className="space-y-2">
+              <label className="block text-xs font-bold uppercase tracking-wider text-stone-500">
+                Brand Name <span className="text-rose-500">*</span>
               </label>
               <input
                 type="text"
-                placeholder="e.g. SÖDER Cafe, Solstice Studio"
+                placeholder="e.g. SÖDER Cafe, Solstice Wear"
                 value={brandName}
                 onChange={(e) => setBrandName(e.target.value)}
-                className="w-full px-3 py-2 rounded-lg border border-stone-200 text-stone-800 placeholder-stone-400 text-xs font-normal focus:outline-none focus:border-stone-900 bg-white transition-colors"
+                className="w-full px-4 py-3 rounded-xl border border-stone-200 text-stone-850 font-medium placeholder-stone-400 text-sm focus:outline-none focus:ring-2 focus:ring-stone-900/10 focus:border-stone-900 bg-stone-50/30 transition-all"
                 required
               />
             </div>
 
             {/* Brand Description / Niche */}
-            <div className="space-y-1.5">
-              <label className="block text-xs font-semibold uppercase tracking-wider text-stone-600">
+            <div className="space-y-2">
+              <label className="block text-xs font-bold uppercase tracking-wider text-stone-500">
                 Niche & Description
               </label>
               <textarea
-                placeholder="e.g. Scandinavian espresso bar serving fresh matcha & vegan sourdough."
+                placeholder="e.g. Scandinavian espresso bar serving fresh matcha & vegan sourdough in Seattle."
                 value={brandNiche}
                 onChange={(e) => setBrandNiche(e.target.value)}
                 rows={3}
-                className="w-full px-3 py-2 rounded-lg border border-stone-200 text-stone-800 placeholder-stone-400 text-xs font-normal focus:outline-none focus:border-stone-900 bg-white transition-colors resize-none"
+                className="w-full px-4 py-3 rounded-xl border border-stone-200 text-stone-850 font-medium placeholder-stone-400 text-sm focus:outline-none focus:ring-2 focus:ring-stone-900/10 focus:border-stone-900 bg-stone-50/30 transition-all resize-none"
               />
-              <p className="text-[11px] text-stone-400">Describe your product, target audience, or aesthetic.</p>
+              <p className="text-[11px] text-stone-400">Describe what you do, who your target audience is, or key brand objects.</p>
             </div>
 
             {/* Vibe Selection Pills */}
-            <div className="space-y-1.5">
-              <label className="block text-xs font-semibold uppercase tracking-wider text-stone-600">
+            <div className="space-y-2">
+              <label className="block text-xs font-bold uppercase tracking-wider text-stone-500">
                 Brand Vibe Preset
               </label>
-              <div className="grid grid-cols-2 gap-1.5">
+              <div className="grid grid-cols-2 gap-2">
                 {VIBE_PRESETS.map((p) => {
                   const isSelected = brandVibe === p.id;
                   return (
@@ -429,14 +429,14 @@ ${brandKit.gridTheme}
                       key={p.id}
                       type="button"
                       onClick={() => setBrandVibe(p.id)}
-                      className={`px-3 py-2 rounded-lg border text-left transition-colors cursor-pointer ${
+                      className={`px-3 py-2.5 rounded-xl border text-left transition-all duration-200 cursor-pointer ${
                         isSelected 
-                          ? 'border-stone-900 bg-stone-900 text-white' 
-                          : 'border-stone-200 hover:border-stone-300 text-stone-700 bg-white'
+                          ? 'border-stone-900 bg-stone-900/5 shadow-sm text-stone-900' 
+                          : 'border-stone-200 hover:border-stone-400 text-stone-500 bg-white'
                       }`}
                     >
-                      <div className="text-xs font-semibold">{p.name}</div>
-                      <div className={`text-[10px] truncate mt-0.5 ${isSelected ? 'text-stone-300' : 'text-stone-400'}`}>{p.description}</div>
+                      <div className="text-xs font-bold">{p.name}</div>
+                      <div className="text-[10px] text-stone-400 line-clamp-1 mt-0.5">{p.description}</div>
                     </button>
                   );
                 })}
@@ -444,8 +444,8 @@ ${brandKit.gridTheme}
             </div>
 
             {/* Language Selector */}
-            <div className="space-y-1.5">
-              <label htmlFor="brandkit-language-select" className="block text-xs font-semibold uppercase tracking-wider text-stone-600">
+            <div className="space-y-2">
+              <label htmlFor="brandkit-language-select" className="block text-xs font-bold uppercase tracking-wider text-stone-500">
                 Output Language
               </label>
               <select
@@ -453,7 +453,7 @@ ${brandKit.gridTheme}
                 aria-label="Output Language"
                 value={language}
                 onChange={(e) => setLanguage(e.target.value)}
-                className="w-full px-3 py-2 rounded-lg border border-stone-200 text-stone-800 font-medium bg-white text-xs focus:outline-none focus:border-stone-900 cursor-pointer"
+                className="w-full px-4 py-3 rounded-xl border border-stone-200 text-stone-800 font-bold bg-white text-sm focus:outline-none focus:ring-2 focus:ring-stone-900/10 focus:border-stone-900 cursor-pointer"
               >
                 {['English', 'Spanish', 'French', 'German', 'Italian', 'Portuguese', 'Japanese', 'Hindi', 'Arabic'].map((lang) => (
                   <option key={lang} value={lang}>{lang}</option>
@@ -462,8 +462,8 @@ ${brandKit.gridTheme}
             </div>
 
             {error && (
-              <div className="p-3 bg-amber-50 border border-amber-200 text-amber-900 text-xs rounded-lg flex gap-2 items-start">
-                <Info size={13} className="shrink-0 mt-0.5 text-amber-700" />
+              <div className="p-3 bg-amber-50 border border-amber-100 text-amber-800 text-xs rounded-xl font-bold flex gap-2 items-start">
+                <Info size={14} className="shrink-0 mt-0.5 text-amber-600" />
                 <span>{error}</span>
               </div>
             )}
@@ -472,21 +472,21 @@ ${brandKit.gridTheme}
             <button
               type="submit"
               disabled={isLoading}
-              className={`w-full py-2.5 px-4 rounded-lg font-semibold text-xs transition-colors flex items-center justify-center gap-2 shadow-2xs cursor-pointer ${
+              className={`w-full py-4 px-6 rounded-xl font-bold text-xs uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-2 shadow-sm cursor-pointer ${
                 isLoading 
-                  ? 'bg-stone-200 text-stone-500 cursor-not-allowed' 
-                  : 'bg-stone-900 hover:bg-stone-800 text-white'
+                  ? 'bg-stone-300 text-stone-500 cursor-not-allowed' 
+                  : 'bg-stone-900 hover:bg-stone-800 text-stone-50 hover:shadow-md active:scale-98'
               }`}
             >
               {isLoading ? (
                 <>
-                  <RefreshCw size={13} className="animate-spin" />
+                  <RefreshCw size={14} className="animate-spin" />
                   <span>Synthesizing Brand Identity...</span>
                 </>
               ) : (
                 <>
-                  <Sparkles size={13} />
-                  <span>Generate Brand Kit</span>
+                  <Sparkles size={14} className="animate-pulse" />
+                  <span>Generate AI Brand Kit</span>
                 </>
               )}
             </button>
@@ -499,60 +499,109 @@ ${brandKit.gridTheme}
           {brandKit ? (
             <div className="space-y-6">
               
-              {/* Status Header Banner */}
+              {/* Transparency & Status Header Banner */}
               <div aria-live="polite">
                 {brandKitSource === 'preset' && (
-                  <div className="bg-stone-50 border border-stone-200 p-3.5 rounded-lg flex items-center justify-between gap-3">
-                    <div className="flex items-center gap-2.5">
-                      <Sliders size={15} className="text-stone-600 shrink-0" aria-hidden="true" />
-                      <p className="text-xs text-stone-600 font-normal">
-                        Starter kit preview for <strong className="text-stone-800">{brandVibe}</strong>. Customize below or click Generate.
-                      </p>
+                  <div className="bg-amber-50/90 border border-amber-200/80 p-4 rounded-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-xs">
+                    <div className="flex items-start sm:items-center gap-3">
+                      <div className="w-8 h-8 rounded-xl bg-amber-100 border border-amber-200/80 flex items-center justify-center text-amber-800 shrink-0 mt-0.5 sm:mt-0">
+                        <Sliders size={16} aria-hidden="true" />
+                      </div>
+                      <div>
+                        <div className="flex items-center gap-2 flex-wrap">
+                          <span className="text-xs font-extrabold uppercase tracking-wider text-stone-900">
+                            Starter Brand Kit
+                          </span>
+                          <span className="px-2.5 py-0.5 rounded-full bg-amber-100/90 text-amber-900 text-[10px] font-bold border border-amber-200/90">
+                            Preset Preview
+                          </span>
+                        </div>
+                        <p className="text-xs text-stone-600 font-medium mt-0.5">
+                          Example preset based on the <strong className="text-stone-800">{brandVibe}</strong> style. Customize this starter kit or generate your own with AI.
+                        </p>
+                      </div>
                     </div>
                   </div>
                 )}
 
                 {brandKitSource === 'generating' && (
-                  <div className="bg-stone-50 border border-stone-200 p-3.5 rounded-lg flex items-center justify-between gap-3">
-                    <div className="flex items-center gap-2.5">
-                      <RefreshCw size={15} className="animate-spin text-stone-600 shrink-0" aria-hidden="true" />
-                      <p className="text-xs text-stone-600 font-normal">
-                        Formulating custom colors, typography, taglines, and bios...
-                      </p>
+                  <div className="bg-indigo-50/90 border border-indigo-200/80 p-4 rounded-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-xs">
+                    <div className="flex items-start sm:items-center gap-3">
+                      <div className="w-8 h-8 rounded-xl bg-indigo-100 border border-indigo-200/80 flex items-center justify-center text-indigo-800 shrink-0 mt-0.5 sm:mt-0">
+                        <RefreshCw size={16} className="animate-spin text-indigo-600" aria-hidden="true" />
+                      </div>
+                      <div>
+                        <div className="flex items-center gap-2 flex-wrap">
+                          <span className="text-xs font-extrabold uppercase tracking-wider text-stone-900">
+                            Generating your brand kit...
+                          </span>
+                          <span className="px-2.5 py-0.5 rounded-full bg-indigo-100/90 text-indigo-900 text-[10px] font-bold border border-indigo-200/90">
+                            Creating personalized brand kit
+                          </span>
+                        </div>
+                        <p className="text-xs text-stone-600 font-medium mt-0.5">
+                          Formulating custom colors, typography, taglines, and bios based on your brand details.
+                        </p>
+                      </div>
                     </div>
                   </div>
                 )}
 
                 {brandKitSource === 'ai-generated' && (
-                  <div className="bg-stone-50 border border-stone-200 p-3.5 rounded-lg flex items-center justify-between gap-3">
-                    <div className="flex items-center gap-2.5">
-                      <Sparkles size={15} className="text-stone-700 shrink-0" aria-hidden="true" />
-                      <p className="text-xs text-stone-700 font-medium">
-                        Custom AI brand kit generated successfully.
-                      </p>
+                  <div className="bg-emerald-50/90 border border-emerald-200/80 p-4 rounded-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-xs">
+                    <div className="flex items-start sm:items-center gap-3">
+                      <div className="w-8 h-8 rounded-xl bg-emerald-100 border border-emerald-200/80 flex items-center justify-center text-emerald-800 shrink-0 mt-0.5 sm:mt-0">
+                        <Sparkles size={16} className="text-emerald-600" aria-hidden="true" />
+                      </div>
+                      <div>
+                        <div className="flex items-center gap-2 flex-wrap">
+                          <span className="text-xs font-extrabold uppercase tracking-wider text-stone-900">
+                            AI Generated Brand Kit
+                          </span>
+                          <span className="px-2.5 py-0.5 rounded-full bg-emerald-100/90 text-emerald-900 text-[10px] font-bold border border-emerald-200/90 flex items-center gap-1">
+                            <Sparkles size={11} className="text-emerald-600" aria-hidden="true" />
+                            ✨ AI Generated
+                          </span>
+                        </div>
+                        <p className="text-xs text-stone-600 font-medium mt-0.5">
+                          Generated based on your brand details and preferences.
+                        </p>
+                      </div>
                     </div>
                   </div>
                 )}
 
                 {brandKitSource === 'fallback' && (
-                  <div className="bg-stone-50 border border-stone-200 p-3.5 rounded-lg flex items-center justify-between gap-3">
-                    <div className="flex items-center gap-2.5">
-                      <Info size={15} className="text-stone-600 shrink-0" aria-hidden="true" />
-                      <p className="text-xs text-stone-600">
-                        Generated locally from your selections.
-                      </p>
+                  <div className="bg-stone-100/90 border border-stone-200 p-4 rounded-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-xs">
+                    <div className="flex items-start sm:items-center gap-3">
+                      <div className="w-8 h-8 rounded-xl bg-stone-200 border border-stone-300 flex items-center justify-center text-stone-700 shrink-0 mt-0.5 sm:mt-0">
+                        <Info size={16} aria-hidden="true" />
+                      </div>
+                      <div>
+                        <div className="flex items-center gap-2 flex-wrap">
+                          <span className="text-xs font-extrabold uppercase tracking-wider text-stone-900">
+                            Starter Brand Kit
+                          </span>
+                          <span className="px-2.5 py-0.5 rounded-full bg-stone-200 text-stone-800 text-[10px] font-bold border border-stone-300">
+                            Generated Locally
+                          </span>
+                        </div>
+                        <p className="text-xs text-stone-600 font-medium mt-0.5">
+                          Generated locally from your selections.
+                        </p>
+                      </div>
                     </div>
                   </div>
                 )}
               </div>
 
               {/* Toolbar */}
-              <div className="bg-white border border-stone-200 p-3 rounded-xl flex items-center justify-between gap-3 flex-wrap shadow-2xs">
-                <div className="flex items-center gap-2 pl-1">
-                  <Palette size={14} className="text-stone-600" aria-hidden="true" />
-                  <span className="text-xs font-semibold text-stone-700">
+              <div className="bg-white/80 border border-stone-200/80 p-3 rounded-2xl flex items-center justify-between gap-4 flex-wrap shadow-sm">
+                <div className="flex items-center gap-2 pl-2">
+                  <Palette size={16} className="text-indigo-600" aria-hidden="true" />
+                  <span className="text-xs font-bold uppercase tracking-wider text-stone-500">
                     {brandKitSource === 'ai-generated' 
-                      ? `${brandName || 'Brand'}: ${brandVibe}`
+                      ? `${brandName || 'Brand'}: ${brandVibe} Identity`
                       : `Starter Kit: ${brandVibe}`}
                   </span>
                 </div>
@@ -570,63 +619,63 @@ ${brandKit.gridTheme}
                         setTimeout(() => setIsSavedInWorkspace(false), 2500);
                       }
                     }}
-                    className={`px-2.5 py-1.5 rounded-lg border transition-colors flex items-center gap-1.5 text-xs font-medium cursor-pointer ${
+                    className={`p-2 rounded-lg border transition-all flex items-center gap-1.5 text-xs font-bold cursor-pointer ${
                       isSavedInWorkspace
-                        ? 'bg-stone-900 border-stone-900 text-white'
-                        : 'bg-white hover:bg-stone-50 border-stone-200 text-stone-700'
+                        ? 'bg-rose-50 border-rose-200 text-rose-600'
+                        : 'bg-stone-50 hover:bg-stone-100 border-stone-200 text-stone-600 hover:text-rose-600 hover:border-rose-200'
                     }`}
                     title={isSavedInWorkspace ? "Saved in Workspace" : "Save Brand Kit to Workspace"}
                   >
-                    <Heart size={12} className={isSavedInWorkspace ? "fill-white text-white" : "text-stone-500"} />
+                    <Heart size={13} className={isSavedInWorkspace ? "fill-rose-500 text-rose-500" : ""} />
                     <span>{isSavedInWorkspace ? 'Saved in Workspace' : 'Save to Workspace'}</span>
                   </button>
 
                   <button
                     onClick={() => copyToClipboard(getPlainTextSummary(), 'all')}
-                    className="px-2.5 py-1.5 rounded-lg bg-white hover:bg-stone-50 border border-stone-200 text-stone-700 transition-colors flex items-center gap-1.5 text-xs font-medium cursor-pointer"
+                    className="p-2 rounded-lg bg-stone-50 hover:bg-stone-100 border border-stone-200 text-stone-600 transition-all flex items-center gap-1.5 text-xs font-bold cursor-pointer"
                     title="Copy all details to clipboard"
                   >
-                    {copiedSection === 'all' ? <Check size={12} className="text-stone-900" /> : <Copy size={12} />}
+                    {copiedSection === 'all' ? <Check size={13} className="text-emerald-600" /> : <Copy size={13} />}
                     <span>{copiedSection === 'all' ? 'Copied' : 'Copy Text'}</span>
                   </button>
                   <button
                     onClick={downloadBrandKitJSON}
-                    className="px-2.5 py-1.5 rounded-lg bg-white hover:bg-stone-50 border border-stone-200 text-stone-700 transition-colors flex items-center gap-1.5 text-xs font-medium cursor-pointer"
+                    className="p-2 rounded-lg bg-stone-50 hover:bg-stone-100 border border-stone-200 text-stone-600 transition-all flex items-center gap-1.5 text-xs font-bold cursor-pointer"
                     title="Download kit as JSON file"
                   >
-                    <Download size={12} />
+                    <Download size={13} />
                     <span>JSON</span>
                   </button>
                 </div>
               </div>
 
               {/* 1. Color Palette Card */}
-              <div className="bg-white border border-stone-200 p-5 rounded-xl shadow-xs space-y-4">
+              <div className="bg-white border border-stone-200/80 p-6 rounded-2xl shadow-sm space-y-5">
                 <div className="flex items-center justify-between">
-                  <h4 className="text-xs font-semibold uppercase tracking-wider text-stone-700 flex items-center gap-2">
-                    <Palette size={14} className="text-stone-600" />
+                  <h4 className="text-sm font-bold uppercase tracking-wider text-stone-900 flex items-center gap-2">
+                    <Palette size={16} className="text-rose-500" />
                     Color Palette (5 Cohesive Tones)
                   </h4>
-                  <span className="text-[10px] text-stone-400">Click swatch to copy HEX</span>
+                  <span className="text-[10px] text-stone-400 font-bold uppercase">Click color bubble to copy HEX</span>
                 </div>
 
-                <div className="grid grid-cols-5 gap-2.5">
+                <div className="grid grid-cols-5 gap-3">
                   {brandKit.colorPalette.map((color, idx) => {
                     const currentHex = customColors[idx] || color.hex;
                     return (
-                      <div key={idx} className="flex flex-col items-center space-y-1.5 group">
+                      <div key={idx} className="flex flex-col items-center space-y-2 group">
                         {/* Interactive Color Box */}
                         <div 
                           onClick={() => copyToClipboard(currentHex, `hex-${idx}`)}
-                          className="w-full aspect-[4/5] rounded-lg border border-stone-200 cursor-pointer relative overflow-hidden transition-all duration-200 hover:scale-102"
+                          className="w-full aspect-[4/5] rounded-xl shadow-inner border border-stone-200/30 cursor-pointer relative overflow-hidden transition-all duration-300 hover:scale-105 active:scale-95"
                           style={{ backgroundColor: currentHex }}
                         >
                           {/* Hover hex overlay */}
-                          <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex flex-col items-center justify-center transition-opacity gap-1 text-white text-[10px] font-medium">
+                          <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex flex-col items-center justify-center transition-opacity gap-1 text-white text-[10px] font-bold">
                             {copiedSection === `hex-${idx}` ? (
-                              <Check size={13} className="text-white" />
+                              <Check size={14} className="text-emerald-400" />
                             ) : (
-                              <Copy size={11} />
+                              <Copy size={12} />
                             )}
                             <span>{copiedSection === `hex-${idx}` ? 'Copied' : 'Copy'}</span>
                           </div>
@@ -634,13 +683,13 @@ ${brandKit.gridTheme}
 
                         {/* Color details */}
                         <div className="text-center w-full min-w-0">
-                          <div className="text-[10px] font-semibold text-stone-800 truncate" title={color.name}>
+                          <div className="text-[10px] font-bold text-stone-800 truncate" title={color.name}>
                             {color.name}
                           </div>
                           <div className="text-[9px] text-stone-400 font-mono mt-0.5 uppercase tracking-wide">
                             {currentHex}
                           </div>
-                          <div className="inline-block px-1 py-0.5 rounded bg-stone-100 text-[8px] font-medium uppercase text-stone-600 mt-1">
+                          <div className="inline-block px-1 py-0.5 rounded bg-stone-100 text-[8px] font-bold uppercase text-stone-500 mt-1">
                             {color.role}
                           </div>
                         </div>
@@ -650,12 +699,12 @@ ${brandKit.gridTheme}
                 </div>
 
                 {/* Color edit inputs section */}
-                <div className="pt-3 border-t border-stone-100 grid grid-cols-1 md:grid-cols-5 gap-2 bg-stone-50 p-2.5 rounded-lg border border-stone-200">
+                <div className="pt-4 border-t border-stone-100 grid grid-cols-1 md:grid-cols-5 gap-2 bg-stone-50/50 p-3 rounded-xl border border-stone-100">
                   {brandKit.colorPalette.map((color, idx) => {
                     const currentHex = customColors[idx] || color.hex;
                     return (
                       <div key={idx} className="space-y-1">
-                        <span className="text-[9px] font-medium text-stone-500 block uppercase truncate">{color.role}</span>
+                        <span className="text-[9px] font-bold text-stone-400 block uppercase truncate">{color.role}</span>
                         <div className="flex items-center gap-1.5">
                           <input 
                             type="color" 
@@ -668,7 +717,7 @@ ${brandKit.gridTheme}
                             value={currentHex} 
                             onChange={(e) => handleColorChange(idx, e.target.value)}
                             maxLength={7}
-                            className="w-full text-[10px] font-mono px-1 py-0.5 border border-stone-200 rounded focus:outline-none focus:border-stone-900 bg-white text-stone-800"
+                            className="w-full text-[10px] font-mono px-1 py-0.5 border border-stone-200 rounded focus:outline-none focus:border-stone-600 bg-white text-stone-800"
                           />
                         </div>
                       </div>
@@ -676,53 +725,53 @@ ${brandKit.gridTheme}
                   })}
                 </div>
 
-                <div className="bg-stone-50 rounded-lg p-3 border border-stone-200">
-                  <p className="text-[11px] text-stone-600 leading-relaxed">
-                    <strong className="text-stone-800">Guide:</strong> {brandKit.colorPalette.map(c => `${c.name} (${c.hex}) as ${c.role.toLowerCase()}: ${c.description.toLowerCase()}`).join('. ')}.
+                <div className="bg-stone-50 rounded-xl p-3 border border-stone-100">
+                  <p className="text-[11px] text-stone-500 leading-relaxed italic">
+                    <strong>Creative Guide:</strong> {brandKit.colorPalette.map(c => `Use ${c.name} (${c.hex}) as ${c.role.toLowerCase()}: ${c.description.toLowerCase()}`).join('. ')}.
                   </p>
                 </div>
               </div>
 
-              {/* 2. Typographic Preview */}
-              <div className="bg-white border border-stone-200 p-5 rounded-xl shadow-xs space-y-4">
-                <h4 className="text-xs font-semibold uppercase tracking-wider text-stone-700 flex items-center gap-2">
-                  <Type size={14} className="text-stone-600" />
-                  Typography & Visual Mockup
+              {/* 2. Real-Time Typographic Preview */}
+              <div className="bg-white border border-stone-200/80 p-6 rounded-2xl shadow-sm space-y-4">
+                <h4 className="text-sm font-bold uppercase tracking-wider text-stone-900 flex items-center gap-2">
+                  <Type size={16} className="text-violet-500" />
+                  Premium Typography & Visual Mockup
                 </h4>
 
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-stretch">
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-5 items-stretch">
                   
                   {/* Left: Typo detail list */}
-                  <div className="md:col-span-5 space-y-3 flex flex-col justify-between bg-stone-50 p-4 rounded-lg border border-stone-200">
+                  <div className="md:col-span-5 space-y-4 flex flex-col justify-between bg-stone-50/50 p-4 rounded-xl border border-stone-100">
                     <div className="space-y-3">
-                      <div className="space-y-0.5">
-                        <span className="text-[9px] font-semibold text-stone-400 block uppercase">Display Font (Titles)</span>
-                        <div className="text-sm font-semibold text-stone-900 font-sans">
+                      <div className="space-y-1">
+                        <span className="text-[9px] font-bold text-stone-400 block uppercase">Display Font (Titles)</span>
+                        <div className="text-base font-bold text-stone-900 font-sans">
                           {brandKit.fonts.display}
                         </div>
                       </div>
                       
-                      <div className="space-y-0.5">
-                        <span className="text-[9px] font-semibold text-stone-400 block uppercase">Body Font (Captions)</span>
-                        <div className="text-sm font-semibold text-stone-900 font-sans">
+                      <div className="space-y-1">
+                        <span className="text-[9px] font-bold text-stone-400 block uppercase">Body Font (Captions)</span>
+                        <div className="text-base font-bold text-stone-900 font-sans">
                           {brandKit.fonts.body}
                         </div>
                       </div>
                     </div>
 
-                    <div className="text-[11px] text-stone-500 leading-relaxed pt-2.5 border-t border-stone-200">
-                      <strong className="text-stone-700">Rationale:</strong> {brandKit.fonts.rationale}
+                    <div className="text-[11px] text-stone-500 leading-relaxed pt-3 border-t border-stone-100">
+                      <strong>Typography Rationale:</strong> {brandKit.fonts.rationale}
                     </div>
                   </div>
 
                   {/* Right: Instagram Post Mockup */}
-                  <div className="md:col-span-7 rounded-lg border border-stone-200 shadow-2xs relative overflow-hidden flex flex-col justify-between aspect-square p-5 md:p-6"
+                  <div className="md:col-span-7 rounded-xl border border-stone-200 shadow-sm relative overflow-hidden flex flex-col justify-between aspect-square p-6 md:p-8"
                     style={{ backgroundColor: customColors[4] || '#FAFAFA' }}
                   >
                     {/* Watermark/Profile Header */}
-                    <div className="flex items-center justify-between w-full border-b pb-2.5" style={{ borderColor: `${customColors[1] || '#EFEFEF'}40` }}>
+                    <div className="flex items-center justify-between w-full border-b pb-3" style={{ borderColor: `${customColors[1] || '#EFEFEF'}40` }}>
                       <div className="flex items-center gap-2">
-                        <div className="w-7 h-7 rounded-full flex items-center justify-center text-[10px] font-bold text-white" 
+                        <div className="w-8 h-8 rounded-full flex items-center justify-center text-[10px] font-bold border border-dashed text-white" 
                           style={{ 
                             backgroundColor: customColors[0],
                             fontFamily: brandKit.fonts.display 
@@ -731,17 +780,17 @@ ${brandKit.gridTheme}
                           {brandName ? brandName.substring(0, 2).toUpperCase() : 'CO'}
                         </div>
                         <div>
-                          <div className="text-[11px] font-semibold text-stone-800 tracking-wide font-sans">{brandName || 'mybrand.agency'}</div>
+                          <div className="text-[11px] font-bold text-stone-800 tracking-wide font-sans">{brandName || 'mybrand.agency'}</div>
                           <div className="text-[9px] text-stone-400 font-sans">Sponsored</div>
                         </div>
                       </div>
-                      <span className="px-1.5 py-0.5 rounded bg-black/5 text-[9px] font-medium text-stone-500">Preview</span>
+                      <span className="px-2 py-0.5 rounded bg-black/5 text-[9px] font-bold text-stone-500">Preview Layout</span>
                     </div>
 
                     {/* Central Design Focus */}
-                    <div className="my-auto space-y-2 text-center py-3">
+                    <div className="my-auto space-y-3 text-center py-4">
                       <h5 
-                        className="text-xl md:text-2xl font-bold tracking-tight"
+                        className="text-2xl md:text-3.5xl font-extrabold tracking-tight"
                         style={{ 
                           color: customColors[0],
                           fontFamily: `${brandKit.fonts.display}, serif, sans-serif`
@@ -750,7 +799,7 @@ ${brandKit.gridTheme}
                         {brandName || 'Your Brand Here'}
                       </h5>
                       <p 
-                        className="text-xs font-normal max-w-xs mx-auto leading-relaxed"
+                        className="text-xs md:text-sm font-medium max-w-xs mx-auto leading-relaxed"
                         style={{ 
                           color: customColors[3],
                           fontFamily: `${brandKit.fonts.body}, sans-serif`
@@ -761,10 +810,10 @@ ${brandKit.gridTheme}
                     </div>
 
                     {/* Call to action footer */}
-                    <div className="flex items-center justify-between w-full pt-2.5" style={{ borderTop: `1px solid ${(customColors[1] || '#EFEFEF')}40` }}>
-                      <span className="text-[10px] font-medium text-stone-400 uppercase font-sans">Explore Collection</span>
+                    <div className="flex items-center justify-between w-full pt-3" style={{ borderTop: `1px solid ${(customColors[1] || '#EFEFEF')}40` }}>
+                      <span className="text-[10px] font-bold text-stone-400 tracking-wider uppercase font-sans">Explore Collection</span>
                       <div 
-                        className="px-3 py-1 rounded-md text-[9px] font-semibold text-white shadow-2xs flex items-center gap-1 cursor-pointer"
+                        className="px-3.5 py-1.5 rounded-full text-[9px] font-bold text-white shadow-sm flex items-center gap-1 cursor-pointer transition-transform hover:scale-105 active:scale-95"
                         style={{ backgroundColor: customColors[2] }}
                       >
                         <span>Learn More</span>
@@ -777,24 +826,24 @@ ${brandKit.gridTheme}
               </div>
 
               {/* 3. Core Slogans / Hooks */}
-              <div className="bg-white border border-stone-200 p-5 rounded-xl shadow-xs space-y-3">
-                <h4 className="text-xs font-semibold uppercase tracking-wider text-stone-700 flex items-center gap-2">
-                  <Flame size={14} className="text-stone-600" />
-                  Slogans & Taglines
+              <div className="bg-white border border-stone-200/80 p-6 rounded-2xl shadow-sm space-y-4">
+                <h4 className="text-sm font-bold uppercase tracking-wider text-stone-900 flex items-center gap-2">
+                  <Flame size={16} className="text-amber-500" />
+                  Magnetic Slogans & Taglines
                 </h4>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-2.5">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                   {brandKit.taglines.map((tagline, idx) => (
-                    <div key={idx} className="bg-stone-50 p-3.5 rounded-lg border border-stone-200 flex flex-col justify-between gap-2.5">
-                      <span className="text-[9px] font-semibold text-stone-400 block uppercase">Option {idx + 1}</span>
-                      <p className="text-stone-800 font-medium text-xs leading-relaxed font-sans italic">
+                    <div key={idx} className="bg-stone-50 p-4 rounded-xl border border-stone-100 flex flex-col justify-between gap-3 group relative hover:border-stone-300 transition-colors">
+                      <span className="text-[9px] font-bold text-stone-400 block uppercase">Tagline Option {idx + 1}</span>
+                      <p className="text-stone-850 font-bold text-sm leading-relaxed font-sans italic">
                         "{tagline}"
                       </p>
                       <button
                         onClick={() => copyToClipboard(`"${tagline}"`, `tagline-${idx}`)}
-                        className="self-end p-1 rounded bg-white hover:bg-stone-100 border border-stone-200 text-stone-600 transition-colors cursor-pointer"
+                        className="self-end p-1.5 rounded bg-white hover:bg-stone-100 border border-stone-200 text-stone-500 hover:text-stone-900 transition-colors cursor-pointer"
                         title="Copy tagline"
                       >
-                        {copiedSection === `tagline-${idx}` ? <Check size={11} className="text-stone-900" /> : <Copy size={11} />}
+                        {copiedSection === `tagline-${idx}` ? <Check size={12} className="text-emerald-600" /> : <Copy size={12} />}
                       </button>
                     </div>
                   ))}
@@ -802,37 +851,37 @@ ${brandKit.gridTheme}
               </div>
 
               {/* 4. Instagram Bio Hooks */}
-              <div className="bg-white border border-stone-200 p-5 rounded-xl shadow-xs space-y-3">
-                <h4 className="text-xs font-semibold uppercase tracking-wider text-stone-700 flex items-center gap-2">
-                  <BookOpen size={14} className="text-stone-600" />
-                  Instagram Bios (Under 150 Chars)
+              <div className="bg-white border border-stone-200/80 p-6 rounded-2xl shadow-sm space-y-4">
+                <h4 className="text-sm font-bold uppercase tracking-wider text-stone-900 flex items-center gap-2">
+                  <BookOpen size={16} className="text-emerald-500" />
+                  Optimized Instagram Bios (Under 150 Chars)
                 </h4>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   {brandKit.bioHooks.map((bio, idx) => (
-                    <div key={idx} className="bg-stone-50 rounded-lg p-3.5 border border-stone-200 flex flex-col justify-between gap-2.5">
-                      <div className="space-y-1.5">
+                    <div key={idx} className="bg-stone-50/50 rounded-xl p-4 border border-stone-100 flex flex-col justify-between gap-3 relative hover:border-stone-200 transition-all">
+                      <div className="space-y-2">
                         <div className="flex items-center justify-between">
-                          <span className="text-[9px] font-semibold text-stone-400 uppercase">Layout {idx + 1}</span>
-                          <span className="text-[9px] text-stone-400 font-mono">{bio.length}/150</span>
+                          <span className="text-[9px] font-bold text-stone-400 uppercase">Bio Layout Suggestion {idx + 1}</span>
+                          <span className="text-[9px] font-bold text-stone-400 font-mono">{bio.length}/150</span>
                         </div>
-                        <p className="text-stone-800 font-normal text-xs leading-relaxed whitespace-pre-wrap bg-white p-2.5 rounded-md border border-stone-200 font-sans">
+                        <p className="text-stone-800 font-semibold text-xs leading-relaxed whitespace-pre-wrap bg-white p-3 rounded-lg border border-stone-100 font-sans shadow-sm">
                           {bio}
                         </p>
                       </div>
                       <button
                         onClick={() => copyToClipboard(bio, `bio-${idx}`)}
-                        className="w-full py-1.5 px-2.5 rounded-md bg-white hover:bg-stone-100 border border-stone-200 text-stone-700 font-medium text-xs transition-colors flex items-center justify-center gap-1 cursor-pointer"
+                        className="w-full py-2 px-3 rounded-lg bg-white hover:bg-stone-100 border border-stone-200 text-stone-600 font-bold text-xs transition-all flex items-center justify-center gap-1.5 cursor-pointer"
                       >
                         {copiedSection === `bio-${idx}` ? (
                           <>
-                            <Check size={12} className="text-stone-900" />
-                            <span>Copied</span>
+                            <Check size={13} className="text-emerald-600" />
+                            <span className="text-emerald-600">Copied to Clipboard</span>
                           </>
                         ) : (
                           <>
-                            <Copy size={12} />
-                            <span>Copy Bio</span>
+                            <Copy size={13} />
+                            <span>Copy Instagram Bio</span>
                           </>
                         )}
                       </button>
@@ -842,25 +891,25 @@ ${brandKit.gridTheme}
               </div>
 
               {/* 5. Brand Guidelines & Grid Theme */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 
                 {/* Voice adjectives */}
-                <div className="bg-white border border-stone-200 p-5 rounded-xl shadow-xs space-y-3">
-                  <h4 className="text-xs font-semibold uppercase tracking-wider text-stone-700 flex items-center gap-2">
-                    <Volume2 size={14} className="text-stone-600" />
+                <div className="bg-white border border-stone-200/80 p-6 rounded-2xl shadow-sm space-y-4">
+                  <h4 className="text-sm font-bold uppercase tracking-wider text-stone-900 flex items-center gap-2">
+                    <Volume2 size={16} className="text-indigo-500" />
                     Brand Tone & Communication Voice
                   </h4>
-                  <ul className="space-y-2">
+                  <ul className="space-y-3">
                     {brandKit.brandVoice.map((voice, idx) => {
                       const parts = voice.split(':');
                       const title = parts[0] || 'Attribute';
                       const desc = parts.slice(1).join(':') || '';
                       return (
-                        <li key={idx} className="bg-stone-50 p-2.5 rounded-lg border border-stone-200 flex items-start gap-2.5">
-                          <span className="text-xs font-semibold text-stone-700 bg-stone-200 w-4 h-4 rounded-full flex items-center justify-center shrink-0 mt-0.5">{idx + 1}</span>
+                        <li key={idx} className="bg-stone-50/50 p-3 rounded-xl border border-stone-100/60 flex items-start gap-3">
+                          <span className="text-xs font-extrabold text-white bg-indigo-500 w-5 h-5 rounded-full flex items-center justify-center shrink-0 mt-0.5 shadow-sm">{idx + 1}</span>
                           <div>
-                            <span className="text-xs font-semibold text-stone-800 block">{title}</span>
-                            <span className="text-[11px] text-stone-500 leading-relaxed block">{desc}</span>
+                            <span className="text-xs font-bold text-stone-900 block">{title}</span>
+                            <span className="text-[11px] text-stone-500 leading-relaxed mt-0.5 block">{desc}</span>
                           </div>
                         </li>
                       );
@@ -869,22 +918,22 @@ ${brandKit.gridTheme}
                 </div>
 
                 {/* Grid feed and Keywords */}
-                <div className="bg-white border border-stone-200 p-5 rounded-xl shadow-xs space-y-3 flex flex-col justify-between">
-                  <div className="space-y-2">
-                    <h4 className="text-xs font-semibold uppercase tracking-wider text-stone-700 flex items-center gap-2">
-                      <Grid size={14} className="text-stone-600" />
-                      Recommended Grid Theme
+                <div className="bg-white border border-stone-200/80 p-6 rounded-2xl shadow-sm space-y-4 flex flex-col justify-between">
+                  <div className="space-y-4">
+                    <h4 className="text-sm font-bold uppercase tracking-wider text-stone-900 flex items-center gap-2">
+                      <Grid size={16} className="text-purple-500" />
+                      Recommended Grid Theme & Layout
                     </h4>
-                    <p className="text-xs text-stone-600 leading-relaxed bg-stone-50 p-2.5 rounded-lg border border-stone-200">
-                      <strong className="text-stone-800">Visual Recipe:</strong> {brandKit.gridTheme}
+                    <p className="text-xs text-stone-600 leading-relaxed bg-purple-50/30 p-3 rounded-xl border border-purple-100/40">
+                      <strong>Visual Recipe:</strong> {brandKit.gridTheme}
                     </p>
                   </div>
 
-                  <div className="space-y-1.5 pt-3 border-t border-stone-100">
-                    <span className="text-[10px] font-semibold text-stone-400 block uppercase">SEO Keywords & Search tags</span>
-                    <div className="flex flex-wrap gap-1">
+                  <div className="space-y-2 pt-4 border-t border-stone-100">
+                    <span className="text-[10px] font-bold text-stone-400 block uppercase">SEO Keywords & Search tags</span>
+                    <div className="flex flex-wrap gap-1.5">
                       {brandKit.keywords.map((kw, idx) => (
-                        <span key={idx} className="px-2 py-0.5 rounded bg-stone-100 text-stone-600 text-[10px] font-medium border border-stone-200">
+                        <span key={idx} className="px-2 py-1 rounded-md bg-stone-100 text-stone-600 text-[10px] font-semibold">
                           {kw}
                         </span>
                       ))}
@@ -897,12 +946,12 @@ ${brandKit.gridTheme}
             </div>
           ) : (
             /* Empty state placeholder */
-            <div className="h-full min-h-[400px] flex items-center justify-center border border-dashed border-stone-200 rounded-xl bg-stone-50/50 p-8">
-              <div className="text-center space-y-3 max-w-sm">
-                <Palette size={32} className="mx-auto text-stone-400" />
-                <h4 className="text-xs font-semibold text-stone-700 uppercase tracking-wider">Brand Identity Setup</h4>
-                <p className="text-stone-500 text-xs leading-relaxed font-normal">
-                  Configure brand details on the left, select a style preset, and generate your custom color palette, font pairings, and Instagram bio.
+            <div className="h-full min-h-[500px] flex items-center justify-center border-2 border-dashed border-stone-200 rounded-2xl bg-white/50">
+              <div className="text-center space-y-4 px-6 py-8 max-w-sm">
+                <Palette size={40} className="mx-auto text-stone-300 animate-pulse" />
+                <h4 className="text-sm font-bold text-stone-800 uppercase tracking-wide">Synthesize Brand Identity</h4>
+                <p className="text-stone-500 text-xs leading-relaxed">
+                  Provide your brand details in the configuration form on the left, pick an aesthetic style preset, and generate your custom color palettes, matching font pairs, ready-made Instagram biographies, and copywriting guidelines.
                 </p>
               </div>
             </div>

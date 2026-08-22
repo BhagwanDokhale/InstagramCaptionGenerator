@@ -56,9 +56,9 @@ export function Breadcrumbs({ items, setActivePage, setActiveTab, className = ''
                 <a
                   href={item.url}
                   onClick={(e) => handleClick(e, item, isLast)}
-                  className="hover:text-stone-900 transition-colors flex items-center gap-1 outline-none text-stone-500 font-medium"
+                  className="hover:text-indigo-600 transition-colors flex items-center gap-1 outline-none text-stone-600 font-semibold"
                 >
-                  {isHome && <Home size={12} className="shrink-0 text-stone-400" />}
+                  {isHome && <Home size={12} className="shrink-0 text-stone-500" />}
                   <span>{item.name}</span>
                 </a>
               )}

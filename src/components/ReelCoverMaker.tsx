@@ -522,52 +522,51 @@ export function ReelCoverMaker() {
   };
 
   return (
-    <div className="bg-white border border-stone-200 shadow-xs p-5 md:p-6 rounded-xl relative w-full text-left">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-stone-100">
-        <div>
-          <h2 className="text-xs font-semibold uppercase tracking-wider text-stone-600 flex items-center gap-2">
-            <Smartphone className="text-stone-700" size={14} />
-            Instagram Reel Cover Maker
-          </h2>
-          <p className="text-xs text-stone-500 mt-0.5">Design 9:16 covers with exact 1:1 grid safe zones and crisp typography.</p>
-        </div>
+    <div className="bg-white border border-stone-200/80 shadow-[0_8px_30px_rgb(0,0,0,0.02)] p-6 md:p-8 rounded-2xl relative overflow-hidden w-full text-left">
+      <div className="absolute inset-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:16px_16px] opacity-15 pointer-events-none -z-10"></div>
+      
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 relative z-10">
+        <h2 className="text-xs font-bold uppercase tracking-widest text-stone-500 flex items-center gap-2">
+          <Smartphone className="text-indigo-600" size={14} />
+          Instagram Reel Cover Maker
+        </h2>
         
         {/* Toggle Safe Zone button */}
         <button
           onClick={() => setShowSafeZone(!showSafeZone)}
-          className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors border cursor-pointer ${
+          className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-widest transition-all shadow-sm ${
             showSafeZone 
-              ? 'bg-stone-900 text-white border-stone-900' 
-              : 'bg-white text-stone-700 border-stone-200 hover:bg-stone-50'
+              ? 'bg-rose-50 text-rose-600 border border-rose-100 hover:bg-rose-100' 
+              : 'bg-stone-50 text-stone-500 border border-stone-200/60 hover:bg-stone-100'
           }`}
         >
-          {showSafeZone ? <Eye size={13} /> : <EyeOff size={13} />}
-          {showSafeZone ? 'Hide Safe Zone' : 'Show 1:1 Safe Zone'}
+          {showSafeZone ? <Eye size={12} /> : <EyeOff size={12} />}
+          {showSafeZone ? 'Hide Grid Guide' : 'Show 1:1 Grid Guide'}
         </button>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start relative z-10">
         
         {/* Control Column */}
-        <div className="lg:col-span-7 space-y-5">
+        <div className="lg:col-span-7 space-y-6">
           
           {/* Section: Templates */}
-          <div className="space-y-2">
-            <label className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-stone-600">
-              <Layout size={13} className="text-stone-700" />
-              Presets & Layouts
+          <div className="space-y-3">
+            <label className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-stone-400">
+              <Layout size={12} className="text-indigo-500" />
+              1-Click Aesthetic Presets
             </label>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
               {TEMPLATES.map((tpl) => (
                 <button
                   key={tpl.id}
                   onClick={() => applyTemplate(tpl)}
-                  className="flex flex-col items-start p-2.5 bg-stone-50 hover:bg-stone-100 border border-stone-200 rounded-lg text-left transition-colors cursor-pointer"
+                  className="flex flex-col items-start p-3 bg-stone-50 hover:bg-stone-100/80 border border-stone-200/60 rounded-xl text-left transition-all group cursor-pointer"
                 >
-                  <span className="text-xs font-semibold text-stone-800 mb-0.5">
+                  <span className="text-xs font-bold text-stone-800 group-hover:text-indigo-600 transition-colors mb-0.5">
                     {tpl.name}
                   </span>
-                  <span className="text-[10px] text-stone-500 leading-normal line-clamp-2">
+                  <span className="text-[9px] text-stone-400 font-medium leading-normal">
                     {tpl.description}
                   </span>
                 </button>
@@ -576,9 +575,9 @@ export function ReelCoverMaker() {
           </div>
 
           {/* Section: Photo / Media */}
-          <div className="bg-stone-50 border border-stone-200 rounded-xl p-4 space-y-3">
-            <label className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-stone-600">
-              <ImageIcon size={13} className="text-stone-700" />
+          <div className="bg-stone-50 border border-stone-200/60 rounded-2xl p-5 space-y-4">
+            <label className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-stone-400">
+              <ImageIcon size={12} className="text-indigo-500" />
               Background Cover Photo
             </label>
 
@@ -587,14 +586,14 @@ export function ReelCoverMaker() {
                 onDrop={handleDrop}
                 onDragOver={(e) => e.preventDefault()}
                 onClick={() => fileInputRef.current?.click()}
-                className="border border-dashed border-stone-300 rounded-lg bg-white p-5 text-center cursor-pointer hover:border-stone-400 transition-colors flex flex-col items-center justify-center min-h-[120px]"
+                className="border border-dashed border-stone-200 rounded-xl bg-white p-6 text-center cursor-pointer hover:border-indigo-400 hover:bg-indigo-50/10 transition-all flex flex-col items-center justify-center min-h-[140px] group"
               >
-                <div className="p-2 bg-stone-100 rounded-md mb-2">
-                  <Upload size={16} className="text-stone-700" />
+                <div className="p-2.5 bg-stone-50 border border-stone-150 rounded-lg mb-2.5 group-hover:scale-110 transition-transform">
+                  <Upload size={18} className="text-indigo-600" />
                 </div>
-                <h3 className="text-xs font-semibold text-stone-800 mb-0.5">Upload cover photo</h3>
-                <p className="text-[11px] text-stone-500">
-                  Drop image here or browse (PNG, JPG, WebP)
+                <h3 className="text-xs font-bold text-stone-700 mb-0.5">Drag & drop photo or click</h3>
+                <p className="text-[10px] font-medium text-stone-400">
+                  Optional. Create gorgeous cover layouts with or without photos.
                 </p>
                 <input 
                   type="file" 
@@ -605,26 +604,26 @@ export function ReelCoverMaker() {
                 />
               </div>
             ) : (
-              <div className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center justify-between bg-white p-3 border border-stone-200 rounded-lg">
+              <div className="flex flex-col sm:flex-row gap-4 items-stretch sm:items-center justify-between bg-white p-3 border border-stone-150 rounded-xl">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-stone-100 rounded-md overflow-hidden border border-stone-200 shrink-0">
-                    <img src={selectedImage} alt="Selected cover" loading="lazy" decoding="async" className="w-full h-full object-cover" />
+                  <div className="w-12 h-12 bg-stone-100 rounded-lg overflow-hidden border border-stone-200">
+                    <img src={selectedImage} alt="Instagram Reel Cover Maker Generator - Selected Reel cover background image preview" loading="lazy" decoding="async" className="w-full h-full object-cover" />
                   </div>
                   <div>
-                    <p className="text-xs font-semibold text-stone-800">Photo Loaded</p>
-                    <p className="text-[11px] text-stone-500">Drag canvas preview to re-position</p>
+                    <p className="text-xs font-bold text-stone-800">Photo Loaded Successfully</p>
+                    <p className="text-[10px] font-medium text-stone-400">Pinch or drag inside the preview to adjust layout</p>
                   </div>
                 </div>
-                <div className="flex gap-1.5">
+                <div className="flex gap-2">
                   <button 
                     onClick={() => fileInputRef.current?.click()}
-                    className="text-xs font-medium px-2.5 py-1.5 border border-stone-200 rounded-md text-stone-700 hover:bg-stone-50 transition-colors cursor-pointer"
+                    className="text-[10px] font-bold px-3 py-1.5 border border-stone-200 rounded-lg text-stone-600 hover:bg-stone-50 transition-colors"
                   >
                     Change
                   </button>
                   <button 
                     onClick={clearImage}
-                    className="text-xs font-medium px-2.5 py-1.5 bg-stone-100 hover:bg-stone-200 border border-stone-200 text-stone-700 rounded-md transition-colors cursor-pointer"
+                    className="text-[10px] font-bold px-3 py-1.5 bg-rose-50 hover:bg-rose-100 border border-rose-100 text-rose-600 rounded-lg transition-colors"
                   >
                     Remove
                   </button>
@@ -640,19 +639,19 @@ export function ReelCoverMaker() {
             )}
 
             {selectedImage && (
-              <div className="grid grid-cols-2 gap-3 pt-1">
+              <div className="grid grid-cols-2 gap-4 pt-2">
                 <div>
-                  <label className="block text-[11px] font-semibold uppercase tracking-wider text-stone-500 mb-1">Fit Strategy</label>
-                  <div className="flex bg-stone-100 border border-stone-200 rounded-md p-0.5">
+                  <label className="block text-[10px] font-bold uppercase tracking-wider text-stone-500 mb-1.5">Fit Strategy</label>
+                  <div className="flex bg-stone-100 border border-stone-200/60 rounded-lg p-0.5">
                     <button 
                       onClick={() => setFitMode('cover')}
-                      className={`flex-1 py-1 text-xs font-medium rounded transition-colors cursor-pointer ${fitMode === 'cover' ? 'bg-white text-stone-900 shadow-2xs' : 'text-stone-600 hover:text-stone-900'}`}
+                      className={`flex-1 py-1 text-[10px] font-bold rounded-md transition-all ${fitMode === 'cover' ? 'bg-white text-stone-800 shadow-sm' : 'text-stone-500 hover:text-stone-800'}`}
                     >
                       Fill Cover
                     </button>
                     <button 
                       onClick={() => setFitMode('contain')}
-                      className={`flex-1 py-1 text-xs font-medium rounded transition-colors cursor-pointer ${fitMode === 'contain' ? 'bg-white text-stone-900 shadow-2xs' : 'text-stone-600 hover:text-stone-900'}`}
+                      className={`flex-1 py-1 text-[10px] font-bold rounded-md transition-all ${fitMode === 'contain' ? 'bg-white text-stone-800 shadow-sm' : 'text-stone-500 hover:text-stone-800'}`}
                     >
                       Fit Bounds
                     </button>
@@ -660,17 +659,17 @@ export function ReelCoverMaker() {
                 </div>
 
                 <div className="space-y-1">
-                  <div className="flex justify-between text-[11px] font-semibold uppercase tracking-wider text-stone-500">
+                  <div className="flex justify-between text-[10px] font-bold uppercase tracking-wider text-stone-500">
                     <span>Scale Zoom ({zoom.toFixed(1)}x)</span>
                     <button 
                       onClick={() => { setOffsetX(0); setOffsetY(0); setZoom(1); }} 
-                      className="text-[10px] text-stone-600 hover:text-stone-900 cursor-pointer"
+                      className="text-[9px] text-indigo-600 hover:underline"
                     >
                       Reset
                     </button>
                   </div>
-                  <div className="flex items-center gap-2 bg-white px-2 py-1.5 rounded-md border border-stone-200">
-                    <button onClick={() => setZoom(prev => Math.max(0.5, prev - 0.1))} className="p-0.5 text-stone-500 hover:text-stone-800 cursor-pointer"><ZoomOut size={12} /></button>
+                  <div className="flex items-center gap-2 bg-stone-100/50 p-1.5 rounded-lg border border-stone-200/40">
+                    <button onClick={() => setZoom(prev => Math.max(0.5, prev - 0.1))} className="p-1 hover:bg-stone-200 rounded"><ZoomOut size={12} /></button>
                     <input
                       type="range"
                       min="0.5"
@@ -678,9 +677,9 @@ export function ReelCoverMaker() {
                       step="0.05"
                       value={zoom}
                       onChange={(e) => setZoom(parseFloat(e.target.value))}
-                      className="flex-1 accent-stone-900 h-1 bg-stone-200 rounded-lg cursor-pointer"
+                      className="flex-1 accent-indigo-600 h-1 bg-stone-200 rounded-lg cursor-pointer"
                     />
-                    <button onClick={() => setZoom(prev => Math.min(4.0, prev + 0.1))} className="p-0.5 text-stone-500 hover:text-stone-800 cursor-pointer"><ZoomIn size={12} /></button>
+                    <button onClick={() => setZoom(prev => Math.min(4.0, prev + 0.1))} className="p-1 hover:bg-stone-200 rounded"><ZoomIn size={12} /></button>
                   </div>
                 </div>
               </div>
@@ -688,23 +687,23 @@ export function ReelCoverMaker() {
           </div>
 
           {/* Section: Color & Gradient Backdrop Options */}
-          <div className="bg-stone-50 border border-stone-200 rounded-xl p-4 space-y-3">
+          <div className="bg-stone-50 border border-stone-200/60 rounded-2xl p-5 space-y-4">
             <div className="flex items-center justify-between">
-              <label className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-stone-600">
-                <Palette size={13} className="text-stone-700" />
+              <label className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-stone-400">
+                <Palette size={12} className="text-indigo-500" />
                 Backdrop Canvas Styling
               </label>
               
-              <div className="flex bg-stone-100 border border-stone-200 rounded-md p-0.5">
+              <div className="flex bg-stone-100 border border-stone-200/60 rounded-lg p-0.5">
                 <button 
                   onClick={() => setBgType('gradient')}
-                  className={`px-2.5 py-1 text-xs font-medium rounded transition-colors cursor-pointer ${bgType === 'gradient' ? 'bg-white text-stone-900 shadow-2xs' : 'text-stone-600 hover:text-stone-900'}`}
+                  className={`px-2.5 py-1 text-[10px] font-bold rounded-md transition-all ${bgType === 'gradient' ? 'bg-white text-stone-800 shadow-sm' : 'text-stone-500 hover:text-stone-800'}`}
                 >
                   Gradient
                 </button>
                 <button 
                   onClick={() => setBgType('solid')}
-                  className={`px-2.5 py-1 text-xs font-medium rounded transition-colors cursor-pointer ${bgType === 'solid' ? 'bg-white text-stone-900 shadow-2xs' : 'text-stone-600 hover:text-stone-900'}`}
+                  className={`px-2.5 py-1 text-[10px] font-bold rounded-md transition-all ${bgType === 'solid' ? 'bg-white text-stone-800 shadow-sm' : 'text-stone-500 hover:text-stone-800'}`}
                 >
                   Solid Color
                 </button>
@@ -717,16 +716,16 @@ export function ReelCoverMaker() {
                   <button
                     key={idx}
                     onClick={() => setGradientPresetIdx(idx)}
-                    className={`h-10 rounded-lg border relative overflow-hidden transition-all cursor-pointer ${
+                    className={`h-11 rounded-xl border relative overflow-hidden transition-all hover:scale-105 cursor-pointer ${
                       gradientPresetIdx === idx 
-                        ? 'border-stone-900 ring-2 ring-stone-400 shadow-2xs' 
+                        ? 'border-indigo-600 ring-2 ring-indigo-100 shadow-sm scale-102' 
                         : 'border-stone-200'
                     }`}
                     style={{ background: `linear-gradient(135deg, ${g.from}, ${g.to})` }}
                     title={g.name}
                   >
                     {gradientPresetIdx === idx && (
-                      <div className="absolute inset-0 flex items-center justify-center bg-black/20">
+                      <div className="absolute inset-0 flex items-center justify-center bg-black/10">
                         <Check size={14} className="text-white drop-shadow-md" />
                       </div>
                     )}
@@ -740,43 +739,43 @@ export function ReelCoverMaker() {
                     <button 
                       key={c}
                       onClick={() => setSolidColor(c)}
-                      className={`w-7 h-7 rounded-md border cursor-pointer ${solidColor === c ? 'border-stone-900 ring-2 ring-stone-400 shadow-2xs' : 'border-stone-200'} transition-all`}
+                      className={`w-7 h-7 rounded-lg border ${solidColor === c ? 'border-indigo-600 ring-2 ring-indigo-150 scale-105 shadow-sm' : 'border-stone-200'} transition-all hover:scale-105`}
                       style={{ backgroundColor: c }}
                       title={c}
                     />
                   ))}
                 </div>
-                <div className="flex items-center gap-2 border border-stone-200 rounded-md p-1.5 bg-white shrink-0">
+                <div className="flex items-center gap-2 border border-stone-200 rounded-lg p-1.5 bg-white shrink-0">
                   <input 
                     type="color" 
                     value={solidColor}
                     onChange={(e) => setSolidColor(e.target.value)}
-                    className="w-6 h-6 rounded border-0 p-0 cursor-pointer overflow-hidden bg-transparent"
+                    className="w-7 h-7 rounded border-0 p-0 cursor-pointer overflow-hidden bg-transparent"
                   />
-                  <span className="text-[10px] font-mono font-medium text-stone-600 uppercase">{solidColor}</span>
+                  <span className="text-[10px] font-mono font-bold text-stone-500 uppercase">{solidColor}</span>
                 </div>
               </div>
             )}
           </div>
 
           {/* Section: Typography / Text Overlays */}
-          <div className="bg-stone-50 border border-stone-200 rounded-xl p-4 space-y-3">
+          <div className="bg-stone-50 border border-stone-200/60 rounded-2xl p-5 space-y-4">
             <div className="flex items-center justify-between">
-              <label className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-stone-600">
-                <Type size={13} className="text-stone-700" />
+              <label className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-stone-400">
+                <Type size={12} className="text-indigo-500" />
                 Text Overlay Editor
               </label>
 
-              <div className="flex bg-stone-100 border border-stone-200 rounded-md p-0.5">
+              <div className="flex bg-stone-100 border border-stone-200/60 rounded-lg p-0.5">
                 <button 
                   onClick={() => setActiveTextTab('title')}
-                  className={`px-2.5 py-1 text-xs font-medium rounded transition-colors cursor-pointer ${activeTextTab === 'title' ? 'bg-white text-stone-900 shadow-2xs' : 'text-stone-600 hover:text-stone-900'}`}
+                  className={`px-3 py-1 text-[10px] font-bold rounded-md transition-all ${activeTextTab === 'title' ? 'bg-white text-stone-800 shadow-sm' : 'text-stone-500 hover:text-stone-800'}`}
                 >
                   Heading Text
                 </button>
                 <button 
                   onClick={() => setActiveTextTab('subtitle')}
-                  className={`px-2.5 py-1 text-xs font-medium rounded transition-colors cursor-pointer ${activeTextTab === 'subtitle' ? 'bg-white text-stone-900 shadow-2xs' : 'text-stone-600 hover:text-stone-900'}`}
+                  className={`px-3 py-1 text-[10px] font-bold rounded-md transition-all ${activeTextTab === 'subtitle' ? 'bg-white text-stone-800 shadow-sm' : 'text-stone-500 hover:text-stone-800'}`}
                 >
                   Subheading
                 </button>
@@ -785,29 +784,29 @@ export function ReelCoverMaker() {
 
             {/* Editing Tab context */}
             {activeTextTab === 'title' ? (
-              <div className="space-y-3">
+              <div className="space-y-4">
                 {/* Input Text */}
                 <div>
-                  <label className="block text-[11px] font-semibold uppercase tracking-wider text-stone-500 mb-1">Heading Input</label>
+                  <label className="block text-[10px] font-bold uppercase tracking-wider text-stone-500 mb-1">Heading Input</label>
                   <input
                     type="text"
                     value={titleText.text}
                     onChange={(e) => setTitleText(prev => ({ ...prev, text: e.target.value }))}
                     placeholder="Enter heading..."
-                    className="w-full bg-white border border-stone-200 text-xs rounded-lg px-3 py-2 text-stone-800 outline-none focus:border-stone-900 transition-colors"
+                    className="w-full bg-white border border-stone-200 text-xs rounded-xl px-3.5 py-2.5 font-bold text-stone-800 outline-none focus:border-indigo-600 transition-colors shadow-sm"
                   />
                 </div>
 
                 {/* Font Styling controls */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
-                    <label htmlFor="title-font-family-select" className="block text-[11px] font-semibold uppercase tracking-wider text-stone-500 mb-1">Font Family</label>
+                    <label htmlFor="title-font-family-select" className="block text-[10px] font-bold uppercase tracking-wider text-stone-500 mb-1">Font Family</label>
                     <select
                       id="title-font-family-select"
                       aria-label="Heading Font Family"
                       value={titleText.fontFamily}
                       onChange={(e) => setTitleText(prev => ({ ...prev, fontFamily: e.target.value as any }))}
-                      className="w-full bg-white border border-stone-200 text-xs rounded-lg px-3 py-2 text-stone-800 outline-none focus:border-stone-900 transition-colors cursor-pointer"
+                      className="w-full bg-white border border-stone-200 text-xs rounded-xl px-3.5 py-2.5 font-bold text-stone-800 outline-none focus:border-indigo-600 transition-colors shadow-sm"
                     >
                       {FONT_OPTIONS.map(opt => (
                         <option key={opt.value} value={opt.value}>{opt.label}</option>
@@ -816,14 +815,14 @@ export function ReelCoverMaker() {
                   </div>
 
                   <div>
-                    <label className="block text-[11px] font-semibold uppercase tracking-wider text-stone-500 mb-1">Text Color</label>
+                    <label className="block text-[10px] font-bold uppercase tracking-wider text-stone-500 mb-1">Text Color</label>
                     <div className="flex gap-1.5 items-center">
                       <div className="flex gap-1">
                         {['#ffffff', '#ff7e5f', '#fbbf24', '#34d399', '#6366f1', '#000000'].map(c => (
                           <button 
                             key={c}
                             onClick={() => setTitleText(prev => ({ ...prev, color: c }))}
-                            className={`w-6 h-6 rounded border cursor-pointer ${titleText.color === c ? 'border-stone-900 ring-2 ring-stone-300' : 'border-stone-200'} transition-all`}
+                            className={`w-6 h-6 rounded border ${titleText.color === c ? 'border-indigo-600 scale-105' : 'border-stone-200'} transition-all`}
                             style={{ backgroundColor: c }}
                           />
                         ))}
@@ -839,9 +838,9 @@ export function ReelCoverMaker() {
                 </div>
 
                 {/* Sizing & Position sliders */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 bg-white p-3 border border-stone-200 rounded-lg">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-white p-3.5 border border-stone-150 rounded-xl shadow-inner">
                   <div className="space-y-1">
-                    <label className="block text-[11px] font-semibold uppercase tracking-wider text-stone-500">
+                    <label className="block text-[10px] font-bold uppercase tracking-wider text-stone-400">
                       Font Size: {titleText.fontSize}px
                     </label>
                     <input
@@ -850,13 +849,13 @@ export function ReelCoverMaker() {
                       max="120"
                       value={titleText.fontSize}
                       onChange={(e) => setTitleText(prev => ({ ...prev, fontSize: parseInt(e.target.value) }))}
-                      className="w-full accent-stone-900 h-1 bg-stone-200 rounded-lg cursor-pointer"
+                      className="w-full accent-indigo-600 h-1 bg-stone-100 rounded-lg cursor-pointer"
                     />
                   </div>
 
                   <div className="space-y-1">
-                    <label className="block text-[11px] font-semibold uppercase tracking-wider text-stone-500">
-                      Vertical Position: {titleText.yPosition}%
+                    <label className="block text-[10px] font-bold uppercase tracking-wider text-stone-400">
+                      Vertical Y-Offset: {titleText.yPosition}%
                     </label>
                     <input
                       type="range"
@@ -864,30 +863,30 @@ export function ReelCoverMaker() {
                       max="90"
                       value={titleText.yPosition}
                       onChange={(e) => setTitleText(prev => ({ ...prev, yPosition: parseInt(e.target.value) }))}
-                      className="w-full accent-stone-900 h-1 bg-stone-200 rounded-lg cursor-pointer"
+                      className="w-full accent-indigo-600 h-1 bg-stone-100 rounded-lg cursor-pointer"
                     />
                   </div>
                 </div>
 
                 {/* Badge Backdrop Style */}
                 <div className="space-y-2">
-                  <label className="block text-[11px] font-semibold uppercase tracking-wider text-stone-500">
+                  <label className="block text-[10px] font-bold uppercase tracking-wider text-stone-500">
                     Heading Backdrop Badge
                   </label>
-                  <div className="grid grid-cols-4 gap-1.5">
+                  <div className="grid grid-cols-4 gap-2">
                     {[
-                      { id: 'none', label: 'None' },
-                      { id: 'pill', label: 'Pill' },
-                      { id: 'block', label: 'Block' },
-                      { id: 'shadow', label: 'Shadow' },
+                      { id: 'none', label: 'No Badge' },
+                      { id: 'pill', label: 'Rounded Pill' },
+                      { id: 'block', label: 'Solid Block' },
+                      { id: 'shadow', label: 'Translucent Glow' },
                     ].map(st => (
                       <button
                         key={st.id}
                         onClick={() => setTitleText(prev => ({ ...prev, badgeStyle: st.id as any }))}
-                        className={`py-1.5 rounded-lg border text-xs font-medium transition-colors cursor-pointer ${
+                        className={`py-1.5 rounded-lg border text-[10px] font-bold uppercase transition-all ${
                           titleText.badgeStyle === st.id 
-                            ? 'bg-stone-900 border-stone-900 text-white' 
-                            : 'bg-white border-stone-200 text-stone-700 hover:border-stone-300'
+                            ? 'bg-indigo-600 border-indigo-600 text-white shadow-sm' 
+                            : 'bg-white border-stone-200 text-stone-600 hover:border-stone-300'
                         }`}
                       >
                         {st.label}
@@ -896,15 +895,15 @@ export function ReelCoverMaker() {
                   </div>
 
                   {titleText.badgeStyle !== 'none' && (
-                    <div className="flex flex-col sm:flex-row gap-3 pt-1.5 p-3 bg-white border border-stone-200 rounded-lg">
+                    <div className="flex flex-col sm:flex-row gap-3 pt-1.5 p-3 bg-white border border-stone-150 rounded-xl">
                       <div className="flex-1 flex items-center gap-2">
-                        <label className="text-[11px] font-medium text-stone-500 uppercase shrink-0">Color:</label>
+                        <label className="text-[10px] font-bold text-stone-400 uppercase shrink-0">Color:</label>
                         <div className="flex gap-1 items-center flex-1">
                           {['#000000', '#6366f1', '#f43f5e', '#10b981', '#ffffff'].map(bc => (
                             <button
                               key={bc}
                               onClick={() => setTitleText(prev => ({ ...prev, badgeColor: bc }))}
-                              className={`w-5 h-5 rounded border cursor-pointer ${titleText.badgeColor === bc ? 'border-stone-900' : 'border-stone-200'}`}
+                              className={`w-5 h-5 rounded border ${titleText.badgeColor === bc ? 'border-indigo-600' : 'border-stone-200'}`}
                               style={{ backgroundColor: bc }}
                             />
                           ))}
@@ -918,8 +917,8 @@ export function ReelCoverMaker() {
                       </div>
 
                       <div className="flex-1 space-y-0.5">
-                        <label className="block text-[10px] font-medium text-stone-500 uppercase">
-                          Opacity: {Math.round(titleText.badgeOpacity * 100)}%
+                        <label className="block text-[9px] font-bold text-stone-400 uppercase">
+                          Badge Opacity: {Math.round(titleText.badgeOpacity * 100)}%
                         </label>
                         <input
                           type="range"
@@ -928,7 +927,7 @@ export function ReelCoverMaker() {
                           step="0.05"
                           value={titleText.badgeOpacity}
                           onChange={(e) => setTitleText(prev => ({ ...prev, badgeOpacity: parseFloat(e.target.value) }))}
-                          className="w-full accent-stone-900 h-1 bg-stone-200 rounded-lg cursor-pointer"
+                          className="w-full accent-indigo-600 h-1 bg-stone-100 rounded-lg cursor-pointer"
                         />
                       </div>
                     </div>
@@ -936,29 +935,29 @@ export function ReelCoverMaker() {
                 </div>
               </div>
             ) : (
-              <div className="space-y-3">
+              <div className="space-y-4">
                 {/* Input Text */}
                 <div>
-                  <label className="block text-[11px] font-semibold uppercase tracking-wider text-stone-500 mb-1">Subheading Input</label>
+                  <label className="block text-[10px] font-bold uppercase tracking-wider text-stone-500 mb-1">Subheading Input</label>
                   <input
                     type="text"
                     value={subtitleText.text}
                     onChange={(e) => setSubtitleText(prev => ({ ...prev, text: e.target.value }))}
                     placeholder="Enter subheading..."
-                    className="w-full bg-white border border-stone-200 text-xs rounded-lg px-3 py-2 text-stone-800 outline-none focus:border-stone-900 transition-colors"
+                    className="w-full bg-white border border-stone-200 text-xs rounded-xl px-3.5 py-2.5 font-bold text-stone-800 outline-none focus:border-indigo-600 transition-colors shadow-sm"
                   />
                 </div>
 
                 {/* Font Styling controls */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
-                    <label htmlFor="subtitle-font-family-select" className="block text-[11px] font-semibold uppercase tracking-wider text-stone-500 mb-1">Font Family</label>
+                    <label htmlFor="subtitle-font-family-select" className="block text-[10px] font-bold uppercase tracking-wider text-stone-500 mb-1">Font Family</label>
                     <select
                       id="subtitle-font-family-select"
                       aria-label="Subtitle Font Family"
                       value={subtitleText.fontFamily}
                       onChange={(e) => setSubtitleText(prev => ({ ...prev, fontFamily: e.target.value as any }))}
-                      className="w-full bg-white border border-stone-200 text-xs rounded-lg px-3 py-2 text-stone-800 outline-none focus:border-stone-900 transition-colors cursor-pointer"
+                      className="w-full bg-white border border-stone-200 text-xs rounded-xl px-3.5 py-2.5 font-bold text-stone-800 outline-none focus:border-indigo-600 transition-colors shadow-sm"
                     >
                       {FONT_OPTIONS.map(opt => (
                         <option key={opt.value} value={opt.value}>{opt.label}</option>
@@ -967,14 +966,14 @@ export function ReelCoverMaker() {
                   </div>
 
                   <div>
-                    <label className="block text-[11px] font-semibold uppercase tracking-wider text-stone-500 mb-1">Text Color</label>
+                    <label className="block text-[10px] font-bold uppercase tracking-wider text-stone-500 mb-1">Text Color</label>
                     <div className="flex gap-1.5 items-center">
                       <div className="flex gap-1">
                         {['#ffffff', '#ff7e5f', '#fbbf24', '#34d399', '#6366f1', '#000000'].map(c => (
                           <button 
                             key={c}
                             onClick={() => setSubtitleText(prev => ({ ...prev, color: c }))}
-                            className={`w-6 h-6 rounded border cursor-pointer ${subtitleText.color === c ? 'border-stone-900 ring-2 ring-stone-300' : 'border-stone-200'} transition-all`}
+                            className={`w-6 h-6 rounded border ${subtitleText.color === c ? 'border-indigo-600 scale-105' : 'border-stone-200'} transition-all`}
                             style={{ backgroundColor: c }}
                           />
                         ))}
@@ -990,9 +989,9 @@ export function ReelCoverMaker() {
                 </div>
 
                 {/* Sizing & Position sliders */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 bg-white p-3 border border-stone-200 rounded-lg">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-white p-3.5 border border-stone-150 rounded-xl shadow-inner">
                   <div className="space-y-1">
-                    <label className="block text-[11px] font-semibold uppercase tracking-wider text-stone-500">
+                    <label className="block text-[10px] font-bold uppercase tracking-wider text-stone-400">
                       Font Size: {subtitleText.fontSize}px
                     </label>
                     <input
@@ -1001,13 +1000,13 @@ export function ReelCoverMaker() {
                       max="70"
                       value={subtitleText.fontSize}
                       onChange={(e) => setSubtitleText(prev => ({ ...prev, fontSize: parseInt(e.target.value) }))}
-                      className="w-full accent-stone-900 h-1 bg-stone-200 rounded-lg cursor-pointer"
+                      className="w-full accent-indigo-600 h-1 bg-stone-100 rounded-lg cursor-pointer"
                     />
                   </div>
 
                   <div className="space-y-1">
-                    <label className="block text-[11px] font-semibold uppercase tracking-wider text-stone-500">
-                      Vertical Position: {subtitleText.yPosition}%
+                    <label className="block text-[10px] font-bold uppercase tracking-wider text-stone-400">
+                      Vertical Y-Offset: {subtitleText.yPosition}%
                     </label>
                     <input
                       type="range"
@@ -1015,30 +1014,30 @@ export function ReelCoverMaker() {
                       max="90"
                       value={subtitleText.yPosition}
                       onChange={(e) => setSubtitleText(prev => ({ ...prev, yPosition: parseInt(e.target.value) }))}
-                      className="w-full accent-stone-900 h-1 bg-stone-200 rounded-lg cursor-pointer"
+                      className="w-full accent-indigo-600 h-1 bg-stone-100 rounded-lg cursor-pointer"
                     />
                   </div>
                 </div>
 
                 {/* Badge Backdrop Style */}
                 <div className="space-y-2">
-                  <label className="block text-[11px] font-semibold uppercase tracking-wider text-stone-500">
+                  <label className="block text-[10px] font-bold uppercase tracking-wider text-stone-500">
                     Subheading Backdrop Badge
                   </label>
-                  <div className="grid grid-cols-4 gap-1.5">
+                  <div className="grid grid-cols-4 gap-2">
                     {[
-                      { id: 'none', label: 'None' },
-                      { id: 'pill', label: 'Pill' },
-                      { id: 'block', label: 'Block' },
-                      { id: 'shadow', label: 'Shadow' },
+                      { id: 'none', label: 'No Badge' },
+                      { id: 'pill', label: 'Rounded Pill' },
+                      { id: 'block', label: 'Solid Block' },
+                      { id: 'shadow', label: 'Translucent Glow' },
                     ].map(st => (
                       <button
                         key={st.id}
                         onClick={() => setSubtitleText(prev => ({ ...prev, badgeStyle: st.id as any }))}
-                        className={`py-1.5 rounded-lg border text-xs font-medium transition-colors cursor-pointer ${
+                        className={`py-1.5 rounded-lg border text-[10px] font-bold uppercase transition-all ${
                           subtitleText.badgeStyle === st.id 
-                            ? 'bg-stone-900 border-stone-900 text-white' 
-                            : 'bg-white border-stone-200 text-stone-700 hover:border-stone-300'
+                            ? 'bg-indigo-600 border-indigo-600 text-white shadow-sm' 
+                            : 'bg-white border-stone-200 text-stone-600 hover:border-stone-300'
                         }`}
                       >
                         {st.label}
@@ -1047,15 +1046,15 @@ export function ReelCoverMaker() {
                   </div>
 
                   {subtitleText.badgeStyle !== 'none' && (
-                    <div className="flex flex-col sm:flex-row gap-3 pt-1.5 p-3 bg-white border border-stone-200 rounded-lg">
+                    <div className="flex flex-col sm:flex-row gap-3 pt-1.5 p-3 bg-white border border-stone-150 rounded-xl">
                       <div className="flex-1 flex items-center gap-2">
-                        <label className="text-[11px] font-medium text-stone-500 uppercase shrink-0">Color:</label>
+                        <label className="text-[10px] font-bold text-stone-400 uppercase shrink-0">Color:</label>
                         <div className="flex gap-1 items-center flex-1">
                           {['#000000', '#6366f1', '#f43f5e', '#10b981', '#ffffff'].map(bc => (
                             <button
                               key={bc}
                               onClick={() => setSubtitleText(prev => ({ ...prev, badgeColor: bc }))}
-                              className={`w-5 h-5 rounded border cursor-pointer ${subtitleText.badgeColor === bc ? 'border-stone-900' : 'border-stone-200'}`}
+                              className={`w-5 h-5 rounded border ${subtitleText.badgeColor === bc ? 'border-indigo-600' : 'border-stone-200'}`}
                               style={{ backgroundColor: bc }}
                             />
                           ))}
@@ -1069,8 +1068,8 @@ export function ReelCoverMaker() {
                       </div>
 
                       <div className="flex-1 space-y-0.5">
-                        <label className="block text-[10px] font-medium text-stone-500 uppercase">
-                          Opacity: {Math.round(subtitleText.badgeOpacity * 100)}%
+                        <label className="block text-[9px] font-bold text-stone-400 uppercase">
+                          Badge Opacity: {Math.round(subtitleText.badgeOpacity * 100)}%
                         </label>
                         <input
                           type="range"
@@ -1079,7 +1078,7 @@ export function ReelCoverMaker() {
                           step="0.05"
                           value={subtitleText.badgeOpacity}
                           onChange={(e) => setSubtitleText(prev => ({ ...prev, badgeOpacity: parseFloat(e.target.value) }))}
-                          className="w-full accent-stone-900 h-1 bg-stone-200 rounded-lg cursor-pointer"
+                          className="w-full accent-indigo-600 h-1 bg-stone-100 rounded-lg cursor-pointer"
                         />
                       </div>
                     </div>
@@ -1090,34 +1089,34 @@ export function ReelCoverMaker() {
           </div>
 
           {/* Download and start over controls */}
-          <div className="pt-2 flex gap-3">
+          <div className="pt-4 flex gap-4">
             <button 
               onClick={handleDownload}
-              className="flex-1 bg-stone-900 hover:bg-stone-800 text-white py-2.5 px-4 rounded-lg font-semibold text-xs flex justify-center items-center gap-2 transition-colors cursor-pointer"
+              className="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white py-3.5 px-6 rounded-xl font-bold text-xs flex justify-center items-center gap-2 transition-all shadow-md shadow-indigo-600/10 uppercase tracking-widest cursor-pointer"
             >
-              <Download size={13} />
-              <span>Export Cover (9:16)</span>
+              <Download size={14} />
+              Export Cover (9:16)
             </button>
             <button 
               onClick={() => {
                 clearImage();
                 applyTemplate(TEMPLATES[0]);
               }}
-              className="bg-white hover:bg-stone-50 text-stone-700 border border-stone-200 px-4 py-2.5 rounded-lg transition-colors font-medium text-xs flex items-center justify-center cursor-pointer"
+              className="bg-white hover:bg-stone-50 text-stone-600 border border-stone-200/80 shadow-sm px-5 py-3.5 rounded-xl transition-all font-bold group"
               title="Reset All Controls"
             >
-              <RefreshCw size={13} className="text-stone-600" />
+              <RefreshCw size={14} className="group-hover:rotate-180 transition-transform duration-500 text-stone-500" />
             </button>
           </div>
         </div>
 
         {/* Preview Column */}
         <div className="lg:col-span-5 flex flex-col items-center">
-          <div className="w-full bg-stone-50 border border-stone-200 rounded-xl p-4 flex flex-col items-center select-none">
+          <div className="w-full bg-stone-50 border border-stone-200 rounded-2xl p-4 flex flex-col items-center shadow-inner relative select-none">
             
-            <p className="text-[10px] font-semibold text-stone-500 mb-2 uppercase tracking-wider flex items-center gap-1.5">
-              <Move size={11} className="text-stone-600" />
-              Cover Canvas Preview (9:16)
+            <p className="text-[9px] font-bold text-stone-400 mb-2 uppercase tracking-widest flex items-center gap-1.5">
+              <Move size={10} className="text-indigo-500" />
+              Interactive Canvas Cover Preview (9:16)
             </p>
 
             <div className="relative w-full flex justify-center items-center overflow-hidden">
@@ -1127,13 +1126,13 @@ export function ReelCoverMaker() {
                 onMouseMove={(e) => handleMove(e.clientX, e.clientY)}
                 onMouseUp={handleEnd}
                 onMouseLeave={handleEnd}
-                className="max-w-full max-h-[520px] object-contain rounded-lg border border-stone-200 bg-black cursor-move touch-none select-none"
+                className="max-w-full max-h-[520px] object-contain rounded-xl shadow-lg border border-stone-200 bg-black cursor-move touch-none select-none transition-shadow"
                 style={{ aspectRatio: '9/16' }}
               />
             </div>
 
-            <p className="text-[10px] text-stone-400 mt-2 text-center">
-              Drag image to position inside safe zone
+            <p className="text-[9px] font-bold text-stone-400 mt-2 text-center uppercase tracking-wider leading-relaxed">
+              Drag photo to center & position correctly.
             </p>
           </div>
         </div>

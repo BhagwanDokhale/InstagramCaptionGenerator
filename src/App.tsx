@@ -238,7 +238,13 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-stone-50 text-stone-900 font-sans selection:bg-stone-200 selection:text-stone-900">
+    <div className="min-h-screen flex flex-col subtle-gradient-bg text-stone-800 font-sans selection:bg-rose-500/10 selection:text-stone-900 overflow-x-clip relative">
+      {/* Decorative background glows */}
+      <div className="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none -z-10">
+        <div className="absolute top-[-8%] left-[-8%] w-[50%] h-[50%] bg-gradient-to-br from-rose-200/30 to-pink-100/20 rounded-full mix-blend-multiply filter blur-3xl opacity-60"></div>
+        <div className="absolute top-[20%] right-[-8%] w-[42%] h-[42%] bg-gradient-to-bl from-indigo-200/35 to-violet-100/20 rounded-full mix-blend-multiply filter blur-3xl opacity-60"></div>
+        <div className="absolute bottom-[10%] left-[5%] w-[45%] h-[45%] bg-gradient-to-tr from-amber-100/30 to-rose-100/20 rounded-full mix-blend-multiply filter blur-3xl opacity-50"></div>
+      </div>
       <Header setActivePage={handlePageChange} setActiveTab={handleTabChange} />
       
       <main className="flex-1 w-full min-h-[calc(100vh-380px)] flex flex-col">
@@ -267,7 +273,7 @@ export default function App() {
         ) : activePage === 'not-found' ? (
           <Suspense fallback={<ComponentLoader />}><NotFoundPage setActivePage={handlePageChange} setActiveTab={handleTabChange} /></Suspense>
         ) : (
-          <div className="flex-1 max-w-5xl mx-auto px-4 py-8 md:py-12 w-full">
+          <div className="flex-1 max-w-5xl mx-auto px-4 py-12 md:py-20 w-full">
             {(() => {
               const isHomepage = typeof window !== 'undefined' && (window.location.pathname === '/' || window.location.pathname === '/home');
               const currentTool = TOOL_SCHEMA_MAP[activeTab] || TOOL_SCHEMA_MAP['captions'];
@@ -313,11 +319,15 @@ export default function App() {
                   <Breadcrumbs setActivePage={handlePageChange} setActiveTab={handleTabChange} />
 
                   {/* Header */}
-                  <header className="mb-8">
-                    <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-stone-900 mb-2">
+                  <header className="text-center mb-12 flex flex-col items-center">
+                    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-pill text-indigo-800 text-xs font-bold uppercase tracking-widest mb-6 shadow-sm shadow-indigo-100/10 border border-white/80 bg-gradient-to-r from-rose-50/80 via-white/90 to-indigo-50/80">
+                      <Sparkles size={14} className="text-rose-500 animate-pulse" />
+                      <span>AI Powered Social Suite</span>
+                    </div>
+                    <h1 className="text-4xl md:text-6.5xl font-display font-extrabold tracking-tight text-stone-950 mb-4 max-w-3xl leading-[1.1]">
                       {pageH1}
                     </h1>
-                    <p className="text-stone-600 text-xs sm:text-sm leading-relaxed max-w-2xl">
+                    <p className="text-stone-500 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
                       {pageIntro}
                     </p>
                   </header>
@@ -325,37 +335,42 @@ export default function App() {
               );
             })()}
 
-            {/* Responsive Tab Switcher - Auto-adjusts to screen size without horizontal scrollbar */}
-            <div className="mb-8 w-full">
-              <div className="bg-stone-200/60 p-1 rounded-xl border border-stone-200 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:flex lg:flex-wrap gap-1 w-full">
-                {(['captions', 'comments', 'hashtags', 'alttext', 'cover', 'brandkit', 'bios', 'usernames', 'resizer', 'grid', 'planner', 'downloader'] as const).map((tab) => {
-                  const isActive = activeTab === tab;
-                  const labels = {
-                    captions: 'Captions',
-                    comments: 'Comments',
-                    hashtags: 'Hashtags',
-                    alttext: 'ALT Text',
-                    cover: 'Cover Maker',
-                    brandkit: 'Brand Kit',
-                    bios: 'Bios',
-                    usernames: 'Usernames',
-                    resizer: 'Resizer',
-                    grid: 'Grid Maker',
-                    planner: 'Planner',
-                    downloader: 'Downloader'
-                  };
+            {/* Tab Switcher */}
+            <div className="flex justify-center mb-12">
+              <div className="glass-card p-2 rounded-2xl flex gap-1.5 border border-white/90 shadow-[0_12px_40px_rgba(0,0,0,0.04)] flex-wrap justify-center max-w-full bg-white/70 backdrop-blur-xl">
+                {[
+                  { id: 'captions' as const, label: 'Caption', isPage: false },
+                  { id: 'comments' as const, label: 'Comment', isPage: false },
+                  { id: 'hashtags' as const, label: 'Hashtag', isPage: false },
+                  { id: 'alttext' as const, label: 'ALT Text', isPage: false },
+                  { id: 'bios' as const, label: 'Bio', isPage: false },
+                  { id: 'usernames' as const, label: 'Username', isPage: false },
+                  { id: 'brandkit' as const, label: 'Brand Kit', isPage: false },
+                  { id: 'resizer' as const, label: 'Photo Resizer', isPage: false },
+                  { id: 'cover' as const, label: 'Reel Cover Maker', isPage: false },
+                  { id: 'grid' as const, label: 'Grid Maker', isPage: false },
+                  { id: 'planner' as const, label: 'Feed Planner', isPage: false },
+                  { id: 'downloader' as const, label: 'Reels Downloader', isPage: false },
+                  { id: 'workspace' as const, label: 'Workspace', isPage: true },
+                ].map((item) => {
+                  const isActive = !item.isPage && activePage === 'home' && activeTab === item.id;
                   return (
                     <button
-                      key={tab}
-                      onClick={() => handleTabChange(tab)}
-                      className={`px-2 py-1.5 rounded-lg text-xs font-medium transition-colors text-center cursor-pointer truncate lg:flex-1 lg:min-w-[70px] ${
+                      key={item.id}
+                      onClick={() => {
+                        if (item.isPage) {
+                          handlePageChange('workspace');
+                        } else {
+                          handleTabChange(item.id as TabType);
+                        }
+                      }}
+                      className={`px-3.5 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer whitespace-nowrap ${
                         isActive 
-                          ? 'bg-white text-stone-900 shadow-xs font-semibold' 
-                          : 'text-stone-600 hover:text-stone-900 hover:bg-stone-100/70'
+                          ? 'bg-gradient-to-r from-stone-900 via-stone-850 to-stone-900 text-stone-50 shadow-md shadow-stone-900/15 ring-1 ring-white/30 hover:shadow-lg' 
+                          : 'text-stone-500 hover:text-stone-900 hover:bg-white/60 hover:shadow-sm'
                       }`}
-                      title={labels[tab]}
                     >
-                      {labels[tab]}
+                      {item.label}
                     </button>
                   );
                 })}
@@ -365,7 +380,7 @@ export default function App() {
             {/* Main Content Slot with persistent minimum height to prevent CLS */}
             <div className="w-full min-h-[520px]">
               <Suspense fallback={<ToolSkeleton />}>
-                <div className={`grid ${activeTab === 'captions' || activeTab === 'bios' || activeTab === 'usernames' ? 'grid-cols-1 lg:grid-cols-12' : 'grid-cols-1'} gap-6 items-start min-h-[520px]`}>
+                <div className={`grid ${activeTab === 'captions' || activeTab === 'bios' || activeTab === 'usernames' ? 'grid-cols-1 lg:grid-cols-12' : 'grid-cols-1'} gap-8 items-start min-h-[520px]`}>
                   
                   {/* Left Column - Form */}
                   {(activeTab === 'captions' || activeTab === 'bios' || activeTab === 'usernames') && (
@@ -382,24 +397,24 @@ export default function App() {
 
                   {/* Right Column - Results */}
                   {(activeTab === 'captions' || activeTab === 'bios' || activeTab === 'usernames') && (
-                    <div className="lg:col-span-7 w-full space-y-4 min-h-[480px]">
+                    <div className="lg:col-span-7 w-full space-y-6 min-h-[480px]">
                       
                       {error && (
-                        <div className="bg-rose-50 border border-rose-200 text-rose-800 px-4 py-3 rounded-lg text-xs font-medium flex items-center gap-2">
-                          <X size={14} className="text-rose-600 shrink-0" />
-                          <span>{error}</span>
+                        <div className="bg-rose-50 border border-rose-100 text-rose-700 px-6 py-4 rounded-2xl text-sm font-bold flex items-center gap-3 shadow-sm">
+                          <div className="bg-rose-500 text-white rounded-full p-1"><X size={14} /></div>
+                          {error}
                         </div>
                       )}
 
                       {results.length > 0 ? (
-                        <div className="space-y-4">
-                          <div className="flex items-center gap-2 bg-white px-4 py-2.5 rounded-lg border border-stone-200 shadow-xs inline-flex">
-                            {activeTab === 'captions' ? <ImageIcon className="text-stone-700" size={15} /> : <UserCircle className="text-stone-700" size={15} />}
-                            <h2 className="text-xs font-semibold text-stone-900">
-                              Generated {activeTab === 'captions' ? 'Captions' : activeTab === 'bios' ? 'Bios' : 'Usernames'} ({results.length})
+                        <div className="space-y-6">
+                          <div className="flex items-center gap-3 mb-2 bg-white px-5 py-3 rounded-xl border border-stone-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.02)] inline-flex">
+                            {activeTab === 'captions' ? <ImageIcon className="text-indigo-600" size={18} /> : <UserCircle className="text-indigo-600" size={18} />}
+                            <h2 className="text-xs font-bold uppercase tracking-widest text-stone-500">
+                              Your Generated {activeTab === 'captions' ? 'Captions' : activeTab === 'bios' ? 'Bios' : 'Usernames'}
                             </h2>
                           </div>
-                          <div className="flex flex-col gap-4">
+                          <div className="flex flex-col gap-6">
                             {results.map((text, idx) => (
                               <CaptionItem key={idx} text={text} maxLength={activeTab === 'bios' ? 150 : activeTab === 'usernames' ? 30 : 2200} type={activeTab as 'captions' | 'bios' | 'usernames'} />
                             ))}
@@ -408,10 +423,10 @@ export default function App() {
                       ) : !isLoading && !error && activeTab === 'captions' ? (
                         <TrendingList />
                       ) : !isLoading && !error && (activeTab === 'bios' || activeTab === 'usernames') ? (
-                        <div className="h-full min-h-[300px] flex items-center justify-center border border-dashed border-stone-200 rounded-xl bg-white p-8">
-                          <div className="text-center space-y-2 max-w-xs">
-                            <UserCircle size={32} className="mx-auto text-stone-400" />
-                            <p className="text-stone-600 font-medium text-xs">Fill out the parameters on the left to generate customized {activeTab === 'bios' ? 'bios' : 'usernames'}.</p>
+                        <div className="h-full min-h-[300px] flex items-center justify-center border border-dashed border-stone-200 rounded-2xl bg-white/50">
+                          <div className="text-center space-y-4 px-6 py-8 bg-white rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.02)] border border-stone-100 max-w-sm">
+                            <UserCircle size={36} className="mx-auto text-stone-600 animate-pulse" />
+                            <p className="text-stone-700 font-medium text-sm">Fill out the form to generate professional {activeTab === 'bios' ? 'bios' : 'usernames'}.</p>
                           </div>
                         </div>
                       ) : null}

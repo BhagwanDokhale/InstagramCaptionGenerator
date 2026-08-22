@@ -173,75 +173,41 @@ export function CommentGenerator() {
 
   return (
     <div className="w-full max-w-5xl mx-auto space-y-8">
-      {/* Main Form & Results Container */}
-      <div className="bg-white border border-stone-200 rounded-xl p-6 md:p-7 shadow-xs">
+      {/* Top Banner / Tool Card */}
+      <div className="glass-card p-6 md:p-8 rounded-3xl border border-white/90 shadow-[0_12px_40px_rgba(0,0,0,0.03)] bg-white/80 backdrop-blur-xl relative overflow-hidden">
         <div className="flex flex-col lg:flex-row gap-8 items-start">
           
           {/* Left Form */}
-          <form onSubmit={handleGenerate} className="w-full lg:w-1/2 space-y-5">
-            <div className="space-y-1.5">
-              <div className="flex items-center justify-between">
-                <label className="text-xs font-semibold uppercase tracking-wider text-stone-600 flex items-center gap-1.5">
-                  <MessageSquare size={14} className="text-stone-500" />
-                  What is the Instagram Post about?
-                </label>
-                <span className="text-xs text-stone-400 font-medium">{topic.length}/300</span>
-              </div>
-              <textarea
-                value={topic}
-                onChange={(e) => setTopic(e.target.value.slice(0, 300))}
-                placeholder="Paste the caption, describe the photo/reel, or type a topic (e.g., Beach sunset in Bali, Gym workout PR, Friend's promotion)..."
-                rows={3}
-                className="w-full px-3.5 py-2.5 rounded-lg border border-stone-200 focus:border-stone-900 focus:ring-1 focus:ring-stone-900 outline-none text-sm text-stone-900 placeholder:text-stone-400 transition-colors bg-white resize-none"
-              />
-
-              {/* Quick Prompts */}
-              <div className="pt-1">
-                <span className="text-xs font-medium text-stone-500 block mb-1.5">Quick Inspiration:</span>
-                <div className="flex flex-wrap gap-1.5">
-                  {QUICK_PROMPTS.map((prompt) => (
-                    <button
-                      key={prompt.label}
-                      type="button"
-                      onClick={() => setTopic(prompt.topic)}
-                      className="px-2.5 py-1 rounded-md text-xs font-medium text-stone-600 bg-stone-50 hover:bg-stone-100 border border-stone-200 transition-colors cursor-pointer"
-                    >
-                      {prompt.label}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </div>
-
+          <form onSubmit={handleGenerate} className="w-full lg:w-1/2 space-y-6">
             {/* Photo Attachment (Optional Vision) */}
-            <div className="space-y-1.5">
-              <label className="text-xs font-semibold uppercase tracking-wider text-stone-600 flex items-center gap-1.5">
-                <ImageIcon size={14} className="text-stone-500" />
-                Upload Photo or Post Screenshot (Optional)
+            <div className="space-y-2">
+              <label className="text-xs font-bold uppercase tracking-wider text-stone-700 flex items-center gap-1.5">
+                <ImageIcon size={14} className="text-rose-500" />
+                Upload Photo or Post Screenshot (Optional AI Vision)
               </label>
               
               {image ? (
-                <div className="relative rounded-lg overflow-hidden border border-stone-200 max-h-40 bg-stone-900 group">
+                <div className="relative rounded-2xl overflow-hidden border border-stone-200 max-h-40 bg-stone-900 group">
                   <img src={image} alt="Post preview" className="w-full h-40 object-cover opacity-90 group-hover:opacity-100 transition-opacity" />
                   <button
                     type="button"
                     onClick={handleRemoveImage}
-                    className="absolute top-2 right-2 p-1.5 bg-stone-900/80 hover:bg-red-600 text-white rounded-full transition-colors cursor-pointer shadow-sm"
+                    className="absolute top-2 right-2 p-1.5 bg-stone-900/80 hover:bg-rose-600 text-white rounded-full transition-all cursor-pointer shadow-md"
                   >
                     <X size={14} />
                   </button>
-                  <div className="absolute bottom-2 left-2 bg-stone-900/80 px-2 py-0.5 rounded text-xs font-medium text-white flex items-center gap-1">
-                    <Sparkles size={11} className="text-stone-300" /> AI Vision Attached
+                  <div className="absolute bottom-2 left-2 bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-lg text-[10px] font-bold text-white flex items-center gap-1">
+                    <Sparkles size={10} className="text-rose-400" /> AI Vision Active
                   </div>
                 </div>
               ) : (
                 <div 
                   onClick={() => fileInputRef.current?.click()}
-                  className="border border-dashed border-stone-300 hover:border-stone-400 rounded-lg p-3.5 text-center bg-stone-50/50 hover:bg-stone-50 transition-colors cursor-pointer group flex flex-col items-center justify-center gap-1"
+                  className="border-2 border-dashed border-stone-200 hover:border-indigo-400 rounded-2xl p-4 text-center bg-stone-50/50 hover:bg-stone-50 transition-all cursor-pointer group flex flex-col items-center justify-center gap-1.5"
                 >
-                  <Upload size={16} className="text-stone-400 group-hover:text-stone-700 transition-colors" />
-                  <span className="text-xs font-medium text-stone-700">Attach Post Image / Screenshot</span>
-                  <span className="text-xs text-stone-400">AI will analyze visual context to suggest tailored reactions</span>
+                  <Upload size={18} className="text-stone-400 group-hover:text-indigo-600 transition-colors" />
+                  <span className="text-xs font-bold text-stone-600 group-hover:text-indigo-600">Attach Post Image / Screenshot</span>
+                  <span className="text-[10px] text-stone-400">AI will analyze visual details to generate hyper-relevant comments</span>
                   <input
                     ref={fileInputRef}
                     type="file"
@@ -253,25 +219,43 @@ export function CommentGenerator() {
               )}
             </div>
 
+            {/* Post Description / Topic Input */}
+            <div className="space-y-2">
+              <div className="flex items-center justify-between">
+                <label className="text-xs font-bold uppercase tracking-wider text-stone-700 flex items-center gap-1.5">
+                  <MessageSquare size={14} className="text-indigo-600" />
+                  What is the Instagram Post about?
+                </label>
+                <span className="text-[11px] text-stone-400 font-medium">{topic.length}/300</span>
+              </div>
+              <textarea
+                value={topic}
+                onChange={(e) => setTopic(e.target.value.slice(0, 300))}
+                placeholder="Paste the caption, describe the photo/reel, or type a topic (e.g., Beach sunset in Bali, Gym workout PR, Friend's promotion)..."
+                rows={3}
+                className="w-full px-4 py-3 rounded-2xl border border-stone-200/90 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 outline-none text-xs font-medium text-stone-800 placeholder:text-stone-400 transition-all bg-white/90 resize-none"
+              />
+            </div>
+
             {/* Comment Tone Selection */}
-            <div className="space-y-1.5">
-              <label className="text-xs font-semibold uppercase tracking-wider text-stone-600 flex items-center gap-1.5">
-                <Smile size={14} className="text-stone-500" />
+            <div className="space-y-2">
+              <label className="text-xs font-bold uppercase tracking-wider text-stone-700 flex items-center gap-1.5">
+                <Smile size={14} className="text-amber-500" />
                 Comment Vibe & Tone
               </label>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-1.5">
+              <div className="grid grid-cols-2 gap-2">
                 {TONE_OPTIONS.map((item) => (
                   <button
                     key={item.id}
                     type="button"
                     onClick={() => setTone(item.id)}
-                    className={`p-2 rounded-lg text-left border transition-colors cursor-pointer ${
+                    className={`p-2.5 rounded-xl text-left border transition-all cursor-pointer ${
                       tone === item.id
-                        ? 'bg-stone-900 text-white border-stone-900 shadow-2xs'
-                        : 'bg-white border-stone-200 text-stone-700 hover:border-stone-300 hover:bg-stone-50'
+                        ? 'bg-stone-900 text-white border-stone-900 shadow-md shadow-stone-900/10'
+                        : 'bg-white border-stone-200 text-stone-700 hover:border-stone-300 hover:bg-stone-50/80'
                     }`}
                   >
-                    <div className="text-xs font-medium truncate">{item.label}</div>
+                    <div className="text-xs font-bold">{item.label}</div>
                     <div className={`text-[10px] mt-0.5 line-clamp-1 ${tone === item.id ? 'text-stone-300' : 'text-stone-400'}`}>
                       {item.desc}
                     </div>
@@ -281,15 +265,15 @@ export function CommentGenerator() {
             </div>
 
             {/* Relationship, Length, and Language */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
-              <div className="space-y-1">
-                <label className="text-xs font-semibold uppercase tracking-wider text-stone-600 flex items-center gap-1">
-                  <User size={12} className="text-stone-500" /> Relationship
+            <div className="grid grid-cols-3 gap-3">
+              <div className="space-y-1.5">
+                <label className="text-[11px] font-bold uppercase tracking-wider text-stone-600 flex items-center gap-1">
+                  <User size={12} className="text-indigo-500" /> Relationship
                 </label>
                 <select
                   value={relationship}
                   onChange={(e) => setRelationship(e.target.value)}
-                  className="w-full px-2.5 py-2 rounded-lg border border-stone-200 text-xs font-medium text-stone-800 bg-white focus:outline-none focus:border-stone-900 cursor-pointer"
+                  className="w-full px-2.5 py-2 rounded-xl border border-stone-200 text-xs font-semibold text-stone-800 bg-white focus:outline-none focus:border-indigo-500"
                 >
                   {RELATIONSHIP_OPTIONS.map((r) => (
                     <option key={r.id} value={r.id}>{r.label}</option>
@@ -297,14 +281,14 @@ export function CommentGenerator() {
                 </select>
               </div>
 
-              <div className="space-y-1">
-                <label className="text-xs font-semibold uppercase tracking-wider text-stone-600 flex items-center gap-1">
-                  <Zap size={12} className="text-stone-500" /> Length
+              <div className="space-y-1.5">
+                <label className="text-[11px] font-bold uppercase tracking-wider text-stone-600 flex items-center gap-1">
+                  <Zap size={12} className="text-purple-500" /> Length
                 </label>
                 <select
                   value={length}
                   onChange={(e) => setLength(e.target.value)}
-                  className="w-full px-2.5 py-2 rounded-lg border border-stone-200 text-xs font-medium text-stone-800 bg-white focus:outline-none focus:border-stone-900 cursor-pointer"
+                  className="w-full px-2.5 py-2 rounded-xl border border-stone-200 text-xs font-semibold text-stone-800 bg-white focus:outline-none focus:border-indigo-500"
                 >
                   {LENGTH_OPTIONS.map((l) => (
                     <option key={l.id} value={l.id}>{l.label}</option>
@@ -312,14 +296,14 @@ export function CommentGenerator() {
                 </select>
               </div>
 
-              <div className="space-y-1">
-                <label className="text-xs font-semibold uppercase tracking-wider text-stone-600 flex items-center gap-1">
-                  <Globe size={12} className="text-stone-500" /> Language
+              <div className="space-y-1.5">
+                <label className="text-[11px] font-bold uppercase tracking-wider text-stone-600 flex items-center gap-1">
+                  <Globe size={12} className="text-emerald-500" /> Language
                 </label>
                 <select
                   value={language}
                   onChange={(e) => setLanguage(e.target.value)}
-                  className="w-full px-2.5 py-2 rounded-lg border border-stone-200 text-xs font-medium text-stone-800 bg-white focus:outline-none focus:border-stone-900 cursor-pointer"
+                  className="w-full px-2.5 py-2 rounded-xl border border-stone-200 text-xs font-semibold text-stone-800 bg-white focus:outline-none focus:border-indigo-500"
                 >
                   {LANGUAGE_OPTIONS.map((lang) => (
                     <option key={lang.id} value={lang.id}>{lang.label}</option>
@@ -329,38 +313,38 @@ export function CommentGenerator() {
             </div>
 
             {/* Emojis & Hashtags Toggles */}
-            <div className="grid grid-cols-2 gap-2.5">
-              <div className="flex items-center justify-between p-3 rounded-lg bg-stone-50 border border-stone-200">
+            <div className="grid grid-cols-2 gap-3">
+              <div className="flex items-center justify-between p-3 rounded-2xl bg-stone-50 border border-stone-200/80">
                 <div className="flex items-center gap-2">
-                  <Smile size={15} className="text-stone-500 shrink-0" />
-                  <span className="text-xs font-medium text-stone-700">Include Emojis</span>
+                  <Smile size={16} className="text-rose-500 shrink-0" />
+                  <span className="text-xs font-bold text-stone-700">Include Emojis</span>
                 </div>
                 <button
                   type="button"
                   onClick={() => setHasEmojis(!hasEmojis)}
-                  className={`w-9 h-5 rounded-full transition-colors relative cursor-pointer shrink-0 ${
-                    hasEmojis ? 'bg-stone-900' : 'bg-stone-300'
+                  className={`w-11 h-6 rounded-full transition-colors relative cursor-pointer shrink-0 ${
+                    hasEmojis ? 'bg-indigo-600' : 'bg-stone-300'
                   }`}
                 >
-                  <div className={`w-3.5 h-3.5 rounded-full bg-white absolute top-[3px] transition-transform ${
+                  <div className={`w-4 h-4 rounded-full bg-white absolute top-1 transition-transform ${
                     hasEmojis ? 'right-1' : 'left-1'
                   }`} />
                 </button>
               </div>
 
-              <div className="flex items-center justify-between p-3 rounded-lg bg-stone-50 border border-stone-200">
+              <div className="flex items-center justify-between p-3 rounded-2xl bg-stone-50 border border-stone-200/80">
                 <div className="flex items-center gap-2">
-                  <Hash size={15} className="text-stone-500 shrink-0" />
-                  <span className="text-xs font-medium text-stone-700">Include Hashtags</span>
+                  <Hash size={16} className="text-violet-500 shrink-0" />
+                  <span className="text-xs font-bold text-stone-700">Include Hashtags</span>
                 </div>
                 <button
                   type="button"
                   onClick={() => setHasHashtags(!hasHashtags)}
-                  className={`w-9 h-5 rounded-full transition-colors relative cursor-pointer shrink-0 ${
-                    hasHashtags ? 'bg-stone-900' : 'bg-stone-300'
+                  className={`w-11 h-6 rounded-full transition-colors relative cursor-pointer shrink-0 ${
+                    hasHashtags ? 'bg-indigo-600' : 'bg-stone-300'
                   }`}
                 >
-                  <div className={`w-3.5 h-3.5 rounded-full bg-white absolute top-[3px] transition-transform ${
+                  <div className={`w-4 h-4 rounded-full bg-white absolute top-1 transition-transform ${
                     hasHashtags ? 'right-1' : 'left-1'
                   }`} />
                 </button>
@@ -371,27 +355,49 @@ export function CommentGenerator() {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full py-3 px-5 rounded-lg bg-stone-900 hover:bg-stone-800 text-white text-sm font-semibold transition-colors cursor-pointer shadow-2xs flex items-center justify-center gap-2 disabled:opacity-50"
+              className="w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-stone-900 via-stone-850 to-stone-900 hover:from-stone-800 hover:to-stone-800 text-white text-xs font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer shadow-lg shadow-stone-900/15 flex items-center justify-center gap-2 disabled:opacity-50"
             >
               {isLoading ? (
                 <>
-                  <RefreshCw size={15} className="animate-spin text-white" />
-                  <span>Generating Comments...</span>
+                  <RefreshCw size={16} className="animate-spin text-rose-400" />
+                  Generating Authentic Comments...
                 </>
               ) : (
                 <>
-                  <Sparkles size={15} />
-                  <span>Generate Instagram Comments</span>
+                  <Sparkles size={16} className="text-rose-400 animate-pulse" />
+                  Generate Instagram Comments
                 </>
               )}
             </button>
+
+            {/* Quick Inspiration (Separate Section below Generate Button) */}
+            <div className="pt-3 border-t border-stone-200/70 space-y-2">
+              <div className="flex items-center gap-1.5">
+                <Lightbulb size={13} className="text-amber-500" />
+                <span className="text-[10px] font-bold uppercase tracking-wider text-stone-500">
+                  Quick Inspiration:
+                </span>
+              </div>
+              <div className="flex flex-wrap gap-1.5">
+                {QUICK_PROMPTS.map((prompt) => (
+                  <button
+                    key={prompt.label}
+                    type="button"
+                    onClick={() => setTopic(prompt.topic)}
+                    className="px-2.5 py-1.5 rounded-xl text-[11px] font-semibold text-stone-600 bg-stone-100/90 hover:bg-indigo-50 hover:text-indigo-600 hover:border-indigo-200 border border-stone-200/70 transition-all cursor-pointer shadow-2xs"
+                  >
+                    {prompt.label}
+                  </button>
+                ))}
+              </div>
+            </div>
           </form>
 
           {/* Right Output Section */}
           <div className="w-full lg:w-1/2 flex flex-col gap-4 min-h-[400px]">
             {error && (
-              <div className="p-3.5 rounded-lg bg-red-50 border border-red-200 text-red-700 text-xs font-medium flex items-center gap-2">
-                <X size={15} className="shrink-0 text-red-500" />
+              <div className="p-4 rounded-2xl bg-rose-50 border border-rose-100 text-rose-700 text-xs font-bold flex items-center gap-2">
+                <X size={16} className="shrink-0 text-rose-500" />
                 {error}
               </div>
             )}
@@ -400,17 +406,17 @@ export function CommentGenerator() {
               <div className="space-y-4">
                 <div className="flex items-center justify-between px-1">
                   <div className="flex items-center gap-2">
-                    <MessageCircle size={16} className="text-stone-700" />
-                    <h3 className="text-xs font-semibold uppercase tracking-wider text-stone-700">
+                    <MessageCircle size={16} className="text-indigo-600" />
+                    <h3 className="text-xs font-bold uppercase tracking-wider text-stone-700">
                       Generated Comments ({comments.length})
                     </h3>
                   </div>
-                  <span className="text-xs font-medium text-stone-500 bg-stone-100 px-2.5 py-0.5 rounded">
+                  <span className="text-[10px] font-bold text-stone-400 uppercase tracking-widest bg-stone-100 px-2.5 py-1 rounded-full">
                     {tone}
                   </span>
                 </div>
 
-                <div className="space-y-2.5 max-h-[580px] overflow-y-auto pr-1">
+                <div className="space-y-3 max-h-[580px] overflow-y-auto pr-1">
                   {comments.map((comment, idx) => {
                     const isCopied = copiedIdx === idx;
                     const isFav = favorites.has(idx);
@@ -419,22 +425,22 @@ export function CommentGenerator() {
                     return (
                       <div
                         key={idx}
-                        className="p-3.5 rounded-lg bg-white border border-stone-200 shadow-2xs hover:border-stone-300 transition-colors space-y-2 relative group"
+                        className="p-4 rounded-2xl bg-white border border-stone-200/80 shadow-xs hover:border-indigo-200 transition-all space-y-2.5 relative group"
                       >
                         <div className="flex items-center justify-between">
                           <div className="flex items-center gap-2">
-                            <span className="px-2 py-0.5 rounded bg-stone-100 text-[10px] font-semibold uppercase tracking-wider text-stone-700">
+                            <span className="px-2 py-0.5 rounded-md bg-stone-100 text-[10px] font-bold uppercase tracking-wider text-stone-600">
                               {comment.tone || 'Comment'}
                             </span>
-                            <span className="text-xs text-stone-400">
+                            <span className="text-[10px] font-semibold text-stone-400">
                               • {comment.vibe}
                             </span>
                           </div>
 
-                          <div className="flex items-center gap-1">
+                          <div className="flex items-center gap-1.5">
                             <button
                               onClick={() => toggleFavorite(idx)}
-                              className={`p-1.5 rounded-md transition-colors cursor-pointer ${
+                              className={`p-1.5 rounded-lg transition-colors cursor-pointer ${
                                 isFav ? 'text-rose-500 bg-rose-50' : 'text-stone-400 hover:text-stone-700 hover:bg-stone-100'
                               }`}
                               title={isFav ? 'Unfavorite' : 'Favorite'}
@@ -444,8 +450,8 @@ export function CommentGenerator() {
 
                             <button
                               onClick={() => setPreviewComment(previewComment === comment.text ? null : comment.text)}
-                              className={`p-1.5 rounded-md text-stone-500 hover:text-stone-800 hover:bg-stone-100 transition-colors cursor-pointer text-xs font-medium ${
-                                previewComment === comment.text ? 'text-stone-900 bg-stone-100' : ''
+                              className={`p-1.5 rounded-lg text-stone-400 hover:text-stone-700 hover:bg-stone-100 transition-colors cursor-pointer text-[10px] font-bold ${
+                                previewComment === comment.text ? 'text-indigo-600 bg-indigo-50' : ''
                               }`}
                               title="Preview on Instagram layout"
                             >
@@ -454,7 +460,7 @@ export function CommentGenerator() {
 
                             <button
                               onClick={() => handleCopy(comment.text, idx)}
-                              className={`flex items-center gap-1 px-3 py-1 rounded-md text-xs font-medium transition-colors cursor-pointer ${
+                              className={`flex items-center gap-1 px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                                 isCopied
                                   ? 'bg-emerald-600 text-white'
                                   : 'bg-stone-900 hover:bg-stone-800 text-white'
@@ -472,18 +478,18 @@ export function CommentGenerator() {
                               value={editedText}
                               onChange={(e) => setEditedText(e.target.value)}
                               rows={2}
-                              className="w-full p-2.5 rounded-lg border border-stone-300 text-xs font-medium text-stone-800 bg-stone-50 outline-none"
+                              className="w-full p-2.5 rounded-xl border border-indigo-400 text-xs font-medium text-stone-800 bg-stone-50 outline-none"
                             />
                             <div className="flex justify-end gap-2">
                               <button
                                 onClick={() => setEditingIdx(null)}
-                                className="px-2.5 py-1 text-xs font-medium text-stone-500 hover:text-stone-700 cursor-pointer"
+                                className="px-2.5 py-1 text-[11px] font-bold text-stone-500 hover:text-stone-700 cursor-pointer"
                               >
                                 Cancel
                               </button>
                               <button
                                 onClick={() => handleSaveEdit(idx)}
-                                className="px-3 py-1 text-xs font-medium bg-stone-900 text-white rounded-md cursor-pointer"
+                                className="px-3 py-1 text-[11px] font-bold bg-indigo-600 text-white rounded-lg cursor-pointer"
                               >
                                 Save
                               </button>
@@ -492,7 +498,7 @@ export function CommentGenerator() {
                         ) : (
                           <div
                             onClick={() => handleStartEdit(idx, comment.text)}
-                            className="text-xs text-stone-800 leading-relaxed cursor-pointer hover:bg-stone-50 p-1.5 rounded-md transition-colors font-sans"
+                            className="text-xs font-medium text-stone-800 leading-relaxed cursor-pointer hover:bg-stone-50 p-1.5 rounded-xl transition-colors"
                             title="Click to edit inline"
                           >
                             {comment.text}
@@ -501,21 +507,23 @@ export function CommentGenerator() {
 
                         {/* Inline Mock Instagram Feed Preview */}
                         {previewComment === comment.text && (
-                          <div className="mt-2.5 p-3 rounded-lg bg-stone-900 text-white space-y-2 border border-stone-800">
-                            <div className="text-[10px] font-semibold text-stone-400 uppercase tracking-wider flex items-center justify-between">
-                              <span>Feed Preview</span>
-                              <button onClick={() => setPreviewComment(null)} className="text-stone-400 hover:text-white cursor-pointer">
+                          <div className="mt-3 p-3 rounded-xl bg-stone-900 text-white space-y-2 border border-stone-800 animate-fadeIn">
+                            <div className="text-[10px] font-bold text-stone-400 uppercase tracking-wider flex items-center justify-between">
+                              <span>Instagram Feed Mockup</span>
+                              <button onClick={() => setPreviewComment(null)} className="text-stone-400 hover:text-white">
                                 <X size={12} />
                               </button>
                             </div>
                             <div className="flex items-start gap-2.5 text-xs pt-1">
-                              <div className="w-6 h-6 rounded-full bg-stone-700 flex items-center justify-center font-bold text-[9px] text-white shrink-0">
-                                GC
+                              <div className="w-6 h-6 rounded-full bg-gradient-to-tr from-amber-400 via-rose-500 to-purple-600 p-0.5 shrink-0">
+                                <div className="w-full h-full rounded-full bg-stone-900 flex items-center justify-center font-bold text-[9px] text-white">
+                                  GC
+                                </div>
                               </div>
                               <div className="flex-1">
-                                <span className="font-semibold text-white mr-1.5">your_handle</span>
-                                <span className="text-stone-200">{comment.text}</span>
-                                <div className="flex items-center gap-3 text-[10px] text-stone-400 mt-1 font-medium">
+                                <span className="font-bold text-white mr-1.5">your_handle</span>
+                                <span className="text-stone-200 font-normal">{comment.text}</span>
+                                <div className="flex items-center gap-3 text-[10px] text-stone-400 mt-1 font-semibold">
                                   <span>2m</span>
                                   <span>14 likes</span>
                                   <span>Reply</span>
@@ -531,11 +539,11 @@ export function CommentGenerator() {
 
                 {/* Pro Tips Banner */}
                 {proTips.length > 0 && (
-                  <div className="p-3.5 rounded-lg bg-stone-50 border border-stone-200 space-y-1.5">
-                    <div className="flex items-center gap-1.5 text-xs font-semibold text-stone-900 uppercase tracking-wider">
-                      <Lightbulb size={14} className="text-amber-500" /> Engagement Tips
+                  <div className="p-4 rounded-2xl bg-gradient-to-br from-indigo-50/80 to-purple-50/60 border border-indigo-100/80 space-y-2">
+                    <div className="flex items-center gap-1.5 text-xs font-bold text-indigo-900 uppercase tracking-wider">
+                      <Lightbulb size={14} className="text-amber-500" /> Pro Commenting Tips
                     </div>
-                    <ul className="space-y-1 text-xs text-stone-600 font-normal list-disc list-inside">
+                    <ul className="space-y-1 text-xs text-stone-700 font-medium list-disc list-inside">
                       {proTips.map((tip, i) => (
                         <li key={i}>{tip}</li>
                       ))}
@@ -544,21 +552,21 @@ export function CommentGenerator() {
                 )}
               </div>
             ) : !isLoading ? (
-              <div className="h-full min-h-[380px] flex flex-col items-center justify-center border border-dashed border-stone-200 rounded-lg bg-stone-50/50 p-8 text-center gap-2.5">
-                <div className="w-10 h-10 rounded-lg bg-stone-100 text-stone-400 flex items-center justify-center">
-                  <MessageSquare size={20} />
+              <div className="h-full min-h-[380px] flex flex-col items-center justify-center border-2 border-dashed border-stone-200 rounded-3xl bg-white/40 p-8 text-center gap-3">
+                <div className="w-12 h-12 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center shadow-xs">
+                  <MessageSquare size={22} />
                 </div>
                 <div className="space-y-1">
-                  <h3 className="text-sm font-semibold text-stone-800">No Comments Generated Yet</h3>
+                  <h3 className="text-sm font-bold text-stone-800">No Comments Generated Yet</h3>
                   <p className="text-xs text-stone-500 max-w-xs leading-relaxed">
                     Fill out the form on the left or click a quick inspiration button to generate 6 authentic Instagram comments instantly.
                   </p>
                 </div>
               </div>
             ) : (
-              <div className="h-full min-h-[380px] flex flex-col items-center justify-center border border-stone-200 rounded-lg bg-white p-8 text-center gap-3">
-                <div className="w-8 h-8 border-2 border-stone-200 border-t-stone-900 rounded-full animate-spin"></div>
-                <p className="text-xs font-semibold uppercase tracking-wider text-stone-600">Generating Comments...</p>
+              <div className="h-full min-h-[380px] flex flex-col items-center justify-center border border-stone-200/80 rounded-3xl bg-white/80 p-8 text-center gap-3 animate-pulse">
+                <div className="w-8 h-8 border-3 border-stone-200 border-t-indigo-600 rounded-full animate-spin"></div>
+                <p className="text-xs font-bold uppercase tracking-wider text-stone-600">Generating 6 Authentic Comments...</p>
               </div>
             )}
           </div>

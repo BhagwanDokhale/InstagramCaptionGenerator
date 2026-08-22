@@ -93,24 +93,20 @@ export function FAQPage() {
         url="https://growthcaption.com/faq"
         faqs={faqs.map(faq => ({ question: faq.q, answer: faq.a }))}
       />
-      <div className="text-left mb-8 pb-6 border-b border-stone-200">
-        <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-stone-500 mb-2">
-          <HelpCircle size={14} className="text-stone-700" />
-          <span>Knowledge & Support</span>
-        </div>
-        <h1 className="text-2xl md:text-3xl font-semibold tracking-tight text-stone-900 mb-2">
-          Frequently Asked Questions
+      <div className="text-center mb-12">
+        <h1 className="text-4xl md:text-5xl font-sans font-bold tracking-tight text-stone-900 mb-4">
+          FAQ
         </h1>
-        <p className="text-stone-500 text-sm max-w-xl">
-          Everything you need to know about GrowthCaption tools, privacy guarantees, generation engines, and usage limits.
+        <p className="text-stone-500 font-medium text-base md:text-lg flex items-center justify-center gap-2">
+          <HelpCircle size={18} className="text-indigo-600" /> Frequently Asked Questions
         </p>
       </div>
 
-      <div className="divide-y divide-stone-200 border-y border-stone-200">
+      <div className="space-y-6">
         {faqs.map((faq, i) => (
-          <div key={i} className="py-5">
-            <h3 className="text-sm font-semibold text-stone-900 mb-2">{faq.q}</h3>
-            <p className="text-xs text-stone-600 leading-relaxed max-w-3xl">{faq.a}</p>
+          <div key={i} className="bg-white rounded-3xl p-6 md:p-8 border border-stone-200/80 shadow-[0_8px_30px_rgb(0,0,0,0.02)] hover:-translate-y-[1px] transition-all">
+            <h3 className="text-base font-bold text-stone-900 mb-3 uppercase tracking-wider">{faq.q}</h3>
+            <p className="text-xs font-medium text-stone-500 leading-relaxed">{faq.a}</p>
           </div>
         ))}
       </div>

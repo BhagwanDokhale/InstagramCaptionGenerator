@@ -269,37 +269,41 @@ export function WorkspacePage({ setActivePage, setActiveTab }: WorkspacePageProp
       )}
 
       {/* Header Section */}
-      <div className="mb-8">
-        <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-stone-900 mb-1">
-          Creator Workspace
+      <div className="text-center mb-10 flex flex-col items-center">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-pill text-indigo-800 text-xs font-bold uppercase tracking-widest mb-4 shadow-sm border border-white/80 bg-gradient-to-r from-rose-50/80 via-white/90 to-indigo-50/80">
+          <Layers size={14} className="text-indigo-600" />
+          <span>Local Creator Hub</span>
+        </div>
+        <h1 className="text-3xl md:text-5xl font-display font-extrabold tracking-tight text-stone-950 mb-3">
+          My Creator Workspace
         </h1>
-        <p className="text-stone-600 text-xs sm:text-sm max-w-xl leading-relaxed">
-          Manage your saved captions, hashtags, bios, username ideas, and brand kits locally.
+        <p className="text-stone-600 text-sm md:text-base max-w-xl mx-auto leading-relaxed">
+          Save your favorite creator content and quickly return to your work.
         </p>
 
         {/* Privacy badge notice */}
-        <div className="mt-3 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-stone-100 border border-stone-200 text-[11px] font-medium text-stone-600">
-          <ShieldCheck size={13} className="text-stone-700 shrink-0" />
-          <span>Saved locally in browser storage. No account or cloud sync required.</span>
+        <div className="mt-4 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-stone-100/80 border border-stone-200/80 text-[11px] font-medium text-stone-600">
+          <ShieldCheck size={14} className="text-emerald-600 shrink-0" />
+          <span>Your saved workspace data is stored locally in your browser and is not synced to an account.</span>
         </div>
       </div>
 
       {/* Quick Action Toolbar */}
-      <div className="bg-white border border-stone-200 rounded-xl p-3 mb-6 shadow-xs flex flex-wrap items-center justify-between gap-3">
+      <div className="bg-white/80 backdrop-blur-xl border border-stone-200/80 rounded-2xl p-4 mb-8 shadow-[0_8px_30px_rgb(0,0,0,0.02)] flex flex-wrap items-center justify-between gap-4">
         {/* Search Bar */}
         <div className="relative flex-1 min-w-[200px] max-w-md">
-          <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-stone-400" />
+          <Search size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-400" />
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search saved items..."
-            className="w-full bg-stone-50 border border-stone-200 rounded-lg pl-8 pr-7 py-1.5 text-xs text-stone-900 placeholder:text-stone-400 focus:outline-none focus:border-stone-400 focus:bg-white transition-colors"
+            className="w-full bg-stone-50/70 border border-stone-200/80 rounded-xl pl-9 pr-8 py-2 text-xs font-medium text-stone-800 placeholder:text-stone-400 focus:outline-none focus:border-indigo-600 focus:bg-white transition-all"
           />
           {searchQuery && (
             <button 
               onClick={() => setSearchQuery('')}
-              className="absolute right-2.5 top-1/2 -translate-y-1/2 text-stone-400 hover:text-stone-600 p-0.5 cursor-pointer"
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-stone-400 hover:text-stone-600 p-0.5 cursor-pointer"
             >
               <X size={12} />
             </button>
@@ -307,7 +311,7 @@ export function WorkspacePage({ setActivePage, setActiveTab }: WorkspacePageProp
         </div>
 
         {/* Action Buttons: Import, Export, Clear */}
-        <div className="flex items-center gap-1.5 flex-wrap">
+        <div className="flex items-center gap-2 flex-wrap">
           <input 
             type="file" 
             ref={fileInputRef} 
@@ -318,45 +322,45 @@ export function WorkspacePage({ setActivePage, setActiveTab }: WorkspacePageProp
           
           <button
             onClick={() => fileInputRef.current?.click()}
-            className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-medium text-stone-700 bg-stone-50 hover:bg-stone-100 border border-stone-200 transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold text-stone-600 bg-stone-50 hover:bg-stone-100 hover:text-stone-900 border border-stone-200/80 transition-all cursor-pointer"
             title="Import workspace backup JSON"
           >
-            <Download size={12} />
+            <Download size={13} />
             <span>Import</span>
           </button>
 
           <button
             onClick={handleExport}
-            className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-medium text-stone-700 bg-stone-50 hover:bg-stone-100 border border-stone-200 transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold text-stone-600 bg-stone-50 hover:bg-stone-100 hover:text-stone-900 border border-stone-200/80 transition-all cursor-pointer"
             title="Export workspace data as JSON"
           >
-            <Upload size={12} />
+            <Upload size={13} />
             <span>Export</span>
           </button>
 
           {totalSavedCount > 0 && (
             <button
               onClick={() => setIsClearModalOpen(true)}
-              className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-medium text-rose-700 bg-rose-50 hover:bg-rose-100 border border-rose-200 transition-colors cursor-pointer"
+              className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold text-rose-600 bg-rose-50/60 hover:bg-rose-100/80 border border-rose-200/80 transition-all cursor-pointer"
               title="Clear all saved workspace data"
             >
-              <Trash2 size={12} />
-              <span>Clear</span>
+              <Trash2 size={13} />
+              <span>Clear Workspace</span>
             </button>
           )}
         </div>
       </div>
 
       {/* Category Filter Chips */}
-      <div className="flex flex-wrap gap-2 pb-2 mb-8">
+      <div className="flex gap-2 overflow-x-auto pb-4 mb-8 scrollbar-none">
         {[
           { id: 'all', label: 'All Items', count: totalSavedCount },
-          { id: 'captions', label: 'Captions', count: data.captions.length, icon: MessageSquare, color: 'text-rose-500' },
-          { id: 'hashtags', label: 'Hashtag Sets', count: data.hashtagSets.length, icon: Hash, color: 'text-violet-600' },
-          { id: 'bios', label: 'Bios', count: data.bios.length, icon: User, color: 'text-emerald-600' },
-          { id: 'usernames', label: 'Usernames', count: data.usernames.length, icon: Sparkles, color: 'text-sky-600' },
-          { id: 'brandkit', label: 'Brand Kit', count: data.brandKit ? 1 : 0, icon: Palette, color: 'text-fuchsia-600' },
-          { id: 'recent', label: 'Recent Activity', count: data.recentProjects.length, icon: Clock, color: 'text-amber-600' },
+          { id: 'captions', label: 'Captions', count: data.captions.length, icon: MessageSquare },
+          { id: 'hashtags', label: 'Hashtag Sets', count: data.hashtagSets.length, icon: Hash },
+          { id: 'bios', label: 'Bios', count: data.bios.length, icon: User },
+          { id: 'usernames', label: 'Usernames', count: data.usernames.length, icon: Sparkles },
+          { id: 'brandkit', label: 'Brand Kit', count: data.brandKit ? 1 : 0, icon: Palette },
+          { id: 'recent', label: 'Recent Activity', count: data.recentProjects.length, icon: Clock },
         ].map(filter => {
           const isActive = activeFilter === filter.id;
           const Icon = filter.icon;
@@ -364,16 +368,16 @@ export function WorkspacePage({ setActivePage, setActiveTab }: WorkspacePageProp
             <button
               key={filter.id}
               onClick={() => setActiveFilter(filter.id as WorkspaceFilter)}
-              className={`px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap transition-colors flex items-center gap-2 cursor-pointer ${
+              className={`px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all duration-200 flex items-center gap-2 cursor-pointer ${
                 isActive
-                  ? 'bg-stone-900 text-stone-50 shadow-2xs'
-                  : 'bg-white border border-stone-200 text-stone-600 hover:text-stone-900 hover:bg-stone-50'
+                  ? 'bg-stone-900 text-stone-50 shadow-sm'
+                  : 'bg-white/80 border border-stone-200/80 text-stone-600 hover:text-stone-900 hover:bg-stone-50'
               }`}
             >
-              {Icon && <Icon size={13} className={isActive ? 'text-stone-300' : (filter.color || 'text-stone-400')} />}
+              {Icon && <Icon size={13} className={isActive ? 'text-rose-400' : 'text-stone-400'} />}
               <span>{filter.label}</span>
-              <span className={`text-[10px] px-1.5 py-0.5 rounded font-mono ${
-                isActive ? 'bg-stone-800 text-stone-300' : 'bg-stone-100 text-stone-600'
+              <span className={`text-[10px] px-1.5 py-0.5 rounded-md font-mono ${
+                isActive ? 'bg-stone-800 text-stone-300' : 'bg-stone-100 text-stone-500'
               }`}>
                 {filter.count}
               </span>
@@ -392,11 +396,11 @@ export function WorkspacePage({ setActivePage, setActiveTab }: WorkspacePageProp
           <section className="space-y-4" aria-labelledby="section-captions">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-lg bg-rose-50 text-rose-600 flex items-center justify-center border border-rose-100">
-                  <MessageSquare size={15} />
+                <div className="w-8 h-8 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center border border-rose-100">
+                  <MessageSquare size={16} />
                 </div>
                 <div>
-                  <h2 id="section-captions" className="text-sm sm:text-base font-bold text-stone-900">
+                  <h2 id="section-captions" className="text-base font-bold text-stone-900">
                     Favorite Captions
                   </h2>
                   <p className="text-xs text-stone-500">Your saved Instagram post and Reel captions</p>
@@ -405,7 +409,7 @@ export function WorkspacePage({ setActivePage, setActiveTab }: WorkspacePageProp
               <a
                 href="/tools/caption-generator"
                 onClick={handleNavigateToTool('home', 'captions')}
-                className="text-xs font-medium text-stone-800 hover:text-stone-950 flex items-center gap-1 cursor-pointer"
+                className="text-xs font-bold text-indigo-600 hover:text-indigo-700 flex items-center gap-1 cursor-pointer"
               >
                 <span>Open Generator</span>
                 <ChevronRight size={13} />
@@ -420,19 +424,19 @@ export function WorkspacePage({ setActivePage, setActiveTab }: WorkspacePageProp
                   return (
                     <div 
                       key={caption.id}
-                      className="bg-white border border-stone-200 rounded-xl p-4 shadow-2xs flex flex-col justify-between group hover:border-stone-300 transition-all relative"
+                      className="bg-white border border-stone-200/80 rounded-2xl p-5 shadow-[0_4px_20px_rgba(0,0,0,0.02)] flex flex-col justify-between group hover:border-stone-300 hover:shadow-md transition-all relative"
                     >
                       <div>
                         {/* Meta Tags */}
                         <div className="flex items-center justify-between mb-3 text-[11px] text-stone-400 font-mono">
                           <div className="flex items-center gap-1.5 flex-wrap">
                             {caption.category && (
-                              <span className="px-2 py-0.5 rounded-md bg-stone-100 text-stone-700 font-medium uppercase tracking-wider text-[10px]">
+                              <span className="px-2 py-0.5 rounded-md bg-stone-100 text-stone-600 font-bold uppercase tracking-wider text-[10px]">
                                 {caption.category}
                               </span>
                             )}
                             {caption.tone && (
-                              <span className="px-2 py-0.5 rounded-md bg-stone-100 text-stone-700 font-medium uppercase tracking-wider text-[10px]">
+                              <span className="px-2 py-0.5 rounded-md bg-indigo-50 text-indigo-600 font-bold uppercase tracking-wider text-[10px]">
                                 {caption.tone}
                               </span>
                             )}
@@ -441,7 +445,7 @@ export function WorkspacePage({ setActivePage, setActiveTab }: WorkspacePageProp
                         </div>
 
                         {/* Caption Text */}
-                        <p className="text-stone-800 text-sm whitespace-pre-wrap font-mono leading-relaxed bg-stone-50 p-3 rounded-lg border border-stone-200/80">
+                        <p className="text-stone-800 text-sm whitespace-pre-wrap font-mono leading-relaxed bg-stone-50/50 p-3.5 rounded-xl border border-stone-200/50">
                           {caption.text}
                         </p>
                       </div>
@@ -455,24 +459,24 @@ export function WorkspacePage({ setActivePage, setActiveTab }: WorkspacePageProp
                         <div className="flex items-center gap-2">
                           <button
                             onClick={() => handleCopy(caption.text, caption.id)}
-                            className={`px-2.5 py-1.5 rounded-lg border transition-all cursor-pointer flex items-center gap-1.5 text-xs font-medium ${
+                            className={`p-2 rounded-xl border transition-all cursor-pointer flex items-center gap-1.5 text-xs font-bold ${
                               isCopied
-                                ? 'bg-emerald-50 text-emerald-700 border-emerald-200'
-                                : 'bg-stone-50 text-stone-700 border-stone-200 hover:bg-stone-100 hover:text-stone-900'
+                                ? 'bg-emerald-50 text-emerald-600 border-emerald-200'
+                                : 'bg-stone-50 text-stone-600 border-stone-200 hover:bg-stone-100 hover:text-stone-900'
                             }`}
                             aria-label="Copy caption"
                           >
-                            {isCopied ? <Check size={13} /> : <Copy size={13} />}
+                            {isCopied ? <Check size={14} /> : <Copy size={14} />}
                             <span>{isCopied ? 'Copied' : 'Copy'}</span>
                           </button>
 
                           <button
                             onClick={() => handleDeleteCaption(caption.id)}
-                            className="p-1.5 rounded-lg text-stone-400 hover:text-rose-600 hover:bg-rose-50 border border-transparent hover:border-rose-200 transition-all cursor-pointer"
+                            className="p-2 rounded-xl text-stone-400 hover:text-rose-600 hover:bg-rose-50 border border-transparent hover:border-rose-200 transition-all cursor-pointer"
                             aria-label="Remove caption from favorites"
                             title="Remove from favorites"
                           >
-                            <Trash2 size={13} />
+                            <Trash2 size={14} />
                           </button>
                         </div>
                       </div>
@@ -482,9 +486,9 @@ export function WorkspacePage({ setActivePage, setActiveTab }: WorkspacePageProp
               </div>
             ) : (
               /* Empty State */
-              <div className="border border-dashed border-stone-200 rounded-xl p-8 text-center bg-stone-50/50">
-                <div className="w-10 h-10 rounded-lg bg-rose-50 text-rose-500 mx-auto flex items-center justify-center mb-3">
-                  <MessageSquare size={18} />
+              <div className="border border-dashed border-stone-200 rounded-2xl p-8 text-center bg-white/50 backdrop-blur-sm">
+                <div className="w-12 h-12 rounded-2xl bg-rose-50 text-rose-500 mx-auto flex items-center justify-center mb-3">
+                  <MessageSquare size={20} />
                 </div>
                 <h3 className="text-sm font-bold text-stone-800 mb-1">No saved captions yet.</h3>
                 <p className="text-xs text-stone-500 max-w-sm mx-auto mb-4">
@@ -493,9 +497,9 @@ export function WorkspacePage({ setActivePage, setActiveTab }: WorkspacePageProp
                 <a
                   href="/tools/caption-generator"
                   onClick={handleNavigateToTool('home', 'captions')}
-                  className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-stone-900 hover:bg-stone-800 text-white text-xs font-medium rounded-lg transition-colors cursor-pointer"
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-stone-900 hover:bg-stone-800 text-white text-xs font-bold rounded-xl transition-all shadow-sm cursor-pointer"
                 >
-                  <PlusCircle size={13} />
+                  <PlusCircle size={14} />
                   <span>Create Caption</span>
                 </a>
               </div>
@@ -637,7 +641,7 @@ export function WorkspacePage({ setActivePage, setActiveTab }: WorkspacePageProp
           <section className="space-y-4" aria-labelledby="section-bios">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center border border-emerald-100">
+                <div className="w-8 h-8 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center border border-amber-100">
                   <User size={16} />
                 </div>
                 <div>
@@ -722,7 +726,7 @@ export function WorkspacePage({ setActivePage, setActiveTab }: WorkspacePageProp
             ) : (
               /* Empty State */
               <div className="border border-dashed border-stone-200 rounded-2xl p-8 text-center bg-white/50 backdrop-blur-sm">
-                <div className="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-500 mx-auto flex items-center justify-center mb-3">
+                <div className="w-12 h-12 rounded-2xl bg-amber-50 text-amber-500 mx-auto flex items-center justify-center mb-3">
                   <User size={20} />
                 </div>
                 <h3 className="text-sm font-bold text-stone-800 mb-1">No saved bios yet.</h3>
@@ -749,7 +753,7 @@ export function WorkspacePage({ setActivePage, setActiveTab }: WorkspacePageProp
           <section className="space-y-4" aria-labelledby="section-usernames">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center border border-sky-100">
+                <div className="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center border border-emerald-100">
                   <Sparkles size={16} />
                 </div>
                 <div>
@@ -844,7 +848,7 @@ export function WorkspacePage({ setActivePage, setActiveTab }: WorkspacePageProp
             ) : (
               /* Empty State */
               <div className="border border-dashed border-stone-200 rounded-2xl p-8 text-center bg-white/50 backdrop-blur-sm">
-                <div className="w-12 h-12 rounded-2xl bg-sky-50 text-sky-500 mx-auto flex items-center justify-center mb-3">
+                <div className="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-500 mx-auto flex items-center justify-center mb-3">
                   <Sparkles size={20} />
                 </div>
                 <h3 className="text-sm font-bold text-stone-800 mb-1">No saved username ideas yet.</h3>
@@ -871,7 +875,7 @@ export function WorkspacePage({ setActivePage, setActiveTab }: WorkspacePageProp
           <section className="space-y-4" aria-labelledby="section-brandkit">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-xl bg-fuchsia-50 text-fuchsia-600 flex items-center justify-center border border-fuchsia-100">
+                <div className="w-8 h-8 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center border border-indigo-100">
                   <Palette size={16} />
                 </div>
                 <div>
@@ -1022,7 +1026,7 @@ export function WorkspacePage({ setActivePage, setActiveTab }: WorkspacePageProp
             ) : (
               /* Empty State */
               <div className="border border-dashed border-stone-200 rounded-2xl p-8 text-center bg-white/50 backdrop-blur-sm">
-                <div className="w-12 h-12 rounded-2xl bg-fuchsia-50 text-fuchsia-500 mx-auto flex items-center justify-center mb-3">
+                <div className="w-12 h-12 rounded-2xl bg-indigo-50 text-indigo-500 mx-auto flex items-center justify-center mb-3">
                   <Palette size={20} />
                 </div>
                 <h3 className="text-sm font-bold text-stone-800 mb-1">No Brand Kit saved yet.</h3>
@@ -1049,7 +1053,7 @@ export function WorkspacePage({ setActivePage, setActiveTab }: WorkspacePageProp
           <section className="space-y-4" aria-labelledby="section-recent">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center border border-amber-100">
+                <div className="w-8 h-8 rounded-xl bg-teal-50 text-teal-600 flex items-center justify-center border border-teal-100">
                   <Clock size={16} />
                 </div>
                 <div>
@@ -1077,8 +1081,8 @@ export function WorkspacePage({ setActivePage, setActiveTab }: WorkspacePageProp
                     className="p-4 flex items-center justify-between hover:bg-stone-50/80 transition-all gap-4 group"
                   >
                     <div className="flex items-center gap-3.5 min-w-0">
-                      <div className="w-8 h-8 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center shrink-0 font-bold text-xs border border-amber-100/80">
-                        <Clock size={14} className="text-amber-600" />
+                      <div className="w-8 h-8 rounded-xl bg-stone-100 text-stone-700 flex items-center justify-center shrink-0 font-bold text-xs">
+                        <Clock size={14} className="text-indigo-600" />
                       </div>
                       <div className="min-w-0">
                         <div className="flex items-center gap-2 flex-wrap">
@@ -1136,7 +1140,7 @@ export function WorkspacePage({ setActivePage, setActiveTab }: WorkspacePageProp
             ) : (
               /* Empty State */
               <div className="border border-dashed border-stone-200 rounded-2xl p-8 text-center bg-white/50 backdrop-blur-sm">
-                <div className="w-12 h-12 rounded-2xl bg-amber-50 text-amber-500 mx-auto flex items-center justify-center mb-3">
+                <div className="w-12 h-12 rounded-2xl bg-teal-50 text-teal-500 mx-auto flex items-center justify-center mb-3">
                   <Clock size={20} />
                 </div>
                 <h3 className="text-sm font-bold text-stone-800 mb-1">No recent projects yet.</h3>
@@ -1152,7 +1156,7 @@ export function WorkspacePage({ setActivePage, setActiveTab }: WorkspacePageProp
       {/* Clear Workspace Confirmation Dialog Modal */}
       {isClearModalOpen && (
         <div 
-          className="fixed inset-0 z-50 flex items-start justify-center pt-16 sm:pt-24 pb-8 px-4 bg-stone-950/40 backdrop-blur-xs animate-fade-in overflow-y-auto"
+          className="fixed inset-0 z-50 flex items-start justify-center pt-16 sm:pt-24 pb-8 px-4 bg-stone-950/40 backdrop-blur-sm animate-fade-in overflow-y-auto"
           role="dialog"
           aria-modal="true"
           aria-labelledby="clear-modal-title"
@@ -1162,9 +1166,9 @@ export function WorkspacePage({ setActivePage, setActiveTab }: WorkspacePageProp
             }
           }}
         >
-          <div className="bg-white rounded-xl p-6 max-w-md w-full border border-stone-200 shadow-xl space-y-4">
-            <div className="w-10 h-10 rounded-lg bg-rose-50 text-rose-600 flex items-center justify-center mx-auto border border-rose-100">
-              <AlertTriangle size={20} />
+          <div className="bg-white rounded-3xl p-6 max-w-md w-full border border-stone-200 shadow-2xl space-y-4 animate-scale-up">
+            <div className="w-12 h-12 rounded-2xl bg-rose-50 text-rose-600 flex items-center justify-center mx-auto">
+              <AlertTriangle size={24} />
             </div>
             
             <div className="text-center space-y-1.5">
@@ -1180,14 +1184,14 @@ export function WorkspacePage({ setActivePage, setActiveTab }: WorkspacePageProp
               <button
                 type="button"
                 onClick={() => setIsClearModalOpen(false)}
-                className="w-full py-2 px-4 rounded-lg border border-stone-200 text-xs font-medium text-stone-700 hover:bg-stone-50 transition-colors cursor-pointer"
+                className="w-full py-2.5 px-4 rounded-xl border border-stone-200 text-xs font-bold text-stone-600 hover:bg-stone-50 transition-all cursor-pointer"
               >
                 Cancel
               </button>
               <button
                 type="button"
                 onClick={handleConfirmClearWorkspace}
-                className="w-full py-2 px-4 rounded-lg bg-rose-600 hover:bg-rose-700 text-white text-xs font-medium transition-colors cursor-pointer"
+                className="w-full py-2.5 px-4 rounded-xl bg-rose-600 hover:bg-rose-700 text-white text-xs font-bold transition-all shadow-md shadow-rose-600/20 cursor-pointer"
               >
                 Clear Workspace
               </button>

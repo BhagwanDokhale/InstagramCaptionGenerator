@@ -59,13 +59,13 @@ export const BrandKitArticle: React.FC = () => {
       {/* Pillar 1 & Color Rule */}
       <section id="brand-sec-3" className="space-y-4 pt-4">
         <h2 className="text-xl md:text-2xl font-bold text-stone-950 border-b border-stone-200 pb-2 flex items-center gap-2">
-          <Palette className="text-stone-700" size={20} />
+          <Palette className="text-indigo-600" size={22} />
           Pillar 1: The 5-Color Palette Architecture
         </h2>
         <p>
           Color is the most immediate sensory trigger in branding. However, using too many arbitrary colors creates visual noise and dilutes brand recall. High-performing digital brands adhere to a tight 5-color palette consisting of:
         </p>
-        <div className="bg-stone-50 border border-stone-200/80 rounded-xl p-5 my-4 space-y-3">
+        <div className="bg-stone-50 border border-stone-200/80 rounded-2xl p-5 my-4 space-y-3">
           <p className="font-bold text-stone-900">The 5 Core Color Roles Explained:</p>
           <ul className="list-disc list-inside space-y-2 text-stone-700 text-xs md:text-sm">
             <li><strong className="text-stone-900">Primary Brand Shade:</strong> Your signature brand anchor used for main headings and logo marks.</li>
@@ -94,7 +94,7 @@ export const BrandKitArticle: React.FC = () => {
       {/* Pillar 2 & Typography */}
       <section id="brand-sec-5" className="space-y-4 pt-4">
         <h2 className="text-xl md:text-2xl font-bold text-stone-950 border-b border-stone-200 pb-2 flex items-center gap-2">
-          <Type className="text-stone-700" size={20} />
+          <Type className="text-indigo-600" size={22} />
           Pillar 2: Typographical Pairing (Display vs. Body Copy)
         </h2>
         <p>
@@ -103,10 +103,10 @@ export const BrandKitArticle: React.FC = () => {
         <p>
           The universal typography pairing rule is to select exactly **two complementary fonts**:
         </p>
-        <div className="bg-white border border-stone-200 rounded-xl p-5 my-3 space-y-2 shadow-2xs">
+        <div className="bg-white border border-stone-200 rounded-2xl p-5 my-3 space-y-2 shadow-2xs">
           <p className="font-bold text-stone-900 text-sm">The Golden Font Duo:</p>
           <ul className="space-y-1.5 text-xs md:text-sm text-stone-700">
-            <li><strong className="text-stone-900">1. Display Title Font:</strong> High-personality font reserved for main headlines on graphics and Reel covers (e.g. Space Grotesk, Outfit, Playfair Display).</li>
+            <li><strong className="text-indigo-600">1. Display Title Font:</strong> High-personality font reserved for main headlines on graphics and Reel covers (e.g. Space Grotesk, Outfit, Playfair Display).</li>
             <li><strong className="text-stone-900">2. Body Copy Font:</strong> Ultra-clean, neutral font optimized for effortless mobile reading (e.g. Plus Jakarta Sans, Inter).</li>
           </ul>
         </div>
@@ -115,13 +115,13 @@ export const BrandKitArticle: React.FC = () => {
       {/* Pillar 3: Voice & Tone */}
       <section id="brand-sec-7" className="space-y-4 pt-4">
         <h2 className="text-xl md:text-2xl font-bold text-stone-950 border-b border-stone-200 pb-2 flex items-center gap-2">
-          <Volume2 className="text-stone-700" size={20} />
+          <Volume2 className="text-indigo-600" size={22} />
           Pillar 3: Defining Your Authentic Brand Voice & Tone
         </h2>
         <p>
           Your brand voice is your written personality across captions, direct messages, and comments. Define three core adjectives that encapsulate your tone:
         </p>
-        <div className="bg-stone-50 border border-stone-200 p-4 rounded-xl text-xs md:text-sm text-stone-900 space-y-1">
+        <div className="bg-indigo-50/50 border border-indigo-100 p-4 rounded-2xl text-xs md:text-sm text-indigo-950 space-y-1">
           <p className="font-bold">Example Voice Archetypes:</p>
           <p>• <strong>Empathetic Mentor:</strong> Warm, encouraging, patient, value-driven.</p>
           <p>• <strong>Sharp Industry Insider:</strong> Direct, data-backed, concise, zero-fluff.</p>
@@ -158,9 +158,9 @@ export const BrandKitArticle: React.FC = () => {
       </section>
 
       {/* Tool Section */}
-      <section id="brand-sec-12" className="space-y-4 pt-6 bg-stone-50 p-6 rounded-xl border border-stone-200">
-        <div className="flex items-center gap-2 text-stone-900 font-bold text-lg">
-          <Sparkles className="text-stone-700" size={18} />
+      <section id="brand-sec-12" className="space-y-4 pt-6 bg-gradient-to-br from-indigo-50/60 to-rose-50/40 p-6 rounded-3xl border border-indigo-100">
+        <div className="flex items-center gap-2 text-indigo-950 font-bold text-lg">
+          <Sparkles className="text-rose-500 animate-pulse" size={20} />
           <h2>Generating Your Brand Kit Instantly with AI Tools</h2>
         </div>
         <p>
@@ -170,7 +170,7 @@ export const BrandKitArticle: React.FC = () => {
           Simply enter your brand name and niche description, pick an aesthetic vibe (Minimalist Luxury, Cyberpunk, Warm Earthy, Modern SaaS), and our AI engine synthesizes a complete brand kit with custom color palettes, Google Font pairings, slogan options, bio drafts, and feed advice instantly!
         </p>
         <div className="pt-2">
-          <InternalLink href="/tools/brand-kit" className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-stone-900 text-white font-medium text-xs hover:bg-stone-800 transition-colors no-underline">
+          <InternalLink href="/tools/brand-kit" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-indigo-600 text-white font-bold text-xs uppercase tracking-wider hover:bg-indigo-700 transition-all no-underline">
             <span>Generate Free Brand Kit Now</span>
             <ArrowRight size={14} />
           </InternalLink>
@@ -180,11 +180,11 @@ export const BrandKitArticle: React.FC = () => {
       {/* FAQ & Checklist */}
       <section id="brand-sec-13" className="space-y-4 pt-6">
         <h2 className="text-2xl font-bold text-stone-950 border-b border-stone-200 pb-2 flex items-center gap-2">
-          <HelpCircle className="text-stone-700" size={20} />
+          <HelpCircle className="text-indigo-600" size={22} />
           Frequently Asked Questions About Brand Kits
         </h2>
         <div className="space-y-4">
-          <div className="bg-stone-50 p-4 rounded-xl border border-stone-200/80">
+          <div className="bg-stone-50 p-4 rounded-2xl border border-stone-200/60">
             <h3 className="font-bold text-stone-900 text-sm md:text-base">Q: Can I update my brand kit as my business grows?</h3>
             <p className="text-xs md:text-sm text-stone-600 mt-1">
               Yes! Brands evolve over time. Evolving your brand kit every 12 to 18 months keeps your aesthetic feeling fresh while preserving your core visual identity.
@@ -197,7 +197,7 @@ export const BrandKitArticle: React.FC = () => {
         <h2 className="text-2xl font-bold text-stone-950 border-b border-stone-200 pb-2">
           Final Brand Kit Implementation Checklist
         </h2>
-        <div className="bg-stone-50 p-5 rounded-xl border border-stone-200/80 space-y-3">
+        <div className="bg-stone-50 p-5 rounded-2xl border border-stone-200/80 space-y-3">
           <ul className="space-y-2 text-xs md:text-sm text-stone-700">
             <li className="flex items-center gap-2">
               <CheckCircle2 size={16} className="text-emerald-600 shrink-0" />

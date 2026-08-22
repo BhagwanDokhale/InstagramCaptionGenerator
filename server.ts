@@ -674,8 +674,8 @@ Return a structured JSON object matching this schema:
         if (!hashtagData.analytics.topicFocus && (hashtagData.analytics as any).difficulty) {
           hashtagData.analytics.topicFocus = (hashtagData.analytics as any).difficulty;
         }
-        if (!hashtagData.analytics.audienceFocus && (hashtagData.analytics as any).contentFocus) {
-          hashtagData.analytics.audienceFocus = (hashtagData.analytics as any).contentFocus;
+        if (!hashtagData.analytics.audienceFocus && (hashtagData.analytics as any).potentialReach) {
+          hashtagData.analytics.audienceFocus = (hashtagData.analytics as any).potentialReach;
         }
       }
       res.json(hashtagData);

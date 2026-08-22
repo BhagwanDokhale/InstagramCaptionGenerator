@@ -419,39 +419,66 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({ tab, title, steps, class
   return (
     <section 
       aria-label={data.title}
-      className={`w-full max-w-5xl mx-auto bg-white rounded-xl border border-stone-200 p-6 md:p-8 shadow-xs my-8 ${className}`}
+      className={`w-full max-w-7xl mx-auto bg-white/90 backdrop-blur-md rounded-3xl border border-stone-200/80 p-6 sm:p-8 md:p-10 shadow-[0_4px_25px_rgba(0,0,0,0.02)] my-10 md:my-14 ${className}`}
     >
-      <div className="mb-6">
-        <h2 className="text-base sm:text-lg font-semibold text-stone-900">
+      <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-50 border border-rose-100 text-rose-700 text-xs font-bold uppercase tracking-wider mb-3">
+          <Sparkles size={13} className="text-rose-500" />
+          <span>Step-by-Step Process</span>
+        </div>
+        <h2 className="text-2xl sm:text-3xl font-display font-extrabold text-stone-900 tracking-tight">
           {data.title}
         </h2>
-        <p className="text-xs text-stone-500 mt-0.5">
-          Step-by-step walkthrough to get the best output
-        </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-5 relative">
         {data.steps.map((step, idx) => (
           <div 
             key={idx} 
-            className="bg-stone-50 rounded-lg p-3.5 border border-stone-200 flex flex-col justify-between"
+            className="flex flex-col relative group how-it-works-card"
+            style={{ animationDelay: `${idx * 80}ms` }}
           >
-            <div>
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-[10px] font-mono font-semibold text-stone-500 bg-stone-200/70 px-1.5 py-0.5 rounded">
-                  {step.number}
-                </span>
-                <span className="text-base" aria-hidden="true">
-                  {step.icon}
-                </span>
+            <div className="flex-1 bg-stone-50/90 hover:bg-white rounded-2xl p-5 border border-stone-200/70 hover:border-indigo-300 hover:shadow-md transition-all duration-300 flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-xs font-black tracking-widest text-indigo-600 bg-indigo-50/90 px-2.5 py-1 rounded-lg border border-indigo-100/80">
+                    {step.number}
+                  </span>
+                  <div 
+                    className="w-10 h-10 rounded-xl bg-white border border-stone-200/80 flex items-center justify-center text-xl shadow-xs group-hover:scale-105 group-hover:border-indigo-200 transition-all"
+                    aria-hidden="true"
+                  >
+                    {step.icon}
+                  </div>
+                </div>
+                <h3 className="text-sm font-bold text-stone-900 mb-1.5 leading-snug group-hover:text-indigo-600 transition-colors">
+                  {step.title}
+                </h3>
+                <p className="text-xs text-stone-600 font-medium leading-relaxed">
+                  {step.description}
+                </p>
               </div>
-              <h3 className="text-xs font-semibold text-stone-900 mb-1 leading-snug">
-                {step.title}
-              </h3>
-              <p className="text-[11px] text-stone-500 leading-relaxed">
-                {step.description}
-              </p>
             </div>
+
+            {/* Desktop Connector Arrow */}
+            {idx < data.steps.length - 1 && (
+              <div 
+                className="hidden lg:flex absolute -right-3.5 top-1/2 -translate-y-1/2 z-10 w-7 h-7 rounded-full bg-white border border-stone-200/80 text-stone-400 items-center justify-center shadow-xs" 
+                aria-hidden="true"
+              >
+                <ArrowRight size={13} className="text-stone-400" />
+              </div>
+            )}
+
+            {/* Mobile Connector Arrow */}
+            {idx < data.steps.length - 1 && (
+              <div 
+                className="flex lg:hidden justify-center my-1 text-stone-300" 
+                aria-hidden="true"
+              >
+                <ArrowDown size={14} className="text-stone-300" />
+              </div>
+            )}
           </div>
         ))}
       </div>

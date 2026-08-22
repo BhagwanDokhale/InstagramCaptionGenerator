@@ -504,49 +504,51 @@ export function PhotoResizer() {
     : 0;
 
   return (
-    <div className="bg-white border border-stone-200 shadow-xs p-6 md:p-8 rounded-xl w-full text-left">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 border-b border-stone-100 pb-4">
-        <h2 className="text-xs font-semibold uppercase tracking-wider text-stone-600 flex items-center gap-2">
-          <ImageIcon className="text-stone-700" size={15} />
-          Photo Resizer, Cropper & Compressor
+    <div className="bg-white border border-slate-200 shadow-md p-6 md:p-8 rounded-2xl relative overflow-hidden w-full text-left">
+      <div className="absolute inset-0 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] [background-size:16px_16px] opacity-15 pointer-events-none -z-10"></div>
+      
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 relative z-10 border-b border-slate-100 pb-4">
+        <h2 className="text-xs font-bold uppercase tracking-widest text-slate-500 flex items-center gap-2">
+          <ImageIcon className="text-blue-600" size={16} />
+          Instagram Photo Resizer, Cropper & Compressor
         </h2>
 
         {selectedImage && (
-          <div className="flex flex-wrap bg-stone-100 p-1 rounded-lg border border-stone-200 self-start sm:self-auto max-w-full gap-1">
+          <div className="flex bg-slate-100 p-1 rounded-xl border border-slate-200 self-start sm:self-auto overflow-x-auto max-w-full">
             <button
               onClick={() => setActiveTab('resize')}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-colors whitespace-nowrap ${
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all whitespace-nowrap ${
                 activeTab === 'resize'
-                  ? 'bg-white text-stone-900 shadow-2xs'
-                  : 'text-stone-600 hover:text-stone-900'
+                  ? 'bg-white text-blue-600 shadow-sm'
+                  : 'text-slate-600 hover:text-slate-900'
               }`}
             >
-              <Sliders size={13} />
+              <Sliders size={14} />
               Resize & Format
             </button>
             <button
               onClick={() => setActiveTab('crop')}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-colors relative whitespace-nowrap ${
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all relative whitespace-nowrap ${
                 activeTab === 'crop'
-                  ? 'bg-white text-stone-900 shadow-2xs'
-                  : 'text-stone-600 hover:text-stone-900'
+                  ? 'bg-white text-blue-600 shadow-sm'
+                  : 'text-slate-600 hover:text-slate-900'
               }`}
             >
-              <Crop size={13} />
+              <Crop size={14} />
               Crop Photo
               {isCroppingApplied && (
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block ml-0.5"></span>
+                <span className="w-2 h-2 rounded-full bg-emerald-500 inline-block ml-0.5"></span>
               )}
             </button>
             <button
               onClick={() => setActiveTab('compress')}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-colors whitespace-nowrap ${
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all whitespace-nowrap ${
                 activeTab === 'compress'
-                  ? 'bg-white text-stone-900 shadow-2xs'
-                  : 'text-stone-600 hover:text-stone-900'
+                  ? 'bg-white text-blue-600 shadow-sm'
+                  : 'text-slate-600 hover:text-slate-900'
               }`}
             >
-              <Zap size={13} className="text-stone-700" />
+              <Zap size={14} className="text-amber-500" />
               Compress Image
             </button>
           </div>
@@ -557,18 +559,18 @@ export function PhotoResizer() {
         <div 
           onDrop={handleDrop}
           onDragOver={handleDragOver}
-          className="border border-dashed border-stone-200 rounded-xl bg-stone-50/50 p-12 text-center cursor-pointer hover:border-stone-300 hover:bg-stone-50 transition-colors flex flex-col items-center justify-center min-h-[280px]"
+          className="border border-dashed border-slate-200 rounded-xl bg-slate-50 p-12 text-center cursor-pointer hover:border-slate-300 hover:bg-slate-100/50 transition-all flex flex-col items-center justify-center min-h-[300px] shadow-sm relative z-10 group"
           onClick={() => fileInputRef.current?.click()}
         >
-          <div className="p-3 bg-white shadow-2xs border border-stone-200 rounded-lg mb-3 flex gap-2">
-             <Upload size={20} className="text-stone-700" />
-             <Zap size={20} className="text-stone-600" />
+          <div className="p-4 bg-white shadow-sm border border-slate-200 rounded-xl mb-4 group-hover:scale-110 transition-transform flex gap-2">
+             <Upload size={24} className="text-blue-600" />
+             <Zap size={24} className="text-amber-500" />
           </div>
-          <h3 className="text-sm font-semibold text-stone-800 mb-1">Upload a photo to Resize, Crop or Compress</h3>
-          <p className="text-xs text-stone-500 max-w-sm mb-5 font-normal">
-            Drag and drop an image here, or click to browse files. Convert formats, adjust quality, resize or crop instantly.
+          <h3 className="text-sm font-bold text-slate-700 mb-1">Upload a photo to Resize, Crop or Compress</h3>
+          <p className="text-xs font-medium text-slate-400 max-w-sm mb-6">
+            Drag and drop an image here, or click to browse your files. Convert format, adjust quality, resize or crop instantly.
           </p>
-          <button className="bg-stone-900 hover:bg-stone-800 text-white px-5 py-2.5 rounded-lg text-xs font-semibold transition-colors shadow-2xs">
+          <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-lg text-xs font-bold transition-all uppercase tracking-widest shadow-sm">
             Select Photo
           </button>
           <input 
@@ -581,17 +583,17 @@ export function PhotoResizer() {
         </div>
       ) : activeTab === 'compress' ? (
         /* IMAGE COMPRESSOR INTERFACE */
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start relative z-10">
           <div className="lg:col-span-5 space-y-6">
             {/* File Size Comparison Badge */}
-            <div className="bg-stone-900 text-white p-5 rounded-xl space-y-4 shadow-2xs">
-              <div className="flex items-center justify-between border-b border-stone-800 pb-3">
-                <span className="text-xs font-semibold uppercase tracking-wider text-stone-400 flex items-center gap-1.5">
-                  <HardDrive size={13} className="text-stone-300" />
+            <div className="bg-gradient-to-br from-slate-900 to-slate-800 text-white p-5 rounded-2xl shadow-lg space-y-4">
+              <div className="flex items-center justify-between border-b border-slate-700 pb-3">
+                <span className="text-xs font-bold uppercase tracking-widest text-slate-400 flex items-center gap-1.5">
+                  <HardDrive size={14} className="text-amber-400" />
                   File Size Comparison
                 </span>
                 {percentSaved > 0 && (
-                  <span className="bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-semibold px-2 py-0.5 rounded">
+                  <span className="bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-[10px] font-extrabold px-2.5 py-1 rounded-full">
                     -{percentSaved}% Smaller
                   </span>
                 )}
@@ -599,23 +601,23 @@ export function PhotoResizer() {
 
               <div className="grid grid-cols-2 gap-4 text-left">
                 <div>
-                  <p className="text-xs text-stone-400 uppercase tracking-wider mb-0.5">Original Size</p>
-                  <p className="font-mono text-sm font-semibold text-stone-200">{formatBytes(rawOriginalBytes)}</p>
+                  <p className="text-[10px] font-bold uppercase text-slate-400 tracking-wider mb-1">Original Size</p>
+                  <p className="font-mono text-base font-bold text-slate-200">{formatBytes(rawOriginalBytes)}</p>
                 </div>
                 <div>
-                  <p className="text-xs text-emerald-400 uppercase tracking-wider mb-0.5">Compressed</p>
-                  <p className="font-mono text-lg font-bold text-emerald-400">{formatBytes(compressedSizeBytes)}</p>
+                  <p className="text-[10px] font-bold uppercase text-amber-400 tracking-wider mb-1">Compressed Estimate</p>
+                  <p className="font-mono text-xl font-black text-amber-400">{formatBytes(compressedSizeBytes)}</p>
                 </div>
               </div>
             </div>
 
             {/* Compression Quality Controls */}
-            <div className="space-y-2">
-              <div className="flex items-center justify-between">
-                <label className="text-xs font-semibold uppercase tracking-wider text-stone-600">
+            <div>
+              <div className="flex items-center justify-between mb-2">
+                <label className="text-xs font-bold uppercase tracking-widest text-slate-500">
                   Image Quality: {quality}%
                 </label>
-                <span className="text-xs text-stone-500">
+                <span className="text-[10px] font-semibold text-slate-400">
                   {quality >= 85 ? 'High Quality' : quality >= 65 ? 'Balanced' : 'High Compression'}
                 </span>
               </div>
@@ -626,10 +628,10 @@ export function PhotoResizer() {
                 step="1"
                 value={quality}
                 onChange={(e) => setQuality(parseInt(e.target.value))}
-                className="w-full accent-stone-900 h-1.5 bg-stone-200 rounded-lg cursor-pointer"
+                className="w-full accent-blue-600 h-2 bg-slate-200 rounded-lg cursor-pointer mb-3"
               />
 
-              <div className="grid grid-cols-4 gap-1.5 pt-1">
+              <div className="grid grid-cols-4 gap-1.5">
                 {[
                   { label: 'Compact', val: 50 },
                   { label: 'Balanced', val: 70 },
@@ -639,10 +641,10 @@ export function PhotoResizer() {
                   <button
                     key={preset.val}
                     onClick={() => setQuality(preset.val)}
-                    className={`py-1.5 px-2 rounded-lg text-xs font-medium border transition-colors ${
+                    className={`py-1.5 px-2 rounded-lg text-[11px] font-bold border transition-all ${
                       quality === preset.val
-                        ? 'bg-stone-900 border-stone-900 text-white'
-                        : 'bg-white border-stone-200 text-stone-600 hover:border-stone-300'
+                        ? 'bg-blue-600 border-blue-600 text-white shadow-sm'
+                        : 'bg-white border-slate-200 text-slate-600 hover:border-slate-300'
                     }`}
                   >
                     {preset.label} ({preset.val}%)
@@ -653,26 +655,26 @@ export function PhotoResizer() {
 
             {/* Export Format Selector */}
             <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-stone-600 mb-2">
+              <label className="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2">
                 Output Format
               </label>
               <div className="grid grid-cols-3 gap-2">
                 {[
                   { id: 'image/jpeg', label: 'JPG', desc: 'Best for photos' },
                   { id: 'image/webp', label: 'WebP', desc: 'Next-gen web' },
-                  { id: 'image/png', label: 'PNG', desc: 'Lossless' },
+                  { id: 'image/png', label: 'PNG', desc: 'Lossless / Alpha' },
                 ].map((fmt) => (
                   <button
                     key={fmt.id}
                     onClick={() => setExportFormat(fmt.id as any)}
-                    className={`p-2.5 rounded-lg border text-left transition-colors ${
+                    className={`p-2.5 rounded-xl border text-left transition-all ${
                       exportFormat === fmt.id
-                        ? 'bg-stone-900 border-stone-900 text-white'
-                        : 'bg-white border-stone-200 text-stone-700 hover:border-stone-300'
+                        ? 'bg-blue-600 border-blue-600 text-white shadow-sm'
+                        : 'bg-white border-slate-200 text-slate-700 hover:border-slate-300'
                     }`}
                   >
-                    <div className="font-semibold text-xs">{fmt.label}</div>
-                    <div className={`text-[10px] ${exportFormat === fmt.id ? 'text-stone-300' : 'text-stone-400'}`}>
+                    <div className="font-bold text-xs">{fmt.label}</div>
+                    <div className={`text-[9px] font-medium ${exportFormat === fmt.id ? 'text-blue-100' : 'text-slate-400'}`}>
                       {fmt.desc}
                     </div>
                   </button>
@@ -682,7 +684,7 @@ export function PhotoResizer() {
 
             {/* Scale / Dimension Reduction */}
             <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-stone-600 mb-2">
+              <label className="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2">
                 Resize Dimensions Scaling
               </label>
               <div className="grid grid-cols-4 gap-1.5">
@@ -690,60 +692,60 @@ export function PhotoResizer() {
                   <button
                     key={s}
                     onClick={() => setScalePercent(s)}
-                    className={`py-1.5 px-2 rounded-lg text-xs font-medium border transition-colors ${
+                    className={`py-2 px-2 rounded-lg text-xs font-bold border transition-all ${
                       scalePercent === s
-                        ? 'bg-stone-900 border-stone-900 text-white'
-                        : 'bg-white border-stone-200 text-stone-600 hover:border-stone-300'
+                        ? 'bg-amber-500 border-amber-500 text-white shadow-sm'
+                        : 'bg-white border-slate-200 text-slate-600 hover:border-slate-300'
                     }`}
                   >
                     {s}% Size
                   </button>
                 ))}
               </div>
-              <p className="text-xs text-stone-400 mt-1.5 font-mono">
-                Output: {workingImageObj ? Math.round(workingImageObj.width * (scalePercent / 100)) : 0} × {workingImageObj ? Math.round(workingImageObj.height * (scalePercent / 100)) : 0} px
+              <p className="text-[10px] text-slate-400 mt-1.5">
+                Output resolution: {workingImageObj ? Math.round(workingImageObj.width * (scalePercent / 100)) : 0} × {workingImageObj ? Math.round(workingImageObj.height * (scalePercent / 100)) : 0} px
               </p>
             </div>
 
             {/* Action Buttons */}
-            <div className="pt-2 flex flex-col gap-2">
+            <div className="pt-2 flex flex-col gap-2.5">
               <button
                 onClick={handleDownloadCompressed}
-                className="w-full bg-stone-900 hover:bg-stone-800 text-white py-3 px-4 rounded-lg font-semibold text-xs flex justify-center items-center gap-2 transition-colors shadow-2xs"
+                className="w-full bg-amber-500 hover:bg-amber-600 text-white py-3.5 px-5 rounded-xl font-bold text-xs flex justify-center items-center gap-2 transition-all shadow-md uppercase tracking-wider"
               >
-                <FileDown size={15} />
+                <FileDown size={16} />
                 Download Compressed Image
               </button>
 
               <button
                 onClick={clearImage}
-                className="w-full bg-white hover:bg-stone-50 text-stone-700 border border-stone-200 py-2.5 px-4 rounded-lg font-medium text-xs flex justify-center items-center gap-1.5 transition-colors"
+                className="w-full bg-white hover:bg-slate-50 text-slate-600 border border-slate-200 py-2.5 px-4 rounded-xl font-bold text-xs flex justify-center items-center gap-2 transition-all"
               >
-                <RefreshCw size={13} />
+                <RefreshCw size={14} />
                 Start Over / Choose New Photo
               </button>
             </div>
           </div>
 
           {/* Canvas Compression Live Preview */}
-          <div className="lg:col-span-7 flex flex-col items-center justify-center bg-stone-950 border border-stone-800 rounded-xl p-6 min-h-[380px] select-none relative">
-            <p className="text-xs font-medium text-stone-400 mb-3 flex items-center gap-1.5">
-              <Zap size={13} className="text-stone-300" />
+          <div className="lg:col-span-7 flex flex-col items-center justify-center bg-slate-900 border border-slate-800 rounded-2xl p-6 min-h-[380px] shadow-inner select-none relative">
+            <p className="text-[10px] font-bold text-slate-400 mb-3 uppercase tracking-widest flex items-center gap-1.5">
+              <Zap size={12} className="text-amber-400" />
               Live Compressed Image Preview
             </p>
             <canvas
               ref={compressCanvasRef}
-              className="max-w-full max-h-[460px] object-contain rounded-lg border border-stone-800 bg-black/40"
+              className="max-w-full max-h-[460px] object-contain rounded-xl shadow-2xl border border-slate-700 bg-black/40"
             />
           </div>
         </div>
       ) : activeTab === 'crop' ? (
         /* CROP PHOTO INTERFACE */
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start relative z-10">
           <div className="lg:col-span-5 space-y-6">
             <div>
-              <label className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-stone-600 mb-3">
-                <Crop size={14} className="text-stone-500" />
+              <label className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-slate-500 mb-3">
+                <Crop size={14} className="text-blue-600" />
                 Aspect Ratio Presets
               </label>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 mb-4">
@@ -758,10 +760,10 @@ export function PhotoResizer() {
                   <button
                     key={opt.id}
                     onClick={() => handleCropRatioChange(opt.id as CropRatioOption)}
-                    className={`px-3 py-2 rounded-lg border text-xs font-medium transition-colors ${
+                    className={`px-3 py-2.5 rounded-xl border text-xs font-bold transition-all ${
                       cropRatio === opt.id
-                        ? 'bg-stone-900 border-stone-900 text-white'
-                        : 'bg-white border-stone-200 text-stone-600 hover:border-stone-300'
+                        ? 'bg-blue-600 border-blue-600 text-white shadow-sm'
+                        : 'bg-white border-slate-200 text-slate-600 hover:border-slate-300'
                     }`}
                   >
                     {opt.label}
@@ -770,39 +772,39 @@ export function PhotoResizer() {
               </div>
             </div>
 
-            <div className="bg-stone-50 border border-stone-200 p-4 rounded-lg space-y-2 text-xs text-stone-600">
+            <div className="bg-slate-50 border border-slate-200 p-4 rounded-xl space-y-2 text-xs text-slate-600">
               <div className="flex justify-between font-medium">
-                <span className="text-stone-400">Original Dimensions:</span>
-                <span className="font-mono font-semibold text-stone-800">{originalImageObj?.width} × {originalImageObj?.height} px</span>
+                <span className="text-slate-400">Original Dimensions:</span>
+                <span className="font-mono font-bold text-slate-800">{originalImageObj?.width} × {originalImageObj?.height} px</span>
               </div>
               <div className="flex justify-between font-medium">
-                <span className="text-stone-400">Cropped Region:</span>
-                <span className="font-mono font-semibold text-stone-900">{croppedPixelWidth} × {croppedPixelHeight} px</span>
+                <span className="text-slate-400">Cropped Region:</span>
+                <span className="font-mono font-bold text-blue-600">{croppedPixelWidth} × {croppedPixelHeight} px</span>
               </div>
             </div>
 
-            <div className="flex flex-col gap-2 pt-2">
+            <div className="flex flex-col gap-2.5 pt-2">
               <button
                 onClick={applyCrop}
-                className="w-full bg-stone-900 hover:bg-stone-800 text-white py-3 px-4 rounded-lg font-semibold text-xs flex justify-center items-center gap-1.5 transition-colors shadow-2xs"
+                className="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 px-5 rounded-xl font-bold text-xs flex justify-center items-center gap-2 transition-all shadow-sm uppercase tracking-wider"
               >
-                <Check size={15} />
+                <Check size={16} />
                 Apply Crop & Continue
               </button>
 
               {isCroppingApplied && (
                 <button
                   onClick={resetToOriginal}
-                  className="w-full bg-white hover:bg-stone-50 text-stone-700 border border-stone-200 py-2.5 px-4 rounded-lg font-medium text-xs flex justify-center items-center gap-1.5 transition-colors"
+                  className="w-full bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 py-2.5 px-4 rounded-xl font-bold text-xs flex justify-center items-center gap-2 transition-all shadow-sm"
                 >
-                  <RotateCcw size={13} />
+                  <RotateCcw size={14} />
                   Reset to Original Uncropped Photo
                 </button>
               )}
 
               <button
                 onClick={() => setActiveTab('resize')}
-                className="w-full bg-stone-100 hover:bg-stone-200 text-stone-600 py-2 px-4 rounded-lg font-medium text-xs flex justify-center items-center gap-1.5 transition-colors"
+                className="w-full bg-slate-100 hover:bg-slate-200 text-slate-600 py-2.5 px-4 rounded-xl font-bold text-xs flex justify-center items-center gap-2 transition-all"
               >
                 Cancel / Return to Resizer
               </button>
@@ -810,15 +812,15 @@ export function PhotoResizer() {
           </div>
 
           {/* Interactive Crop Preview Canvas Container */}
-          <div className="lg:col-span-7 flex flex-col items-center justify-center bg-stone-950 border border-stone-800 rounded-xl p-4 md:p-6 min-h-[360px] select-none relative overflow-hidden">
-            <p className="text-xs text-stone-400 mb-3 flex items-center gap-1.5">
-              <Move size={12} className="text-stone-300" />
+          <div className="lg:col-span-7 flex flex-col items-center justify-center bg-slate-900 border border-slate-800 rounded-2xl p-4 md:p-6 min-h-[360px] shadow-inner select-none relative overflow-hidden">
+            <p className="text-[10px] font-bold text-slate-400 mb-3 uppercase tracking-widest flex items-center gap-1.5">
+              <Move size={12} className="text-blue-400" />
               Drag box or corner handles to adjust crop region
             </p>
 
             <div 
               ref={cropContainerRef}
-              className="relative max-w-full max-h-[460px] inline-block overflow-hidden rounded-lg border border-stone-800 bg-black/40"
+              className="relative max-w-full max-h-[460px] inline-block overflow-hidden rounded-xl shadow-2xl border border-slate-700 bg-black/40"
               onMouseMove={(e) => cropDragType.current && handleCropMouseMove(e.nativeEvent)}
               onTouchMove={(e) => cropDragType.current && handleCropMouseMove(e.nativeEvent)}
             >
@@ -865,29 +867,29 @@ export function PhotoResizer() {
                   <div className="border-r border-b border-white/60"></div>
                   <div className="border-r border-b border-white/60"></div>
                   <div className="border-b border-white/60"></div>
-                  <div className="border-r border-b border-white/60"></div>
-                  <div className="border-r border-b border-white/60"></div>
+                  <div className="border-r border-white/60"></div>
+                  <div className="border-r border-white/60"></div>
                   <div></div>
                 </div>
 
                 {/* Corner Resize Handles */}
                 <div
-                  className="absolute -top-1.5 -left-1.5 w-3.5 h-3.5 bg-white border-2 border-stone-900 rounded-full shadow-sm cursor-nwse-resize z-20"
+                  className="absolute -top-2 -left-2 w-4 h-4 bg-white border-2 border-blue-600 rounded-full shadow-md cursor-nwse-resize z-20 hover:scale-125 transition-transform"
                   onMouseDown={(e) => handleCropMouseDown(e, 'nw')}
                   onTouchStart={(e) => handleCropTouchStart(e, 'nw')}
                 />
                 <div
-                  className="absolute -top-1.5 -right-1.5 w-3.5 h-3.5 bg-white border-2 border-stone-900 rounded-full shadow-sm cursor-nesw-resize z-20"
+                  className="absolute -top-2 -right-2 w-4 h-4 bg-white border-2 border-blue-600 rounded-full shadow-md cursor-nesw-resize z-20 hover:scale-125 transition-transform"
                   onMouseDown={(e) => handleCropMouseDown(e, 'ne')}
                   onTouchStart={(e) => handleCropTouchStart(e, 'ne')}
                 />
                 <div
-                  className="absolute -bottom-1.5 -left-1.5 w-3.5 h-3.5 bg-white border-2 border-stone-900 rounded-full shadow-sm cursor-nesw-resize z-20"
+                  className="absolute -bottom-2 -left-2 w-4 h-4 bg-white border-2 border-blue-600 rounded-full shadow-md cursor-nesw-resize z-20 hover:scale-125 transition-transform"
                   onMouseDown={(e) => handleCropMouseDown(e, 'sw')}
                   onTouchStart={(e) => handleCropTouchStart(e, 'sw')}
                 />
                 <div
-                  className="absolute -bottom-1.5 -right-1.5 w-3.5 h-3.5 bg-white border-2 border-stone-900 rounded-full shadow-sm cursor-nwse-resize z-20"
+                  className="absolute -bottom-2 -right-2 w-4 h-4 bg-white border-2 border-blue-600 rounded-full shadow-md cursor-nwse-resize z-20 hover:scale-125 transition-transform"
                   onMouseDown={(e) => handleCropMouseDown(e, 'se')}
                   onTouchStart={(e) => handleCropTouchStart(e, 'se')}
                 />
@@ -897,18 +899,18 @@ export function PhotoResizer() {
         </div>
       ) : (
         /* RESIZE & FORMAT INTERFACE */
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start relative z-10">
           <div className="space-y-6">
             {/* Quick Crop Banner indicator if cropped */}
             {isCroppingApplied && (
-              <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-3 flex items-center justify-between text-xs text-emerald-800">
+              <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-3 flex items-center justify-between text-xs text-emerald-800">
                 <div className="flex items-center gap-2 font-medium">
-                  <Check size={15} className="text-emerald-600" />
+                  <Check size={16} className="text-emerald-600" />
                   <span>Custom cropped image applied</span>
                 </div>
                 <button
                   onClick={() => setActiveTab('crop')}
-                  className="text-emerald-700 underline font-semibold hover:text-emerald-900"
+                  className="text-emerald-700 underline font-bold hover:text-emerald-900"
                 >
                   Adjust Crop
                 </button>
@@ -916,27 +918,27 @@ export function PhotoResizer() {
             )}
 
             <div>
-              <label className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-stone-600 mb-3">
-                <Settings size={14} className="text-stone-500" />
+              <label className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-slate-500 mb-3">
+                <Settings size={14} className="text-blue-600" />
                 Select Output Format
               </label>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-4">
                 {INSTAGRAM_RATIOS.map((r) => (
                   <button
                     key={r.id}
                     onClick={() => setRatio(ratio.id === 'custom' && r.id === 'custom' ? ratio : r)}
-                    className={`flex items-center gap-3 px-3.5 py-2.5 rounded-lg border text-xs text-left transition-colors ${
+                    className={`flex items-center gap-3 px-4 py-3 rounded-xl border text-xs text-left transition-all ${
                       ratio.id === r.id 
-                        ? 'bg-stone-900 border-stone-900 text-white' 
-                        : 'bg-white border-stone-200 text-stone-600 hover:border-stone-300 hover:text-stone-800'
+                        ? 'bg-blue-600 border-blue-600 text-white shadow-sm' 
+                        : 'bg-white border-slate-200 text-slate-600 hover:border-slate-300 hover:text-slate-800'
                     }`}
                   >
-                    <div className={ratio.id === r.id ? 'text-white' : 'text-stone-400'}>
+                    <div className={ratio.id === r.id ? 'text-white' : 'text-slate-400'}>
                       {r.icon}
                     </div>
                     <div className="leading-tight">
-                      <div className="font-semibold">{r.label}</div>
-                      <div className="text-[10px] opacity-75 font-mono">
+                      <div className="font-bold">{r.label}</div>
+                      <div className="text-[10px] font-medium opacity-80">
                         {r.id === 'custom' && ratio.id === 'custom' ? `${ratio.width} × ${ratio.height} px` : `${r.width} × ${r.height} px`}
                       </div>
                     </div>
@@ -945,23 +947,23 @@ export function PhotoResizer() {
               </div>
 
               {ratio.id === 'custom' && (
-                <div className="flex gap-3 p-3.5 bg-stone-50 rounded-lg border border-stone-200">
+                <div className="flex gap-3 p-4 bg-slate-50 rounded-xl border border-slate-200">
                   <div className="flex-1">
-                    <label className="block text-xs font-medium text-stone-500 mb-1">Width (px)</label>
+                    <label className="block text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-1">Width (px)</label>
                     <input 
                       type="number" 
                       value={ratio.width}
                       onChange={(e) => setRatio({ ...ratio, width: Math.max(1, parseInt(e.target.value) || 1080) })}
-                      className="w-full bg-white border border-stone-200 font-mono text-xs rounded-md px-2.5 py-1.5 font-medium text-stone-900 outline-none focus:border-stone-900 transition-colors"
+                      className="w-full bg-white border border-slate-200 font-mono text-xs rounded-lg px-3 py-1.5 font-bold text-slate-800 outline-none focus:border-blue-600 transition-colors shadow-sm"
                     />
                   </div>
                   <div className="flex-1">
-                    <label className="block text-xs font-medium text-stone-500 mb-1">Height (px)</label>
+                    <label className="block text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-1">Height (px)</label>
                     <input 
                       type="number" 
                       value={ratio.height}
                       onChange={(e) => setRatio({ ...ratio, height: Math.max(1, parseInt(e.target.value) || 1080) })}
-                      className="w-full bg-white border border-stone-200 font-mono text-xs rounded-md px-2.5 py-1.5 font-medium text-stone-900 outline-none focus:border-stone-900 transition-colors"
+                      className="w-full bg-white border border-slate-200 font-mono text-xs rounded-lg px-3 py-1.5 font-bold text-slate-800 outline-none focus:border-blue-600 transition-colors shadow-sm"
                     />
                   </div>
                 </div>
@@ -970,17 +972,17 @@ export function PhotoResizer() {
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-semibold uppercase tracking-wider text-stone-600 mb-2">Fit Strategy</label>
-                <div className="flex bg-stone-100 rounded-md p-1 border border-stone-200">
+                <label className="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2">Fit Strategy</label>
+                <div className="flex bg-slate-100 rounded-lg p-1 border border-slate-200">
                   <button 
                     onClick={() => setFitMode('cover')}
-                    className={`flex-1 py-1 text-xs font-medium rounded transition-colors ${fitMode === 'cover' ? 'bg-white text-stone-900 shadow-2xs' : 'text-stone-500 hover:text-stone-700'}`}
+                    className={`flex-1 py-1.5 text-xs font-bold rounded-md transition-all ${fitMode === 'cover' ? 'bg-white text-slate-800 shadow-sm border border-slate-150' : 'text-slate-500 hover:text-slate-700'}`}
                   >
                     Fill (Cover)
                   </button>
                   <button 
                     onClick={() => setFitMode('contain')}
-                    className={`flex-1 py-1 text-xs font-medium rounded transition-colors ${fitMode === 'contain' ? 'bg-white text-stone-900 shadow-2xs' : 'text-stone-500 hover:text-stone-700'}`}
+                    className={`flex-1 py-1.5 text-xs font-bold rounded-md transition-all ${fitMode === 'contain' ? 'bg-white text-slate-800 shadow-sm border border-slate-150' : 'text-slate-500 hover:text-slate-700'}`}
                   >
                     Fit (Pad)
                   </button>
@@ -989,13 +991,13 @@ export function PhotoResizer() {
 
               {fitMode === 'contain' && (
                 <div>
-                  <label className="block text-xs font-semibold uppercase tracking-wider text-stone-600 mb-2">Padding Color</label>
-                  <div className="flex gap-1.5 items-center">
-                    {['#ffffff', '#000000', '#f4f4f5', '#18181b'].map(c => (
+                  <label className="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2">Padding Color</label>
+                  <div className="flex gap-1.5">
+                    {['#ffffff', '#000000', '#f4f4f5', '#18181b', '#3b82f6', '#10b981'].map(c => (
                       <button 
                         key={c}
                         onClick={() => setBgColor(c)}
-                        className={`w-6 h-6 rounded-md border ${bgColor === c ? 'border-stone-900 ring-2 ring-stone-300' : 'border-stone-300'} transition-all`}
+                        className={`w-6 h-6 rounded-full border ${bgColor === c ? 'border-blue-600 ring-2 ring-blue-100 scale-105 shadow-sm' : 'border-slate-200'} transition-all hover:scale-105`}
                         style={{ backgroundColor: c }}
                         title={c}
                       />
@@ -1004,7 +1006,7 @@ export function PhotoResizer() {
                       type="color" 
                       value={bgColor}
                       onChange={(e) => setBgColor(e.target.value)}
-                      className="w-6 h-6 rounded-md border-0 p-0 cursor-pointer overflow-hidden bg-transparent"
+                      className="w-6 h-6 rounded-full border-0 p-0 cursor-pointer overflow-hidden bg-transparent"
                     />
                   </div>
                 </div>
@@ -1012,20 +1014,20 @@ export function PhotoResizer() {
             </div>
 
             {/* Quality & Format Selection in Resize Mode */}
-            <div className="bg-stone-50 border border-stone-200 p-4 rounded-lg space-y-2.5">
+            <div className="bg-slate-50 border border-slate-200 p-4 rounded-xl space-y-3">
               <div className="flex justify-between items-center">
-                <label className="text-xs font-semibold uppercase tracking-wider text-stone-600">
+                <label className="text-xs font-bold uppercase tracking-widest text-slate-500">
                   Export Quality: {quality}%
                 </label>
-                <div className="flex gap-1">
+                <div className="flex gap-1.5">
                   {(['image/jpeg', 'image/webp', 'image/png'] as const).map((fmt) => (
                     <button
                       key={fmt}
                       onClick={() => setExportFormat(fmt)}
-                      className={`px-2 py-0.5 rounded text-xs font-medium uppercase transition-colors ${
+                      className={`px-2 py-1 rounded text-[10px] font-bold uppercase transition-all ${
                         exportFormat === fmt
-                          ? 'bg-stone-900 text-white'
-                          : 'bg-white text-stone-600 border border-stone-200'
+                          ? 'bg-blue-600 text-white'
+                          : 'bg-white text-slate-600 border border-slate-200'
                       }`}
                     >
                       {fmt.replace('image/', '')}
@@ -1040,15 +1042,15 @@ export function PhotoResizer() {
                 step="1"
                 value={quality}
                 onChange={(e) => setQuality(parseInt(e.target.value))}
-                className="w-full accent-stone-900 h-1.5 bg-stone-200 rounded-lg cursor-pointer"
+                className="w-full accent-blue-600 h-1.5 bg-slate-200 rounded-lg cursor-pointer"
               />
             </div>
 
             {/* Position and Zoom Interactive Controls */}
-            <div className="bg-stone-50 border border-stone-200 p-4 rounded-lg space-y-3">
+            <div className="bg-slate-50 border border-slate-200 p-5 rounded-xl space-y-4 shadow-sm">
               <div className="flex items-center justify-between">
-                <label className="text-xs font-semibold uppercase tracking-wider text-stone-600 flex items-center gap-1.5">
-                  <Move size={13} className="text-stone-500" />
+                <label className="text-xs font-bold uppercase tracking-widest text-slate-500 flex items-center gap-2">
+                  <Move size={14} className="text-blue-600" />
                   Position & Zoom
                 </label>
                 <button
@@ -1058,20 +1060,20 @@ export function PhotoResizer() {
                     setOffsetY(0);
                     setZoom(1);
                   }}
-                  className="text-xs font-medium text-stone-600 hover:text-stone-900 flex items-center gap-1 transition-colors bg-white px-2 py-1 rounded border border-stone-200 cursor-pointer"
+                  className="text-[10px] font-bold text-blue-600 hover:text-blue-700 flex items-center gap-1.5 transition-all bg-white px-2.5 py-1.5 rounded-lg border border-slate-200 shadow-sm cursor-pointer"
                 >
-                  <RotateCcw size={11} />
-                  Reset
+                  <RotateCcw size={10} />
+                  Reset Position
                 </button>
               </div>
 
-              <div className="space-y-1.5">
-                <div className="flex justify-between text-xs text-stone-500">
-                  <span>Zoom: {zoom.toFixed(2)}x</span>
+              <div className="space-y-2">
+                <div className="flex justify-between text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                  <span>Zoom scale: {zoom.toFixed(2)}x</span>
                   <span>Drag photo directly to adjust</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <ZoomOut size={13} className="text-stone-400 shrink-0" />
+                <div className="flex items-center gap-3">
+                  <ZoomOut size={14} className="text-slate-400 shrink-0" />
                   <input
                     type="range"
                     min="0.5"
@@ -1079,45 +1081,46 @@ export function PhotoResizer() {
                     step="0.01"
                     value={zoom}
                     onChange={(e) => setZoom(parseFloat(e.target.value))}
-                    className="flex-1 accent-stone-900 h-1 bg-stone-200 rounded-lg cursor-pointer"
+                    className="flex-1 accent-blue-600 h-1 bg-slate-200 rounded-lg cursor-pointer"
                   />
-                  <ZoomIn size={13} className="text-stone-400 shrink-0" />
+                  <ZoomIn size={14} className="text-slate-400 shrink-0" />
                 </div>
               </div>
             </div>
 
-            <div className="pt-2 flex flex-col sm:flex-row gap-2">
+            <div className="pt-4 flex flex-col sm:flex-row gap-3">
               <button 
                 onClick={handleDownloadResized}
-                className="flex-1 bg-stone-900 hover:bg-stone-800 text-white py-2.5 px-4 rounded-lg font-semibold text-xs flex justify-center items-center gap-2 transition-colors shadow-2xs"
+                className="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-3 px-5 rounded-xl font-bold text-sm flex justify-center items-center gap-2 transition-all shadow-sm uppercase tracking-wider"
               >
-                <Download size={15} />
+                <Download size={16} />
                 Download Resized Photo
               </button>
 
               <button 
                 onClick={() => setActiveTab('crop')}
-                className="bg-white hover:bg-stone-50 text-stone-700 border border-stone-200 px-3.5 py-2.5 rounded-lg transition-colors font-medium text-xs flex justify-center items-center gap-1.5"
+                className="bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 px-4 py-3 rounded-xl transition-all font-bold text-xs flex justify-center items-center gap-2 shadow-sm"
               >
-                <Crop size={14} className="text-stone-500" />
+                <Crop size={15} className="text-blue-600" />
                 Crop Photo
               </button>
 
               <button 
                 onClick={clearImage}
-                className="bg-white hover:bg-stone-50 text-stone-600 border border-stone-200 px-3 py-2.5 rounded-lg transition-colors group"
+                className="bg-white hover:bg-slate-50 text-slate-600 border border-slate-200 shadow-sm px-4 py-3 rounded-xl transition-all font-bold group"
                 title="Start over"
               >
-                <RefreshCw size={14} className="group-hover:rotate-180 transition-transform duration-300 text-stone-500" />
+                <RefreshCw size={16} className="group-hover:rotate-180 transition-transform duration-500 text-slate-500" />
               </button>
             </div>
           </div>
 
-          <div className="flex flex-col items-center justify-center bg-stone-50 border border-stone-200 rounded-xl p-6 min-h-[300px] select-none">
-            <p className="text-xs text-stone-500 mb-3 flex items-center gap-1.5">
-              <Move size={12} className="text-stone-400" />
+          <div className="flex flex-col items-center justify-center bg-slate-50 border border-slate-200 rounded-2xl p-6 min-h-[300px] shadow-inner select-none">
+            <p className="text-[10px] font-bold text-slate-400 mb-3 uppercase tracking-widest flex items-center gap-1.5">
+              <Move size={12} className="text-blue-500" />
               Drag photo to reposition
             </p>
+            {/* The canvas is displayed scaled down visually using CSS to fit the container naturally but actual resolution is high */}
             <div className="relative w-full flex justify-center overflow-hidden">
               <canvas 
                 ref={canvasRef} 
@@ -1128,7 +1131,7 @@ export function PhotoResizer() {
                 onTouchStart={handleTouchStart}
                 onTouchMove={handleTouchMove}
                 onTouchEnd={handleTouchEnd}
-                className="max-w-full max-h-[500px] object-contain rounded-lg border border-stone-200 bg-white cursor-move touch-none select-none shadow-2xs"
+                className="max-w-full max-h-[500px] object-contain rounded-xl shadow-md border border-slate-200 bg-white cursor-move touch-none select-none"
               />
             </div>
           </div>

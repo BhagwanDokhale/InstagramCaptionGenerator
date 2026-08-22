@@ -669,32 +669,35 @@ export function ToolExplanatoryGuide({ tab, onSelectTab }: ToolExplanatoryGuideP
       style={{ contentVisibility: 'auto', containIntrinsicSize: '1px 1200px' }}
     >
       {/* Header Banner */}
-      <div className="bg-white p-5 sm:p-6 rounded-xl border border-stone-200 shadow-xs">
-        <div className="flex items-center gap-2 mb-2">
-          <BookOpen size={16} className="text-stone-700" />
-          <span className="text-xs font-semibold uppercase tracking-wider text-stone-500">
-            Tool Documentation & Reference
+      <div className="glass-card p-6 md:p-8 rounded-3xl bg-gradient-to-br from-white/90 via-stone-50/80 to-indigo-50/40 border border-white/90 shadow-sm relative overflow-hidden">
+        <div className="absolute top-0 right-0 -mt-6 -mr-6 w-32 h-32 bg-indigo-500/10 rounded-full blur-2xl pointer-events-none"></div>
+        <div className="flex items-center gap-3 mb-3">
+          <div className="p-2.5 bg-indigo-600 text-white rounded-2xl shadow-md shadow-indigo-600/20">
+            <BookOpen size={20} />
+          </div>
+          <span className="text-xs font-bold uppercase tracking-widest text-indigo-700 bg-indigo-50 px-3 py-1 rounded-full border border-indigo-100">
+            Comprehensive Tool Documentation
           </span>
         </div>
-        <h2 className="text-xl sm:text-2xl font-bold text-stone-900 tracking-tight">
+        <h2 className="text-2xl md:text-3.5xl font-display font-extrabold text-stone-950 tracking-tight">
           {guide.title}
         </h2>
-        <p className="text-stone-600 mt-1 text-xs sm:text-sm leading-relaxed max-w-3xl">
+        <p className="text-stone-600 mt-2 text-sm md:text-base leading-relaxed max-w-3xl">
           {guide.subtitle}
         </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Main 8-Column Guide Section */}
-        <div className="lg:col-span-8 space-y-6">
+        <div className="lg:col-span-8 space-y-8">
           
           {/* 1. What the Tool Does */}
-          <section className="bg-white p-5 sm:p-6 rounded-xl border border-stone-200 shadow-xs space-y-2.5">
-            <div className="flex items-center gap-2 text-stone-900 font-semibold text-sm">
-              <Sparkles className="text-stone-700" size={16} />
-              <h3>1. Overview & Capabilities</h3>
+          <section className="bg-white p-6 md:p-8 rounded-2xl border border-stone-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.02)] space-y-3">
+            <div className="flex items-center gap-2.5 text-stone-900 font-bold text-lg">
+              <Sparkles className="text-indigo-600" size={20} />
+              <h3>1. What the Tool Does</h3>
             </div>
-            <div className="text-stone-600 text-xs sm:text-sm leading-relaxed space-y-2.5">
+            <div className="text-stone-600 text-sm md:text-base leading-relaxed space-y-3">
               {guide.whatItDoes.split('\n\n').map((paragraph, pIdx) => (
                 <p key={pIdx}>{paragraph}</p>
               ))}
@@ -702,15 +705,15 @@ export function ToolExplanatoryGuide({ tab, onSelectTab }: ToolExplanatoryGuideP
           </section>
 
           {/* 2. How to Use It */}
-          <section className="bg-white p-5 sm:p-6 rounded-xl border border-stone-200 shadow-xs space-y-3">
-            <div className="flex items-center gap-2 text-stone-900 font-semibold text-sm">
-              <CheckCircle2 className="text-stone-700" size={16} />
+          <section className="bg-white p-6 md:p-8 rounded-2xl border border-stone-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.02)] space-y-4">
+            <div className="flex items-center gap-2.5 text-stone-900 font-bold text-lg">
+              <CheckCircle2 className="text-emerald-600" size={20} />
               <h3>2. Step-by-Step Instructions</h3>
             </div>
-            <ol className="space-y-2">
+            <ol className="space-y-3">
               {guide.howToUseSteps.map((step, idx) => (
-                <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-700 leading-relaxed">
-                  <span className="shrink-0 w-5 h-5 rounded-full bg-stone-900 text-white font-mono text-[10px] flex items-center justify-center mt-0.5">
+                <li key={idx} className="flex items-start gap-3 text-sm md:text-base text-stone-700 leading-relaxed">
+                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-stone-900 text-white font-bold text-xs flex items-center justify-center mt-0.5">
                     {idx + 1}
                   </span>
                   <span>{step}</span>
@@ -720,16 +723,16 @@ export function ToolExplanatoryGuide({ tab, onSelectTab }: ToolExplanatoryGuideP
           </section>
 
           {/* 3. Supported URL Types / Formats */}
-          <section className="bg-white p-5 sm:p-6 rounded-xl border border-stone-200 shadow-xs space-y-2.5">
-            <div className="flex items-center gap-2 text-stone-900 font-semibold text-sm">
-              <FileText className="text-stone-700" size={16} />
+          <section className="bg-white p-6 md:p-8 rounded-2xl border border-stone-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.02)] space-y-3">
+            <div className="flex items-center gap-2.5 text-stone-900 font-bold text-lg">
+              <FileText className="text-violet-600" size={20} />
               <h3>3. {guide.supportedFormatsOrUrls.label}</h3>
             </div>
-            <ul className="space-y-1.5">
+            <ul className="space-y-2">
               {guide.supportedFormatsOrUrls.items.map((item, idx) => (
-                <li key={idx} className="flex items-start gap-2 text-xs text-stone-600">
-                  <span className="w-1 h-1 rounded-full bg-stone-400 mt-2 shrink-0"></span>
-                  <span className="font-mono text-xs bg-stone-50 px-2 py-0.5 rounded border border-stone-200 text-stone-800 break-all">
+                <li key={idx} className="flex items-start gap-2.5 text-sm text-stone-600">
+                  <span className="w-1.5 h-1.5 rounded-full bg-violet-500 mt-2 flex-shrink-0"></span>
+                  <span className="font-mono text-xs md:text-sm bg-stone-50 px-2 py-0.5 rounded border border-stone-200/60 text-stone-800 break-all">
                     {item}
                   </span>
                 </li>
@@ -738,19 +741,19 @@ export function ToolExplanatoryGuide({ tab, onSelectTab }: ToolExplanatoryGuideP
           </section>
 
           {/* 4. Troubleshooting */}
-          <section className="bg-white p-5 sm:p-6 rounded-xl border border-stone-200 shadow-xs space-y-3">
-            <div className="flex items-center gap-2 text-stone-900 font-semibold text-sm">
-              <AlertTriangle className="text-stone-700" size={16} />
+          <section className="bg-white p-6 md:p-8 rounded-2xl border border-stone-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.02)] space-y-4">
+            <div className="flex items-center gap-2.5 text-stone-900 font-bold text-lg">
+              <AlertTriangle className="text-amber-500" size={20} />
               <h3>4. Troubleshooting Common Issues</h3>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {guide.troubleshootingTips.map((tip, idx) => (
-                <div key={idx} className="p-3.5 bg-stone-50 rounded-lg border border-stone-200 space-y-1">
-                  <h4 className="text-xs font-semibold text-stone-900 flex items-center gap-1.5">
-                    <Info size={13} className="text-stone-500" />
+                <div key={idx} className="p-4 bg-amber-50/50 rounded-xl border border-amber-100 space-y-1.5">
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-amber-900 flex items-center gap-1.5">
+                    <Info size={14} className="text-amber-600" />
                     {tip.issue}
                   </h4>
-                  <p className="text-xs text-stone-600 leading-relaxed">
+                  <p className="text-xs md:text-sm text-stone-700 leading-relaxed">
                     {tip.solution}
                   </p>
                 </div>
@@ -759,50 +762,50 @@ export function ToolExplanatoryGuide({ tab, onSelectTab }: ToolExplanatoryGuideP
           </section>
 
           {/* 5. Privacy Explanation */}
-          <section className="bg-white p-5 sm:p-6 rounded-xl border border-stone-200 shadow-xs space-y-2">
-            <div className="flex items-center gap-2 text-stone-900 font-semibold text-sm">
-              <ShieldCheck className="text-stone-700" size={16} />
+          <section className="bg-white p-6 md:p-8 rounded-2xl border border-stone-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.02)] space-y-3">
+            <div className="flex items-center gap-2.5 text-stone-900 font-bold text-lg">
+              <ShieldCheck className="text-emerald-600" size={20} />
               <h3>5. Security & Privacy Assurance</h3>
             </div>
-            <p className="text-stone-600 text-xs sm:text-sm leading-relaxed bg-stone-50 p-3.5 rounded-lg border border-stone-200">
+            <p className="text-stone-600 text-sm md:text-base leading-relaxed bg-emerald-50/40 p-4 rounded-xl border border-emerald-100">
               {guide.privacyDetails}
             </p>
           </section>
 
           {/* 6. Appropriate-Use Guidance */}
-          <section className="bg-white p-5 sm:p-6 rounded-xl border border-stone-200 shadow-xs space-y-2">
-            <div className="flex items-center gap-2 text-stone-900 font-semibold text-sm">
-              <Lightbulb className="text-stone-700" size={16} />
+          <section className="bg-white p-6 md:p-8 rounded-2xl border border-stone-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.02)] space-y-3">
+            <div className="flex items-center gap-2.5 text-stone-900 font-bold text-lg">
+              <Lightbulb className="text-indigo-600" size={20} />
               <h3>6. Appropriate-Use Guidelines</h3>
             </div>
-            <p className="text-stone-600 text-xs sm:text-sm leading-relaxed">
+            <p className="text-stone-600 text-sm md:text-base leading-relaxed">
               {guide.appropriateUseGuidance}
             </p>
           </section>
 
           {/* 7. FAQ Section */}
-          <section className="bg-white p-5 sm:p-6 rounded-xl border border-stone-200 shadow-xs space-y-3">
-            <div className="flex items-center gap-2 text-stone-900 font-semibold text-sm">
-              <HelpCircle className="text-stone-700" size={16} />
-              <h3>7. Frequently Asked Questions</h3>
+          <section className="bg-white p-6 md:p-8 rounded-2xl border border-stone-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.02)] space-y-4">
+            <div className="flex items-center gap-2.5 text-stone-900 font-bold text-lg">
+              <HelpCircle className="text-rose-500" size={20} />
+              <h3>7. Frequently Asked Questions (FAQ)</h3>
             </div>
-            <div className="space-y-2">
+            <div className="space-y-3">
               {guide.faqs.map((faq, idx) => {
                 const isOpen = openFaqIndex === idx;
                 return (
                   <div 
                     key={idx} 
-                    className="border border-stone-200 rounded-lg overflow-hidden"
+                    className="border border-stone-200/80 rounded-xl overflow-hidden transition-colors"
                   >
                     <button
                       onClick={() => toggleFaq(idx)}
-                      className="w-full text-left p-3.5 bg-stone-50 hover:bg-stone-100/70 font-semibold text-xs text-stone-900 flex items-center justify-between gap-3 cursor-pointer"
+                      className="w-full text-left p-4 bg-stone-50/80 hover:bg-stone-100/80 font-bold text-sm text-stone-900 flex items-center justify-between gap-3 cursor-pointer"
                     >
                       <span>{faq.question}</span>
-                      {isOpen ? <ChevronUp size={14} className="text-stone-500 shrink-0" /> : <ChevronDown size={14} className="text-stone-500 shrink-0" />}
+                      {isOpen ? <ChevronUp size={16} className="text-stone-500 flex-shrink-0" /> : <ChevronDown size={16} className="text-stone-500 flex-shrink-0" />}
                     </button>
                     {isOpen && (
-                      <div className="p-3.5 bg-white text-stone-600 text-xs leading-relaxed border-t border-stone-200">
+                      <div className="p-4 bg-white text-stone-600 text-xs md:text-sm leading-relaxed border-t border-stone-100">
                         {faq.answer}
                       </div>
                     )}
@@ -815,40 +818,40 @@ export function ToolExplanatoryGuide({ tab, onSelectTab }: ToolExplanatoryGuideP
         </div>
 
         {/* Sidebar 4-Column Section (Related Tools & Quick Links) */}
-        <div className="lg:col-span-4 space-y-4">
+        <div className="lg:col-span-4 space-y-6">
           
           {/* 8. Related Tools */}
-          <div className="bg-white p-5 rounded-xl border border-stone-200 shadow-xs space-y-3 sticky top-20">
-            <div className="flex items-center gap-1.5 text-stone-900 font-semibold text-xs uppercase tracking-wider">
-              <Grid size={14} className="text-stone-700" />
-              <h3>Related Creator Tools</h3>
+          <div className="bg-white p-6 rounded-2xl border border-stone-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.02)] space-y-4 sticky top-6">
+            <div className="flex items-center gap-2 text-stone-900 font-bold text-base">
+              <Grid size={18} className="text-indigo-600" />
+              <h3>8. Related Creator Tools</h3>
             </div>
-            <p className="text-xs text-stone-500 leading-relaxed">
-              Explore complementary utilities to streamline your Instagram workflow:
+            <p className="text-xs text-stone-700 font-medium">
+              Combine this tool with our other free utilities to streamline your Instagram content creation:
             </p>
-            <div className="space-y-2 pt-1">
+            <div className="space-y-3 pt-1">
               {guide.relatedTools.map((rel, idx) => (
                 <button
                   key={idx}
                   onClick={() => onSelectTab && onSelectTab(rel.tab)}
-                  className="w-full p-3 rounded-lg border border-stone-200 bg-stone-50 hover:bg-stone-100 hover:border-stone-300 transition-colors text-left group cursor-pointer"
+                  className="w-full p-3.5 rounded-xl border border-stone-200/70 bg-stone-50/80 hover:bg-white hover:border-indigo-300 hover:shadow-md transition-all text-left group cursor-pointer"
                 >
                   <div className="flex items-center justify-between mb-1">
-                    <span className="text-xs font-semibold text-stone-900 group-hover:text-stone-950">
+                    <span className="text-xs font-bold text-stone-900 group-hover:text-indigo-600 transition-colors">
                       {rel.name}
                     </span>
-                    <ExternalLink size={11} className="text-stone-400 group-hover:text-stone-900" />
+                    <ExternalLink size={12} className="text-stone-600 group-hover:text-indigo-600 transition-colors" />
                   </div>
-                  <p className="text-[11px] text-stone-500 line-clamp-2 leading-relaxed">
+                  <p className="text-xs text-stone-700 line-clamp-2 leading-relaxed font-medium">
                     {rel.description}
                   </p>
                 </button>
               ))}
             </div>
 
-            <div className="pt-3 border-t border-stone-100 text-center">
-              <p className="text-[11px] text-stone-400">
-                GrowthCaption Social Suite
+            <div className="pt-4 border-t border-stone-200 text-center">
+              <p className="text-xs text-stone-700 font-semibold">
+                GrowthCaption • Free Instagram Tools Suite
               </p>
             </div>
           </div>

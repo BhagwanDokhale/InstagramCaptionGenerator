@@ -99,92 +99,94 @@ export function FeedPlanner() {
   };
 
   return (
-    <div className="bg-white border border-stone-200 rounded-xl overflow-hidden shadow-xs flex flex-col min-h-[520px] relative">
-      <div className="p-5 md:p-6 flex flex-col items-center">
-        <div className="w-full max-w-3xl flex flex-col gap-6">
+    <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-md flex flex-col min-h-[600px] relative">
+      <div className="absolute inset-0 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] [background-size:16px_16px] opacity-15 pointer-events-none -z-10"></div>
+      <div className="p-6 md:p-8 flex flex-col items-center relative z-10">
+        <div className="w-full max-w-4xl flex flex-col gap-8">
           
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 pb-2 border-b border-stone-100">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
             <div>
-              <h2 className="text-xs font-semibold uppercase tracking-wider text-stone-600 mb-0.5 flex items-center gap-2">
-                <LayoutTemplate className="text-stone-700" size={14} />
+              <h2 className="text-xs font-bold uppercase tracking-widest text-slate-500 mb-2 flex items-center gap-2">
+                <LayoutTemplate className="text-blue-600" size={14} />
                 Feed Planner
               </h2>
-              <p className="text-stone-500 text-xs font-normal">Plan, curate, and rearrange your grid layout with drag-and-drop preview.</p>
+              <p className="text-slate-500 text-xs font-medium">Visualize your Instagram profile layout using drag and drop.</p>
             </div>
             
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-3">
                {images.length > 0 && (
                 <>
                   <button 
                     onClick={downloadPreview}
                     disabled={isDownloading}
-                    className="flex items-center gap-1.5 px-3 py-2 text-xs font-medium text-stone-700 bg-white hover:bg-stone-50 border border-stone-200 rounded-lg transition-colors disabled:opacity-50"
+                    className="flex items-center gap-2 px-4 py-2.5 text-xs font-bold text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 shadow-sm rounded-lg transition-all disabled:opacity-50 uppercase tracking-wider"
                   >
-                    <DownloadIcon size={13} />
-                    <span>{isDownloading ? 'Exporting...' : 'Export View'}</span>
+                    <DownloadIcon size={14} />
+                    {isDownloading ? 'Saving...' : 'Preview'}
                   </button>
                   <button 
                     onClick={clearAll}
-                    className="px-3 py-2 text-xs font-medium text-stone-600 hover:text-stone-900 bg-stone-100 hover:bg-stone-200/80 rounded-lg transition-colors"
+                    className="px-4 py-2.5 text-xs font-bold text-red-600 hover:text-red-700 bg-red-50 hover:bg-red-100/70 border border-red-100 shadow-sm rounded-lg transition-all uppercase tracking-wider"
                   >
                     Clear All
                   </button>
                 </>
                )}
-               <label className="flex items-center gap-1.5 bg-stone-900 hover:bg-stone-800 text-white px-3.5 py-2 rounded-lg text-xs font-semibold transition-colors cursor-pointer shadow-2xs">
-                  <Upload size={13} />
-                  <span>Upload Photos</span>
+               <label className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-lg text-xs font-bold transition-all cursor-pointer uppercase tracking-wider shadow-sm">
+                  <Upload size={14} />
+                  Add Photos
                   <input type="file" multiple accept="image/*" className="hidden" onChange={handleImageUpload} />
                </label>
             </div>
           </div>
 
           <div className="flex justify-center w-full">
-            <div ref={mockupRef} className="w-full max-w-sm bg-white border border-stone-200 rounded-xl p-5 shadow-xs min-h-[380px]">
+            <div ref={mockupRef} className="w-full max-w-sm bg-white border border-slate-200 rounded-2xl p-6 md:p-8 shadow-md min-h-[400px]">
               
               {/* Instagram Profile Header Mockup */}
-              <div className="flex flex-col gap-3.5 mb-5 pb-4 border-b border-stone-100">
+              <div className="flex flex-col gap-4 mb-6 pb-6 border-b border-slate-100">
                 <div className="flex items-center justify-between">
                   {/* Profile Picture */}
-                  <div className="relative w-16 h-16 rounded-full bg-stone-100 border border-stone-200 p-0.5 flex-shrink-0 flex items-center justify-center">
-                    <div className="w-full h-full rounded-full bg-stone-100 flex items-center justify-center overflow-hidden">
-                       <User className="text-stone-400" size={24} />
+                  <div className="relative w-20 h-20 rounded-full bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-500 p-1 flex-shrink-0">
+                    <div className="w-full h-full rounded-full bg-white border-2 border-white flex items-center justify-center overflow-hidden">
+                       <User className="text-slate-300" size={32} />
                     </div>
                   </div>
                   
                   {/* Stats */}
-                  <div className="flex flex-1 justify-around text-center ml-3 text-stone-800">
+                  <div className="flex flex-1 justify-around text-center ml-4 text-slate-800">
                     <div className="flex flex-col">
-                      <span className="font-semibold text-sm">{images.length}</span>
-                      <span className="text-stone-400 text-[10px] uppercase">posts</span>
+                      <span className="font-bold text-base">{images.length}</span>
+                      <span className="text-slate-400 font-bold text-[10px] uppercase pt-0.5">posts</span>
                     </div>
                     <div className="flex flex-col">
-                      <span className="font-semibold text-sm">12.4K</span>
-                      <span className="text-stone-400 text-[10px] uppercase">followers</span>
+                      <span className="font-bold text-base">10.5K</span>
+                      <span className="text-slate-400 font-bold text-[10px] uppercase pt-0.5">followers</span>
                     </div>
                     <div className="flex flex-col">
-                      <span className="font-semibold text-sm">480</span>
-                      <span className="text-stone-400 text-[10px] uppercase">following</span>
+                      <span className="font-bold text-base">450</span>
+                      <span className="text-slate-400 font-bold text-[10px] uppercase pt-0.5">following</span>
                     </div>
                   </div>
                 </div>
 
                 {/* Bio text */}
-                <div className="text-left text-xs text-stone-600 px-0.5">
-                  <div className="font-semibold text-stone-900 text-xs mb-0.5">Creator Name</div>
-                  <div className="text-stone-400 text-[10px]">Digital Creator & Strategist</div>
-                  <div className="mt-1 text-stone-600 leading-relaxed text-[11px]">
-                    Curating aesthetics & visual brand experiences.<br/>
-                    Weekly tips & creative workflows.
+                <div className="text-left text-xs text-slate-600 px-1">
+                  <div className="font-bold text-slate-800 text-sm mb-0.5">Your Name</div>
+                  <div className="text-slate-400 font-bold text-[10px] uppercase tracking-wider">Digital creator</div>
+                  <div className="mt-1.5 text-slate-500 font-medium leading-relaxed">
+                    ✨ Sparking creativity every day<br/>
+                    📸 Photographer & Designer<br/>
+                    📍 New York City
                   </div>
-                  <div className="text-stone-800 mt-1 font-medium text-[11px] underline">growthcaption.com</div>
+                  <div className="text-blue-600 mt-1.5 cursor-pointer font-bold text-xs flex items-center gap-1 hover:underline">linktr.ee/yourname</div>
                 </div>
               </div>
 
               {images.length === 0 ? (
-                <div className="flex flex-col items-center justify-center text-center py-12 text-stone-400 gap-2 text-xs bg-stone-50/60 rounded-lg border border-dashed border-stone-200">
-                  <LayoutTemplate size={28} className="text-stone-300" />
-                  <p className="text-stone-500 font-medium">Upload photos to preview grid layout.<br/><span className="text-stone-400 font-normal">Drag and drop to rearrange tiles.</span></p>
+                <div className="flex flex-col items-center justify-center text-center py-12 text-slate-400 gap-3 text-xs font-bold bg-slate-50 rounded-xl border border-dashed border-slate-200">
+                  <LayoutTemplate size={36} className="text-slate-300" />
+                  <p className="text-slate-500 leading-relaxed">Upload photos to start planning your feed.<br/>Drag and drop to rearrange them.</p>
                 </div>
               ) : (
                 <div className="grid grid-cols-3 gap-1">
@@ -196,37 +198,36 @@ export function FeedPlanner() {
                       onDragOver={onDragOver}
                       onDrop={(e) => onDrop(e, img.id)}
                       onDragEnd={onDragEnd}
-                      className={`relative aspect-square group cursor-move ${draggedId === img.id ? 'opacity-40' : ''} transition-opacity duration-150 rounded-md overflow-hidden bg-stone-100 border border-stone-200`}
+                      className={`relative aspect-square group cursor-move ${draggedId === img.id ? 'opacity-50 scale-95' : 'hover:scale-[1.01] hover:shadow-sm hover:z-20'} transition-all duration-200 z-10 origin-center rounded-lg overflow-hidden border border-transparent bg-slate-100`}
                     >
                       <img 
                         src={img.dataUrl} 
-                        alt="Feed Planner Preview" 
+                        alt={`Instagram Feed Planner Generator - Feed Planner mockup grid item #${images.findIndex(i => i.id === img.id) + 1}`} 
                         loading="lazy"
                         decoding="async"
                         className="w-full h-full object-cover" 
                       />
                       
                       {/* Interaction Overlay */}
-                      <div className="absolute inset-0 bg-stone-900/60 opacity-0 group-hover:opacity-100 flex flex-col justify-between p-1.5 transition-opacity">
+                      <div className="absolute inset-0 bg-blue-600/80 opacity-0 group-hover:opacity-100 flex flex-col justify-between p-2 transition-opacity">
                         <div className="flex justify-end">
                            <button 
                              onClick={(e) => { e.stopPropagation(); removeImage(img.id); }}
-                             className="bg-white/90 hover:bg-white text-stone-700 hover:text-stone-900 p-1 rounded-md shadow-2xs border border-stone-200 transition-colors"
-                             title="Remove image"
+                             className="bg-white hover:bg-red-50 text-red-600 p-1.5 rounded-full shadow-sm border border-slate-100 transition-all font-bold"
                            >
-                              <X size={11} />
+                              <X size={12} />
                            </button>
                         </div>
-                        <div className="flex justify-center pb-1">
-                           <GripHorizontal size={14} className="text-white" />
+                        <div className="flex justify-center pb-2">
+                           <GripHorizontal size={18} className="text-white" />
                         </div>
                       </div>
                     </div>
                   ))}
                   
-                  {/* Empty slots to fill the row if needed */}
+                  {/* Empty slots to fill the row if needed, visually */}
                   {Array.from({ length: (3 - (images.length % 3)) % 3 }).map((_, i) => (
-                    <div key={`empty-${i}`} className="aspect-square bg-stone-50 border border-stone-100 rounded-md"></div>
+                    <div key={`empty-${i}`} className="aspect-square bg-slate-50 border border-slate-100 rounded-lg"></div>
                   ))}
                 </div>
               )}

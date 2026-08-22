@@ -187,46 +187,44 @@ export function ContactPage() {
   };
 
   return (
-    <div className="max-w-xl mx-auto w-full px-4 py-10 md:py-16">
+    <div className="max-w-2xl mx-auto w-full px-4 py-12 md:py-20">
       <SEO 
         title="Contact Us | GrowthCaption"
         description="Get in touch with the GrowthCaption team for tool feedback, feature suggestions, or business inquiries."
         url="https://growthcaption.com/contact"
       />
-      <div className="text-left mb-6 pb-5 border-b border-stone-200">
-        <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-stone-500 mb-1.5">
-          <Mail size={14} className="text-stone-700" />
-          <span>Get in Touch</span>
-        </div>
-        <h1 className="text-2xl md:text-3xl font-semibold tracking-tight text-stone-900 mb-1.5">
+      <div className="text-center mb-12">
+        <h1 className="text-4xl md:text-5xl font-sans font-bold tracking-tight text-stone-900 mb-4">
           Contact Us
         </h1>
-        <p className="text-stone-500 text-xs md:text-sm">
-          Have an idea, found an issue, or have a partnership inquiry? We read every submission.
+        <p className="text-stone-500 font-medium text-base md:text-lg">
+          Have an idea, found a bug, or just want to say hi? We'd love to hear from you.
         </p>
       </div>
 
-      <div className="bg-white rounded-xl p-6 md:p-8 border border-stone-200 shadow-xs relative">
+      <div className="bg-white rounded-3xl p-8 md:p-12 border border-stone-200/80 shadow-[0_8px_30px_rgb(0,0,0,0.02)] relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] [background-size:16px_16px] opacity-10 pointer-events-none -z-10"></div>
+
         {isSubmitted ? (
-          <div className="text-center py-12 space-y-4">
-            <div className="inline-flex items-center justify-center w-12 h-12 bg-stone-100 text-stone-900 rounded-full border border-stone-200 mb-2">
-              <CheckCircle2 size={24} className="text-stone-800" />
+          <div className="text-center py-16 space-y-6 relative z-10">
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-emerald-50 text-emerald-600 rounded-full border border-emerald-100 mb-4 shadow-sm animate-bounce">
+              <Send size={32} className="ml-1" />
             </div>
-            <h2 className="text-lg font-semibold tracking-tight text-stone-900">Message Received</h2>
-            <p className="text-stone-500 text-xs">Thanks for reaching out. We will get back to you shortly.</p>
+            <h2 className="text-2xl font-bold tracking-tight text-stone-900">Message Sent!</h2>
+            <p className="text-stone-500 font-medium text-sm">Thanks for reaching out. We will get back to you shortly.</p>
           </div>
         ) : (
           <form 
             onSubmit={handleSubmit} 
-            className="space-y-4"
+            className="space-y-6 relative z-10"
           >
             {submitError && (
-              <div className="p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 font-medium text-xs">
+              <div className="p-4 bg-rose-50 border border-rose-200 rounded-2xl text-rose-700 font-bold text-sm">
                 {submitError}
               </div>
             )}
-            <div className="space-y-1.5">
-              <label htmlFor="name" className="text-xs font-semibold uppercase tracking-wider text-stone-600">
+            <div className="space-y-2">
+              <label htmlFor="name" className="text-xs font-bold uppercase tracking-widest text-stone-500">
                 Your Name
               </label>
               <input
@@ -236,32 +234,42 @@ export function ContactPage() {
                 required
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="w-full px-3.5 py-2.5 bg-white border border-stone-200 rounded-lg text-stone-900 text-xs placeholder:text-stone-400 focus:outline-none focus:border-stone-900 transition-colors"
-                placeholder="Alex Morgan"
+                className="w-full px-4 py-3 bg-stone-50/50 border border-stone-200/80 rounded-xl text-stone-850 font-medium text-sm placeholder:text-stone-400 focus:outline-none focus:border-indigo-600 focus:ring-1 focus:ring-indigo-100/50 transition-all text-sm"
+                placeholder="John Doe"
               />
             </div>
             
-            <div className="space-y-1.5">
-              <label htmlFor="email" className="text-xs font-semibold uppercase tracking-wider text-stone-600 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
-                <span>Email Address</span>
+            <div className="space-y-2">
+              <label htmlFor="email" className="text-xs font-bold uppercase tracking-widest text-stone-500 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
+                <span className="flex items-center gap-2"><Mail size={14} className="text-indigo-600" /> Email Address</span>
                 {isCheckingLive && (
-                  <span className="text-[10px] font-medium text-stone-500 flex items-center gap-1">
-                    Checking domain...
+                  <span className="text-[10px] font-bold text-indigo-600 animate-pulse flex items-center gap-1">
+                    Checking live status...
                   </span>
                 )}
                 {email && !emailError && !emailSuggestion && !isCheckingLive && isLiveEmail === true && (
-                  <span className="text-[10px] font-medium text-emerald-700 bg-emerald-50 border border-emerald-200 px-1.5 py-0.5 rounded flex items-center gap-1">
-                    <CheckCircle2 size={10} /> Active Domain
+                  <span className="text-[10px] font-bold text-emerald-600 bg-emerald-50 border border-emerald-100/40 px-2 py-0.5 rounded-md flex items-center gap-1">
+                    <CheckCircle2 size={10} /> Active & Live Domain
                   </span>
                 )}
                 {email && !emailError && !emailSuggestion && !isCheckingLive && isLiveEmail === false && (
-                  <span className="text-[10px] font-medium text-red-700 bg-red-50 border border-red-200 px-1.5 py-0.5 rounded flex items-center gap-1">
-                    <AlertTriangle size={10} /> Inactive Domain
+                  <span className="text-[10px] font-bold text-rose-600 bg-rose-50 border border-rose-100/40 px-2 py-0.5 rounded-md flex items-center gap-1">
+                    <AlertTriangle size={10} /> Inactive Mail Domain
+                  </span>
+                )}
+                {email && !emailError && !emailSuggestion && !isCheckingLive && isLiveEmail === null && (
+                  <span className="text-[10px] font-bold text-emerald-600 bg-emerald-50 border border-emerald-100/40 px-2 py-0.5 rounded-md flex items-center gap-1">
+                    <CheckCircle2 size={10} /> Valid Format
                   </span>
                 )}
                 {emailError && (
-                  <span className="text-[10px] font-medium text-red-700 bg-red-50 border border-red-200 px-1.5 py-0.5 rounded flex items-center gap-1">
-                    <AlertTriangle size={10} /> Invalid Format
+                  <span className="text-[10px] font-bold text-rose-600 bg-rose-50 border border-rose-100/40 px-2 py-0.5 rounded-md flex items-center gap-1">
+                    <AlertTriangle size={10} /> Invalid Email
+                  </span>
+                )}
+                {email && emailSuggestion && (
+                  <span className="text-[10px] font-bold text-amber-600 bg-amber-50 border border-amber-100/40 px-2 py-0.5 rounded-md flex items-center gap-1">
+                    <AlertTriangle size={10} /> Potential Typo
                   </span>
                 )}
               </label>
@@ -274,65 +282,74 @@ export function ContactPage() {
                   required
                   value={email}
                   onChange={(e) => handleEmailChange(e.target.value)}
-                  className={`w-full px-3.5 py-2.5 text-stone-900 text-xs placeholder:text-stone-400 pr-9 rounded-lg border focus:outline-none transition-colors ${
+                  className={`w-full px-4 py-3 font-medium text-stone-850 text-sm placeholder:text-stone-400 pr-10 rounded-xl border focus:outline-none transition-all ${
                     !email 
-                      ? 'bg-white border-stone-200 focus:border-stone-900' 
+                      ? 'bg-stone-50/50 border-stone-200/80 focus:border-indigo-600 focus:ring-1 focus:ring-indigo-100/50' 
                       : emailError 
-                      ? 'bg-red-50/20 border-red-300 focus:border-red-500' 
+                      ? 'bg-rose-50/10 border-rose-300 focus:border-rose-500 focus:ring-1 focus:ring-rose-100/50' 
                       : emailSuggestion 
-                      ? 'bg-amber-50/20 border-amber-300 focus:border-amber-500' 
+                      ? 'bg-amber-50/10 border-amber-300 focus:border-amber-500 focus:ring-1 focus:ring-amber-100/50' 
                       : isLiveEmail === false
-                      ? 'bg-red-50/20 border-red-300 focus:border-red-500' 
-                      : 'bg-white border-stone-200 focus:border-stone-900'
+                      ? 'bg-rose-50/10 border-rose-300 focus:border-rose-500 focus:ring-1 focus:ring-rose-100/50'
+                      : isLiveEmail === true
+                      ? 'bg-emerald-50/10 border-emerald-300 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-100/50'
+                      : 'bg-emerald-50/10 border-emerald-300 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-100/50'
                   }`}
-                  placeholder="alex@example.com"
+                  placeholder="john@example.com"
                 />
                 
                 {email && (
-                  <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center pointer-events-none">
+                  <div className="absolute right-3.5 top-1/2 -translate-y-1/2 flex items-center pointer-events-none">
                     {emailError || isLiveEmail === false ? (
-                      <AlertTriangle size={14} className="text-red-500" />
+                      <AlertTriangle size={16} className="text-rose-500" />
                     ) : emailSuggestion ? (
-                      <AlertTriangle size={14} className="text-amber-500" />
+                      <AlertTriangle size={16} className="text-amber-500" />
                     ) : isCheckingLive ? (
-                      <div className="w-3.5 h-3.5 border-2 border-stone-400 border-t-transparent rounded-full animate-spin"></div>
+                      <div className="w-4 h-4 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
                     ) : (
-                      <CheckCircle2 size={14} className="text-stone-600" />
+                      <CheckCircle2 size={16} className="text-emerald-500" />
                     )}
                   </div>
                 )}
               </div>
 
               {emailError && (
-                <p className="text-[11px] text-red-600 font-medium mt-0.5">
+                <p className="text-[11px] text-rose-600 font-bold mt-1 pl-1">
                   {emailError}
                 </p>
               )}
 
               {!emailError && !isCheckingLive && isLiveEmail === false && liveCheckReason && (
-                <p className="text-[11px] text-red-600 font-medium mt-0.5 flex items-center gap-1">
-                  <AlertTriangle size={11} className="shrink-0 text-red-500" /> {liveCheckReason}
+                <p className="text-[11px] text-rose-600 font-bold mt-1 pl-1 flex items-center gap-1">
+                  <AlertTriangle size={11} className="shrink-0 text-rose-500" /> {liveCheckReason}
+                </p>
+              )}
+
+              {!emailError && !isCheckingLive && isLiveEmail === true && (
+                <p className="text-[11px] text-emerald-600 font-bold mt-1 pl-1 flex items-center gap-1">
+                  <CheckCircle2 size={11} className="shrink-0 text-emerald-500" /> This email domain is active and can receive messages.
                 </p>
               )}
 
               {emailSuggestion && (
-                <div className="mt-2 p-2.5 bg-amber-50 border border-amber-200 rounded-lg flex items-center justify-between gap-2">
-                  <span className="text-xs text-amber-900">
-                    Did you mean <strong>{emailSuggestion}</strong>?
+                <div className="mt-2.5 p-3.5 bg-amber-50/50 border border-amber-200 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-sm">
+                  <span className="text-xs font-bold text-stone-700 flex items-center gap-1.5">
+                    <AlertTriangle size={14} className="text-amber-500 shrink-0" />
+                    Did you mean <strong className="text-amber-800">{emailSuggestion}</strong>?
                   </span>
                   <button
                     type="button"
                     onClick={applySuggestion}
-                    className="px-2.5 py-1 bg-amber-600 hover:bg-amber-700 text-white text-[10px] font-semibold rounded cursor-pointer transition-colors"
+                    className="px-3.5 py-1.5 bg-amber-500 hover:bg-amber-600 text-white text-[10px] font-bold uppercase tracking-wider rounded-xl cursor-pointer self-start sm:self-auto transition-all shadow-sm"
                   >
-                    Fix email
+                    Yes, fix it!
                   </button>
                 </div>
               )}
             </div>
 
-            <div className="space-y-1.5">
-              <label htmlFor="subject" className="text-xs font-semibold uppercase tracking-wider text-stone-600">
+            <div className="space-y-2">
+              <label htmlFor="subject" className="text-xs font-bold uppercase tracking-widest text-stone-500">
                 Subject
               </label>
               <select
@@ -341,47 +358,47 @@ export function ContactPage() {
                 aria-label="Subject"
                 value={subject}
                 onChange={(e) => setSubject(e.target.value)}
-                className="w-full px-3.5 py-2.5 bg-white border border-stone-200 rounded-lg text-stone-900 text-xs focus:outline-none focus:border-stone-900 transition-colors cursor-pointer appearance-none"
-                style={{ backgroundImage: `url('data:image/svg+xml;charset=utf-8,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="%2378716c"%3E%3Cpath stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/%3E%3C/svg%3E')`, backgroundPosition: 'right 0.8rem center', backgroundRepeat: 'no-repeat', backgroundSize: '1.1em 1.1em' }}
+                className="w-full px-4 py-3 bg-stone-50/50 border border-stone-200/80 rounded-xl text-stone-850 font-medium text-sm focus:outline-none focus:border-indigo-600 focus:ring-1 focus:ring-indigo-100/50 transition-all cursor-pointer appearance-none"
+                style={{ backgroundImage: `url('data:image/svg+xml;charset=utf-8,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="%2378716c"%3E%3Cpath stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/%3E%3C/svg%3E')`, backgroundPosition: 'right 1rem center', backgroundRepeat: 'no-repeat', backgroundSize: '1.25em 1.25em' }}
               >
-                <option value="Suggestion">Product Suggestion</option>
-                <option value="Query">General Query</option>
-                <option value="Improvement">Tool Improvement</option>
-                <option value="Issue">Bug Report</option>
-                <option value="Business Inquiries">Business / Partnership</option>
+                <option value="Suggestion">Suggestion</option>
+                <option value="Query">Query</option>
+                <option value="Improvement">Improvement</option>
+                <option value="Issue">Issue</option>
+                <option value="Business Inquiries">Business Inquiries</option>
               </select>
             </div>
 
-            <div className="space-y-1.5">
-              <label htmlFor="message" className="text-xs font-semibold uppercase tracking-wider text-stone-600">
-                Your Message
+            <div className="space-y-2">
+              <label htmlFor="message" className="text-xs font-bold uppercase tracking-widest text-stone-500 flex items-center gap-2">
+                <MessageSquare size={14} className="text-indigo-600" /> Your Message
               </label>
               <textarea
                 id="message"
                 name="message"
                 required
-                rows={4}
+                rows={5}
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
-                className="w-full px-3.5 py-2.5 bg-white border border-stone-200 rounded-lg text-stone-900 text-xs focus:outline-none focus:border-stone-900 transition-colors placeholder:text-stone-400 resize-none"
-                placeholder="Please describe your thoughts, feedback, or report details..."
+                className="w-full px-4 py-3 bg-stone-50/50 border border-stone-200/80 rounded-xl text-stone-850 font-medium text-sm focus:outline-none focus:border-indigo-600 focus:ring-1 focus:ring-indigo-100/50 transition-all placeholder:text-stone-400 resize-none"
+                placeholder="Tell us what's on your mind..."
               ></textarea>
             </div>
 
             {/* Verification check */}
-            <div className="p-3 bg-stone-50 border border-stone-200 rounded-lg flex items-center justify-between select-none">
-              <div className="flex items-center gap-3">
+            <div className="p-4 bg-stone-50/60 border border-stone-200/80 rounded-2xl flex items-center justify-between shadow-2xs select-none">
+              <div className="flex items-center gap-3.5">
                 <button
                   type="button"
                   id="verification-check"
                   onClick={handleVerificationClick}
                   disabled={verificationState === 'completed' || verificationState === 'checking'}
-                  className={`w-5 h-5 rounded border flex items-center justify-center transition-colors cursor-pointer ${
+                  className={`w-6 h-6 rounded-lg border flex items-center justify-center transition-all cursor-pointer outline-none ${
                     verificationState === 'completed'
-                      ? 'bg-stone-900 border-stone-900 text-white'
+                      ? 'bg-emerald-600 border-emerald-600 text-white shadow-2xs'
                       : verificationState === 'checking'
-                      ? 'border-stone-400 bg-white ring-2 ring-stone-200'
-                      : 'border-stone-300 bg-white hover:border-stone-500'
+                      ? 'border-indigo-400 bg-white ring-2 ring-indigo-100/50'
+                      : 'border-stone-300 bg-white hover:border-stone-400 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100/50'
                   }`}
                   aria-label={
                     verificationState === 'completed'
@@ -393,42 +410,46 @@ export function ContactPage() {
                   aria-pressed={verificationState === 'completed'}
                 >
                   {verificationState === 'completed' && (
-                    <svg className="w-3.5 h-3.5 stroke-white" fill="none" viewBox="0 0 24 24" strokeWidth={3} aria-hidden="true">
+                    <svg className="w-3.5 h-3.5 stroke-white" fill="none" viewBox="0 0 24 24" strokeWidth={3.5} aria-hidden="true">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                     </svg>
                   )}
                   {verificationState === 'checking' && (
-                    <div className="w-3 h-3 border-2 border-stone-700 border-t-transparent rounded-full animate-spin" aria-hidden="true"></div>
+                    <div className="w-3.5 h-3.5 border-2 border-indigo-600 border-t-transparent rounded-full animate-spin" aria-hidden="true"></div>
                   )}
                 </button>
                 <div className="flex flex-col text-left">
                   <label 
                     htmlFor="verification-check"
-                    className="text-xs font-semibold text-stone-800 cursor-pointer"
+                    className="text-xs font-bold text-stone-850 cursor-pointer"
                     onClick={handleVerificationClick}
                   >
                     {verificationState === 'completed'
-                      ? 'Verification confirmed'
+                      ? 'Verification complete'
                       : verificationState === 'checking'
-                      ? 'Verifying...'
-                      : 'I am a human creator'}
+                      ? 'Checking...'
+                      : 'Verification check'}
                   </label>
-                  <span className="text-[10px] text-stone-400 font-normal">
+                  <span className="text-[11px] text-stone-500 font-medium" aria-live="polite">
                     {verificationState === 'completed'
-                      ? 'Verification check passed.'
-                      : 'Click checkbox to verify before submitting.'}
+                      ? 'Verification complete.'
+                      : verificationState === 'checking'
+                      ? 'Please wait while we complete the verification check.'
+                      : 'Click to complete the verification check.'}
                   </span>
                 </div>
               </div>
-              <CheckCircle2 size={15} className={verificationState === 'completed' ? 'text-stone-900' : 'text-stone-300'} aria-hidden="true" />
+              <div className="flex items-center gap-1.5 text-stone-400 text-xs font-semibold shrink-0">
+                <CheckCircle2 size={16} className={verificationState === 'completed' ? 'text-emerald-600' : 'text-stone-300'} aria-hidden="true" />
+              </div>
             </div>
 
             <button
               type="submit"
-              className="w-full py-2.5 bg-stone-900 hover:bg-stone-800 text-white font-semibold text-xs rounded-lg transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-2xs"
+              className="w-full py-3.5 bg-gradient-to-r from-rose-500 via-violet-600 to-indigo-600 hover:opacity-95 text-white font-bold text-xs uppercase tracking-widest rounded-xl transition-all shadow-md shadow-indigo-500/10 focus:outline-none focus:ring-2 focus:ring-indigo-100 flex items-center justify-center gap-2 cursor-pointer"
             >
-              <Send size={13} />
-              <span>Send Message</span>
+              <Send size={14} />
+              Send Message
             </button>
           </form>
         )}

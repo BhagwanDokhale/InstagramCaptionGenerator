@@ -55,7 +55,7 @@ export const GridArticle: React.FC = () => {
         <p>
           Design principles such as similarity, continuity, and visual balance show that organized visual structures are easier for the eye to scan. When your images share recurring color palettes, consistent framing, or balanced contrast, the grid feels structured and cohesive.
         </p>
-        <div className="bg-stone-50 border border-stone-200/80 rounded-xl p-5 my-4 space-y-3">
+        <div className="bg-stone-50 border border-stone-200/80 rounded-2xl p-5 my-4 space-y-3">
           <p className="font-bold text-stone-900">Benefits of Planning Your Grid Layout:</p>
           <ul className="list-disc list-inside space-y-2 text-stone-700 font-medium pl-2">
             <li><strong className="text-stone-900">Visual Clarity:</strong> Organized visual standards provide a polished look that helps visitors understand your specialty.</li>
@@ -87,7 +87,7 @@ export const GridArticle: React.FC = () => {
         <p>
           For example, a fitness creator might publish a full-bleed workout photo, followed by a clean text quote on a dark background, followed by another photo. Because the Instagram grid is 3 columns wide, alternating every post automatically creates a striking, checkerboard pattern across both rows and columns.
         </p>
-        <div className="bg-stone-50 border border-stone-200 rounded-xl p-4 my-3 text-xs md:text-sm text-stone-900 font-medium">
+        <div className="bg-indigo-50/50 border border-indigo-100 rounded-2xl p-4 my-3 text-xs md:text-sm text-indigo-950 font-medium">
           <strong>Popular Checkerboard Combinations:</strong> Photo + Quote Graphic, Dark Photo + Light Photo, Close-up Shot + Wide Landscape, Product Showcase + Educational Tip.
         </div>
       </section>
@@ -158,7 +158,7 @@ export const GridArticle: React.FC = () => {
         <p>
           Regardless of which structural layout strategy you choose, color harmony remains the glue that holds your feed together. Understanding basic color theory allows you to pair adjacent posts without accidental visual clashes.
         </p>
-        <div className="bg-stone-50 border border-stone-200/80 rounded-xl p-5 my-4 space-y-3">
+        <div className="bg-stone-50 border border-stone-200/80 rounded-2xl p-5 my-4 space-y-3">
           <p className="font-bold text-stone-900">4 Rules for Color Balance on Instagram:</p>
           <ul className="list-disc list-inside space-y-2 text-stone-700 text-xs md:text-sm">
             <li><strong className="text-stone-900">Rule of Dominance (60-30-10):</strong> Dedicate 60% of your feed to a primary neutral background color, 30% to a secondary brand shade, and 10% to a vibrant accent color.</li>
@@ -204,34 +204,34 @@ export const GridArticle: React.FC = () => {
       </section>
 
       {/* Section 12: GrowthCaption Tools */}
-      <section id="grid-sec-12" className="space-y-4 pt-6 bg-stone-50 p-6 rounded-xl border border-stone-200">
-        <div className="flex items-center gap-2 text-stone-900 font-bold text-lg">
-          <Sparkles className="text-stone-700" size={18} />
+      <section id="grid-sec-12" className="space-y-4 pt-6 bg-gradient-to-br from-indigo-50/60 to-rose-50/40 p-6 rounded-3xl border border-indigo-100">
+        <div className="flex items-center gap-2 text-indigo-950 font-bold text-lg">
+          <Sparkles className="text-rose-500 animate-pulse" size={20} />
           <h2>Streamlining Feed Planning with GrowthCaption Tools</h2>
         </div>
         <p>
           You don't need expensive paid subscription apps to visualize your upcoming Instagram feed. GrowthCaption offers a suite of completely free visual planning tools:
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-          <div className="bg-white p-4 rounded-xl border border-stone-200 shadow-2xs">
+          <div className="bg-white p-4 rounded-2xl border border-stone-200/80 shadow-2xs">
             <p className="font-bold text-stone-900 text-sm mb-1 flex items-center gap-1.5">
-              <LayoutGrid size={16} className="text-stone-700" />
+              <LayoutGrid size={16} className="text-indigo-600" />
               <span>Visual Feed Planner</span>
             </p>
             <p className="text-xs text-stone-600 mb-3">
               Drag, drop, reorder, and preview draft images against a live simulated Instagram grid.
             </p>
-            <InternalLink href="/tools/feed-planner" className="text-xs font-medium">Open Feed Planner →</InternalLink>
+            <InternalLink href="/tools/feed-planner" className="text-xs">Open Feed Planner →</InternalLink>
           </div>
-          <div className="bg-white p-4 rounded-xl border border-stone-200 shadow-2xs">
+          <div className="bg-white p-4 rounded-2xl border border-stone-200/80 shadow-2xs">
             <p className="font-bold text-stone-900 text-sm mb-1 flex items-center gap-1.5">
-              <LayoutGrid size={16} className="text-stone-700" />
+              <LayoutGrid size={16} className="text-rose-500" />
               <span>3x3 Grid Maker</span>
             </p>
             <p className="text-xs text-stone-600 mb-3">
               Slice high-res banners into 3, 6, or 9 perfectly cropped grid tiles automatically.
             </p>
-            <InternalLink href="/tools/grid-maker" className="text-xs font-medium">Open Grid Maker →</InternalLink>
+            <InternalLink href="/tools/grid-maker" className="text-xs">Open Grid Maker →</InternalLink>
           </div>
         </div>
       </section>
@@ -239,17 +239,17 @@ export const GridArticle: React.FC = () => {
       {/* FAQ Section */}
       <section id="grid-sec-13" className="space-y-4 pt-6">
         <h2 className="text-2xl font-bold text-stone-950 border-b border-stone-200 pb-2 flex items-center gap-2">
-          <HelpCircle className="text-stone-700" size={20} />
+          <HelpCircle className="text-indigo-600" size={22} />
           Frequently Asked Questions About Grid Layouts
         </h2>
         <div className="space-y-4">
-          <div className="bg-stone-50 p-4 rounded-xl border border-stone-200/80">
+          <div className="bg-stone-50 p-4 rounded-2xl border border-stone-200/60">
             <h3 className="font-bold text-stone-900 text-sm md:text-base">Q: Do pinned posts ruin my grid layout?</h3>
             <p className="text-xs md:text-sm text-stone-600 mt-1">
               Instagram allows you to pin up to 3 posts to the top of your profile. Because pinned posts remain static, ensure their cover images match your overall grid palette so they don't look disjointed above your regular uploads.
             </p>
           </div>
-          <div className="bg-stone-50 p-4 rounded-xl border border-stone-200/80">
+          <div className="bg-stone-50 p-4 rounded-2xl border border-stone-200/60">
             <h3 className="font-bold text-stone-900 text-sm md:text-base">Q: Can I change my grid aesthetic without deleting old posts?</h3>
             <p className="text-xs md:text-sm text-stone-600 mt-1">
               Yes! Never delete old posts, as deleting content harms your account history. Instead, create a smooth transition by using a 3-post "bridge row" that gradually transitions from your old color palette into your new aesthetic.
@@ -263,7 +263,7 @@ export const GridArticle: React.FC = () => {
         <h2 className="text-2xl font-bold text-stone-950 border-b border-stone-200 pb-2">
           Step-by-Step Action Plan for Your Feed Transformation
         </h2>
-        <div className="bg-stone-50 p-5 rounded-xl border border-stone-200/80 space-y-3">
+        <div className="bg-stone-50 p-5 rounded-2xl border border-stone-200/80 space-y-3">
           <ul className="space-y-2 text-xs md:text-sm text-stone-700">
             <li className="flex items-center gap-2">
               <CheckCircle2 size={16} className="text-emerald-600 shrink-0" />

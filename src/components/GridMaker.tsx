@@ -110,31 +110,32 @@ export function GridMaker() {
   };
 
   return (
-    <div className="bg-white border border-stone-200 rounded-xl overflow-hidden shadow-xs flex flex-col min-h-[520px] relative">
-      <div className="p-5 md:p-6 flex flex-col lg:flex-row gap-6">
+    <div className="bg-white border border-stone-200/85 rounded-3xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.02)] flex flex-col min-h-[600px] relative">
+      <div className="absolute inset-0 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] [background-size:16px_16px] opacity-10 pointer-events-none -z-10"></div>
+      <div className="p-6 md:p-8 flex flex-col lg:flex-row gap-8 relative z-10">
         
         {/* Left Column: Config */}
-        <div className="w-full lg:w-80 flex flex-col gap-4">
+        <div className="w-full lg:w-80 flex flex-col gap-6">
           <div>
-            <h2 className="text-xs font-semibold uppercase tracking-wider text-stone-600 mb-1 flex items-center gap-2">
-              <LayoutGrid className="text-stone-700" size={14} />
+            <h2 className="text-xs font-bold uppercase tracking-widest text-stone-500 mb-2 flex items-center gap-2">
+              <LayoutGrid className="text-indigo-600" size={14} />
               Grid Maker
             </h2>
-            <p className="text-stone-500 text-xs font-normal">Split one high-resolution photo into a clean multi-tile grid layout.</p>
+            <p className="text-stone-500 text-xs font-medium">Split one photo into a perfect Instagram grid layout.</p>
           </div>
 
           {!imageSrc ? (
-            <label className="flex flex-col items-center justify-center p-8 border border-dashed border-stone-300 rounded-xl bg-stone-50/50 hover:bg-stone-100 hover:border-stone-400 transition-colors cursor-pointer group">
-              <div className="p-3 bg-white border border-stone-200 rounded-lg mb-3">
-                <Upload size={18} className="text-stone-700" />
+            <label className="flex flex-col items-center justify-center p-8 border border-dashed border-stone-200 rounded-2xl bg-stone-50/50 hover:bg-stone-100/50 hover:border-stone-300 transition-colors cursor-pointer group shadow-sm">
+              <div className="p-4 bg-white shadow-sm border border-stone-200 rounded-xl mb-4 group-hover:scale-110 transition-transform">
+                <Upload size={24} className="text-indigo-600" />
               </div>
-              <span className="text-stone-800 font-semibold text-xs mb-0.5">Click to upload photo</span>
-              <span className="text-stone-400 text-[11px]">JPG, PNG, WebP up to 15MB</span>
+              <span className="text-stone-700 font-bold text-xs mb-1">Click to upload photo</span>
+              <span className="text-stone-400 text-[10px] font-medium">JPG, PNG up to 10MB</span>
               <input type="file" accept="image/*" onChange={handleImageUpload} className="hidden" />
             </label>
           ) : (
-            <div className="flex flex-col gap-3">
-              <div className="relative rounded-xl overflow-hidden bg-stone-100 border border-stone-200 flex flex-col min-h-[280px]">
+            <div className="flex flex-col gap-4">
+              <div className="relative rounded-2xl overflow-hidden bg-stone-100 border border-stone-200/80 shadow-sm flex flex-col min-h-[300px]">
                 <Cropper
                   image={imageSrc}
                   crop={crop}
@@ -146,15 +147,14 @@ export function GridMaker() {
                 />
                 <button 
                   onClick={() => { setImageSrc(null); setSplitImages([]); }}
-                  className="absolute top-3 right-3 bg-white/90 hover:bg-white text-stone-700 hover:text-stone-900 p-1.5 rounded-lg border border-stone-200 shadow-2xs transition-colors cursor-pointer"
-                  title="Remove photo"
+                  className="absolute top-4 right-4 bg-rose-50 hover:bg-rose-100 text-rose-600 p-2 rounded-xl border border-rose-100 shadow-sm transition-all cursor-pointer"
                 >
-                  <Trash2 size={14} />
+                  <Trash2 size={16} />
                 </button>
               </div>
 
-              <div className="bg-stone-50 px-3 py-2 rounded-lg border border-stone-200 flex items-center gap-2.5">
-                <ZoomIn size={14} className="text-stone-500" />
+              <div className="bg-white px-4 py-2.5 rounded-xl border border-stone-200 flex items-center gap-3 shadow-sm">
+                <ZoomIn size={16} className="text-stone-400" />
                 <input
                   type="range"
                   value={zoom}
@@ -162,23 +162,23 @@ export function GridMaker() {
                   max={3}
                   step={0.1}
                   onChange={(e) => setZoom(Number(e.target.value))}
-                  className="w-full h-1 bg-stone-200 rounded-lg cursor-pointer accent-stone-900"
+                  className="w-full h-1 bg-stone-200 rounded-lg appearance-none cursor-pointer accent-indigo-600"
                 />
               </div>
               
-              <div className="bg-white p-3.5 rounded-lg border border-stone-200 space-y-2">
-                <label className="block text-xs font-semibold uppercase tracking-wider text-stone-600">
-                  Grid Rows (3 × N)
+              <div className="bg-white p-4 rounded-2xl border border-stone-200/85 space-y-3 shadow-sm">
+                <label className="block text-xs font-bold uppercase tracking-widest text-stone-500">
+                  Grid Layout Ratio
                 </label>
-                <div className="grid grid-cols-4 gap-1.5">
+                <div className="grid grid-cols-2 gap-2">
                   {[1, 2, 3, 4].map((rows) => (
                     <button
                       key={rows}
                       onClick={() => setGridRows(rows)}
-                      className={`py-1.5 rounded-lg text-xs font-medium transition-colors border cursor-pointer ${
+                      className={`py-2 px-1 rounded-xl text-xs font-bold transition-all border cursor-pointer ${
                         gridRows === rows
-                        ? 'bg-stone-900 border-stone-900 text-white'
-                        : 'bg-white border-stone-200 text-stone-700 hover:border-stone-300'
+                        ? 'bg-stone-900 border-stone-900 text-white shadow-sm'
+                        : 'bg-white border-stone-200 text-stone-500 hover:border-stone-300 hover:text-stone-800'
                       }`}
                     >
                       3 × {rows}
@@ -190,54 +190,54 @@ export function GridMaker() {
               <button
                 onClick={processImage}
                 disabled={isProcessing}
-                className="w-full bg-stone-900 hover:bg-stone-800 text-white rounded-lg py-2.5 font-semibold transition-colors flex items-center justify-center gap-2 disabled:opacity-50 text-xs cursor-pointer shadow-2xs"
+                className="w-full bg-gradient-to-r from-rose-500 via-violet-600 to-indigo-600 hover:opacity-95 text-white rounded-xl py-3.5 font-bold transition-all flex items-center justify-center gap-2 disabled:opacity-50 shadow-md shadow-indigo-500/10 uppercase tracking-wider text-xs cursor-pointer"
               >
-                <Grid3X3 size={14} />
-                <span>{isProcessing ? 'Processing Tiles...' : 'Split Image'}</span>
+                <Grid3X3 size={16} />
+                {isProcessing ? 'Processing...' : 'Split Image'}
               </button>
             </div>
           )}
         </div>
 
         {/* Right Column: Preview */}
-        <div className="flex-1 bg-stone-50/70 rounded-xl p-5 flex flex-col border border-stone-200">
-          <div className="flex-1 flex flex-col items-center justify-center min-h-[360px]">
+        <div className="flex-1 bg-stone-50/40 rounded-3xl p-6 flex flex-col border border-stone-200/60 shadow-inner">
+          <div className="flex-1 flex flex-col items-center justify-center min-h-[400px]">
              {splitImages.length > 0 ? (
-                <div className="w-full max-w-sm flex flex-col space-y-4 items-center">
+                <div className="w-full max-w-sm flex flex-col space-y-6 items-center">
                   <div 
-                    className="grid gap-1.5 w-full bg-white p-3 rounded-xl border border-stone-200"
+                    className="grid gap-2 w-full bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm"
                     style={{ gridTemplateColumns: 'repeat(3, minmax(0, 1fr))' }}
                   >
                     {splitImages.map((img, idx) => (
-                      <div key={img.id} className="relative aspect-square group cursor-pointer border border-stone-200 rounded-lg overflow-hidden" onClick={() => downloadImage(img.dataUrl, idx)}>
-                        <img src={img.dataUrl} alt={`Grid Tile ${idx + 1}`} loading="lazy" decoding="async" className="w-full h-full object-cover" />
-                        <div className="absolute inset-0 bg-stone-900/60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
-                          <Download size={16} className="text-white" />
+                      <div key={img.id} className="relative aspect-square group cursor-pointer border border-stone-200/60 rounded-xl overflow-hidden shadow-sm transition-all hover:-translate-y-[1px]" onClick={() => downloadImage(img.dataUrl, idx)}>
+                        <img src={img.dataUrl} alt={`Instagram Grid Maker Generator - Split Grid Tile ${idx + 1} preview (Post Sequence #${splitImages.length - idx})`} loading="lazy" decoding="async" className="w-full h-full object-cover" />
+                        <div className="absolute inset-0 bg-indigo-600/80 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-all">
+                          <Download size={20} className="text-white" />
                         </div>
                         {/* Number badge helping users know posting order */}
-                        <div className="absolute top-1 right-1 bg-stone-900 text-white text-[9px] font-mono h-4 w-4 flex items-center justify-center rounded-full">
+                        <div className="absolute top-1.5 right-1.5 bg-indigo-600 border border-white text-white text-[9px] font-bold font-mono h-5 w-5 flex items-center justify-center rounded-full shadow-sm">
                           {splitImages.length - idx}
                         </div>
                       </div>
                     ))}
                   </div>
 
-                  <div className="bg-stone-100 text-stone-700 text-xs px-3.5 py-2.5 rounded-lg border border-stone-200 w-full text-center leading-relaxed">
-                    <strong className="text-stone-900 font-semibold">Posting Order:</strong> Post tile #{splitImages.length} first, descending down to #1 so it renders seamlessly on your profile grid.
+                  <div className="bg-indigo-50 text-indigo-800 text-xs font-medium px-4 py-3 rounded-2xl border border-indigo-100/40 w-full text-center leading-relaxed">
+                    <strong className="text-indigo-900 font-bold">Tip:</strong> Post these to Instagram starting with the highest number (part {splitImages.length}) first!
                   </div>
 
                   <button
                     onClick={downloadAll}
-                    className="w-full max-w-xs flex items-center justify-center gap-1.5 bg-stone-900 hover:bg-stone-800 text-white py-2.5 rounded-lg transition-colors font-semibold text-xs shadow-2xs cursor-pointer"
+                    className="w-full max-w-xs flex items-center justify-center gap-2 bg-gradient-to-r from-rose-500 to-indigo-600 hover:opacity-95 text-white py-3.5 rounded-xl transition-all font-bold text-xs shadow-md shadow-indigo-500/10 uppercase tracking-widest cursor-pointer"
                   >
-                    <Download size={13} />
-                    <span>Download All ({splitImages.length} Tiles)</span>
+                    <Download size={16} />
+                    Download All
                   </button>
                 </div>
              ) : (
-                <div className="text-center text-stone-400 flex flex-col items-center gap-2 bg-white p-6 rounded-xl border border-dashed border-stone-200 max-w-xs">
-                  <LayoutGrid size={28} className="text-stone-300" />
-                  <p className="font-medium text-stone-600 text-xs">Upload and split a photo to view generated tiles.</p>
+                <div className="text-center text-stone-400 flex flex-col items-center gap-3 bg-white p-6 rounded-2xl border border-dashed border-stone-200/80 max-w-sm shadow-sm">
+                  <LayoutGrid size={36} className="text-stone-300" />
+                  <p className="font-bold text-stone-500 text-xs">Upload and split an image to see your grid preview here.</p>
                 </div>
              )}
           </div>
