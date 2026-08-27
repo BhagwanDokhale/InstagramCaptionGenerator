@@ -13,12 +13,22 @@ interface NotFoundPageProps {
 }
 
 export function NotFoundPage({ setActivePage, setActiveTab }: NotFoundPageProps) {
-  const handleNav = (page: PageType, tab?: TabType) => {
-    const href = getHref(page, tab);
-    navigateTo(href, (route) => {
-      if (setActivePage) setActivePage(route.page);
-      if (setActiveTab) setActiveTab(route.tab);
-    });
+  const handleNav = (href: string, page: PageType, tab?: TabType) => (e: React.MouseEvent) => {
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+    e.preventDefault();
+    if (page === 'home') {
+      if (setActiveTab && tab) {
+        setActiveTab(tab);
+      }
+      if (setActivePage) {
+        setActivePage('home', tab);
+      }
+    } else {
+      if (setActivePage) {
+        setActivePage(page);
+      }
+    }
+    navigateTo(href);
   };
 
   const POPULAR_TOOLS = [
@@ -94,11 +104,7 @@ export function NotFoundPage({ setActivePage, setActiveTab }: NotFoundPageProps)
         <div className="flex flex-wrap justify-center items-center gap-3 pt-2">
           <a
             href="/"
-            onClick={(e) => {
-              if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
-              e.preventDefault();
-              handleNav('home', 'captions');
-            }}
+            onClick={handleNav('/', 'home', 'captions')}
             className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-gradient-to-r from-stone-900 to-stone-800 text-white font-bold text-sm hover:shadow-lg transition-all cursor-pointer"
           >
             <Home size={16} />
@@ -107,11 +113,7 @@ export function NotFoundPage({ setActivePage, setActiveTab }: NotFoundPageProps)
 
           <a
             href="/how-to-use"
-            onClick={(e) => {
-              if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
-              e.preventDefault();
-              handleNav('how-to');
-            }}
+            onClick={handleNav('/how-to-use', 'how-to')}
             className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-white border border-stone-200 text-stone-800 font-bold text-sm hover:bg-stone-50 transition-all cursor-pointer shadow-sm"
           >
             <HelpCircle size={16} className="text-indigo-600" />
@@ -120,11 +122,7 @@ export function NotFoundPage({ setActivePage, setActiveTab }: NotFoundPageProps)
 
           <a
             href="/blog"
-            onClick={(e) => {
-              if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
-              e.preventDefault();
-              handleNav('blog');
-            }}
+            onClick={handleNav('/blog', 'blog')}
             className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-white border border-stone-200 text-stone-800 font-bold text-sm hover:bg-stone-50 transition-all cursor-pointer shadow-sm"
           >
             <BookOpen size={16} className="text-amber-600" />
@@ -145,11 +143,7 @@ export function NotFoundPage({ setActivePage, setActiveTab }: NotFoundPageProps)
             <a
               key={tool.tab}
               href={tool.href}
-              onClick={(e) => {
-                if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
-                e.preventDefault();
-                handleNav('home', tool.tab);
-              }}
+              onClick={handleNav(tool.href, 'home', tool.tab)}
               className="p-5 rounded-2xl bg-white border border-stone-200/80 hover:border-stone-300 shadow-sm hover:shadow-md transition-all group flex flex-col justify-between cursor-pointer"
             >
               <div className="space-y-2">
