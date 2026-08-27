@@ -45,6 +45,7 @@ const LANGUAGE_OPTIONS = [
   { id: 'French (Français)', label: '🇫🇷 French (Français)' },
   { id: 'German (Deutsch)', label: '🇩🇪 German (Deutsch)' },
   { id: 'Hindi (हिंदी)', label: '🇮🇳 Hindi (हिंदी)' },
+  { id: 'Marathi (मराठी)', label: '🇮🇳 Marathi (मराठी)' },
   { id: 'Hinglish (Hindi + English)', label: '🇮🇳 Hinglish (Colloquial)' },
   { id: 'Portuguese (Português)', label: '🇧🇷 Portuguese (Português)' },
   { id: 'Italian (Italiano)', label: '🇮🇹 Italian (Italiano)' },
