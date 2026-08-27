@@ -101,6 +101,30 @@ export default function App() {
           setActiveTab(sharedType);
         }
       }
+
+      // Idle background prefetching for instant tab and page switching
+      const prefetchIdle = () => {
+        const prefetchLoaders = [
+          () => import('./components/HashtagGenerator'),
+          () => import('./components/CommentGenerator'),
+          () => import('./components/ReelsDownloader'),
+          () => import('./components/BioForm'),
+          () => import('./components/UsernameForm'),
+          () => import('./components/ToolsIndexPage'),
+          () => import('./components/WorkspacePage'),
+        ];
+        prefetchLoaders.forEach((loader, index) => {
+          setTimeout(() => {
+            loader().catch(() => {});
+          }, 800 + index * 300);
+        });
+      };
+
+      if ('requestIdleCallback' in window) {
+        (window as any).requestIdleCallback(prefetchIdle);
+      } else {
+        setTimeout(prefetchIdle, 1000);
+      }
     }
 
     return () => {

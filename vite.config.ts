@@ -12,17 +12,22 @@ export default defineConfig(() => {
       },
     },
     build: {
-      target: 'es2020',
+      target: 'es2022',
       sourcemap: true,
       cssCodeSplit: true,
       assetsInlineLimit: 4096,
-      chunkSizeWarningLimit: 1000,
+      chunkSizeWarningLimit: 800,
+      reportCompressedSize: false,
+      modulePreload: {
+        polyfill: true,
+      },
       minify: 'terser',
       terserOptions: {
         compress: {
           drop_console: true,
           drop_debugger: true,
           passes: 2,
+          pure_funcs: ['console.log', 'console.info', 'console.debug'],
         },
         format: {
           comments: false,
@@ -33,16 +38,16 @@ export default defineConfig(() => {
           manualChunks(id) {
             if (id.includes('node_modules')) {
               if (id.includes('react') || id.includes('react-dom') || id.includes('scheduler')) {
-                return 'vendor';
+                return 'vendor-react';
               }
               if (id.includes('lucide-react')) {
-                return 'icons';
+                return 'vendor-icons';
               }
               if (id.includes('motion')) {
-                return 'motion';
+                return 'vendor-motion';
               }
-              if (id.includes('html2canvas') || id.includes('jszip')) {
-                return 'canvas-helpers';
+              if (id.includes('html2canvas') || id.includes('html-to-image') || id.includes('react-easy-crop') || id.includes('jszip')) {
+                return 'vendor-media';
               }
             }
           },

@@ -1,6 +1,7 @@
 import express from "express";
 import path from "path";
 import fs from "fs";
+import compression from "compression";
 import { createServer as createViteServer } from "vite";
 import { GoogleGenAI, Type } from "@google/genai";
 import dotenv from "dotenv";
@@ -269,6 +270,18 @@ function deduplicateInstagramMedia(
 async function startServer() {
   const app = express();
   const PORT = 3000;
+
+  // Enable Gzip/Deflate HTTP compression for all textual and JSON payloads
+  app.use(compression({
+    level: 6,
+    threshold: 512,
+    filter: (req, res) => {
+      if (req.headers['x-no-compression']) {
+        return false;
+      }
+      return compression.filter(req, res);
+    }
+  }));
 
   // Trust proxy for reverse proxy (Cloud Run / Nginx) to ensure accurate req.ip for rate limiting
   app.set("trust proxy", 1);
@@ -1700,8 +1713,19 @@ Do not claim that these brand assets guarantee business growth, conversions, or 
     return false;
   }
 
-  // Serve public static assets
-  app.use(express.static(path.join(process.cwd(), 'public')));
+  // Serve public static assets with caching headers
+  app.use(express.static(path.join(process.cwd(), 'public'), {
+    maxAge: '1d',
+    etag: true,
+    lastModified: true,
+    setHeaders: (res, filePath) => {
+      if (filePath.endsWith('.html')) {
+        res.setHeader('Cache-Control', 'public, max-age=0, must-revalidate');
+      } else {
+        res.setHeader('Cache-Control', 'public, max-age=86400, stale-while-revalidate=604800');
+      }
+    }
+  }));
 
   // Vite middleware for development
   if (process.env.NODE_ENV !== "production") {
@@ -1720,6 +1744,7 @@ Do not claim that these brand assets guarantee business growth, conversions, or 
             template = await vite.transformIndexHtml(req.url, template);
             const { html, status } = renderPageHtml(req.path || '/', template);
             res.setHeader('Content-Type', 'text/html');
+            res.setHeader('Cache-Control', 'no-cache');
             return res.status(status).send(html);
           }
         } catch (e) {
@@ -1733,15 +1758,32 @@ Do not claim that these brand assets guarantee business growth, conversions, or 
 
     app.use(vite.middlewares);
   } else {
-    // Production static file serving. In CJS bundle, __dirname is the dist/ directory
+    // Production static file serving with aggressive caching on hashed assets
     const distPath = path.join(process.cwd(), 'dist');
-    app.use(express.static(distPath, { index: false }));
+    app.use(express.static(distPath, {
+      index: false,
+      maxAge: '1y',
+      etag: true,
+      lastModified: true,
+      setHeaders: (res, filePath) => {
+        if (filePath.includes(path.sep + 'assets' + path.sep) || filePath.includes('/assets/')) {
+          // Bundled immutable CSS/JS chunks
+          res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+        } else if (filePath.endsWith('.html')) {
+          res.setHeader('Cache-Control', 'public, max-age=0, must-revalidate');
+        } else {
+          res.setHeader('Cache-Control', 'public, max-age=86400, stale-while-revalidate=604800');
+        }
+      }
+    }));
+
     app.get('*', (req, res) => {
       const indexPath = path.join(distPath, 'index.html');
       if (fs.existsSync(indexPath)) {
         const rawHtml = fs.readFileSync(indexPath, 'utf-8');
         const { html, status } = renderPageHtml(req.path || '/', rawHtml);
         res.setHeader('Content-Type', 'text/html');
+        res.setHeader('Cache-Control', 'public, max-age=0, must-revalidate');
         return res.status(status).send(html);
       }
       res.sendFile(indexPath);
