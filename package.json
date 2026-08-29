@@ -13,15 +13,10 @@
     "lint": "tsc --noEmit"
   },
   "dependencies": {
-    "@bochilteam/scraper": "^5.0.1",
     "@google/genai": "^2.19.0",
-    "@jerrycoder/instagram-api": "^2.5.9",
-    "@mrnima/instagram-downloader": "^1.0.0",
     "@tailwindcss/vite": "^4.1.14",
     "@types/compression": "^1.8.1",
     "@vitejs/plugin-react": "^5.0.4",
-    "@xncn/instadownloader": "^0.0.4",
-    "ab-downloader": "^1.0.2",
     "btch-downloader": "^6.0.37",
     "cheerio": "^1.0.0-rc.12",
     "clsx": "^2.1.1",
@@ -30,7 +25,6 @@
     "express": "^4.21.2",
     "html-to-image": "^1.11.13",
     "html2canvas": "^1.4.1",
-    "instagram-url-direct": "^2.0.7",
     "lucide-react": "^0.546.0",
     "motion": "^12.23.24",
     "react": "^19.0.1",
@@ -55,6 +49,7 @@
   },
   "overrides": {
     "body-parser": "^1.20.6",
+    "clean-jsdoc-theme": "^5.2.0",
     "esbuild": "^0.28.2",
     "postcss": "^8.5.18",
     "protobufjs": "^7.6.6",
