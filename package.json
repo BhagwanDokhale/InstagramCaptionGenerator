@@ -49,10 +49,12 @@
   },
   "overrides": {
     "body-parser": "^1.20.6",
+    "browserslist": "^4.28.8",
     "clean-jsdoc-theme": "^5.2.0",
     "esbuild": "^0.28.2",
     "postcss": "^8.5.18",
     "protobufjs": "^7.6.6",
+    "qs": "^6.16.0",
     "undici": "^7.29.0"
   }
 }
