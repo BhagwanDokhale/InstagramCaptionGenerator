@@ -40,7 +40,20 @@ export function ReelsDownloader() {
       const response = await fetch(proxyDownloadUrl);
 
       if (!response.ok) {
-        throw new Error(`Server returned HTTP ${response.status}`);
+        let serverErrorMsg = "";
+        try {
+          const contentType = response.headers.get("content-type") || "";
+          if (contentType.includes("application/json") || contentType.includes("text/")) {
+            const text = await response.text();
+            try {
+              const parsed = JSON.parse(text);
+              if (parsed.error) serverErrorMsg = parsed.error;
+            } catch (_) {
+              if (text && text.length < 250) serverErrorMsg = text;
+            }
+          }
+        } catch (_) {}
+        throw new Error(serverErrorMsg || `Server returned HTTP ${response.status}`);
       }
 
       const contentType = response.headers.get("content-type") || "";
@@ -70,21 +83,31 @@ export function ReelsDownloader() {
       setTimeout(() => window.URL.revokeObjectURL(blobUrl), 2000);
     } catch (err: any) {
       console.warn("Direct blob download encounter:", err);
-      // Fallback: If proxy download failed, trigger direct navigation/download link
-      try {
-        const fallbackLink = document.createElement("a");
-        fallbackLink.href = mediaUrl;
-        fallbackLink.target = "_blank";
-        fallbackLink.rel = "noopener noreferrer";
-        fallbackLink.download = finalFilename;
-        document.body.appendChild(fallbackLink);
-        fallbackLink.click();
-        document.body.removeChild(fallbackLink);
-      } catch (_) {
+      const errorMsg = err?.message || "";
+      const isConversionUnavailable = errorMsg.includes("unavailable on this server") || errorMsg.includes("temporarily unavailable");
+
+      if (isConversionUnavailable) {
         setDownloadErrors(prev => ({
           ...prev,
-          [itemKey]: "Unable to save file automatically. Please use 'Open Direct Media Link' below to save directly."
+          [itemKey]: errorMsg
         }));
+      } else {
+        // Fallback: If proxy download failed due to network/CDN, trigger direct navigation/download link
+        try {
+          const fallbackLink = document.createElement("a");
+          fallbackLink.href = mediaUrl;
+          fallbackLink.target = "_blank";
+          fallbackLink.rel = "noopener noreferrer";
+          fallbackLink.download = finalFilename;
+          document.body.appendChild(fallbackLink);
+          fallbackLink.click();
+          document.body.removeChild(fallbackLink);
+        } catch (_) {
+          setDownloadErrors(prev => ({
+            ...prev,
+            [itemKey]: errorMsg || "Unable to save file automatically. Please use 'Open Direct Media Link' below to save directly."
+          }));
+        }
       }
     } finally {
       setDownloadingKey(null);

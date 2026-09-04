@@ -26,6 +26,14 @@ import {
   validateProxyMediaRequest,
   validateEmailRequest,
 } from "./src/server/validation";
+import {
+  checkFfmpegAvailability,
+  setFfmpegAvailableCached,
+} from "./src/server/mediaCapabilities";
+export {
+  checkFfmpegAvailability,
+  setFfmpegAvailableCached,
+};
 
 dotenv.config();
 
@@ -1065,6 +1073,13 @@ Do not claim that these brand assets guarantee business growth, conversions, or 
 
       // 1. MP3 Audio Format Conversion requested
       if (requestedFormat === "mp3" || requestedFormat === "audio") {
+        const hasFfmpeg = await checkFfmpegAvailability();
+        if (!hasFfmpeg) {
+          return res.status(501).json({
+            error: "Audio (MP3) extraction is temporarily unavailable on this server. The original video can still be downloaded directly as MP4."
+          });
+        }
+
         res.setHeader("Content-Type", "audio/mpeg");
         if (download === "true") {
           res.setHeader("Content-Disposition", `attachment; filename="${baseName}.mp3"; filename*="UTF-8''${encodeURIComponent(baseName)}.mp3"`);
@@ -1072,31 +1087,56 @@ Do not claim that these brand assets guarantee business growth, conversions, or 
           res.setHeader("Cache-Control", "public, max-age=86400");
         }
 
-        const ffmpeg = child_process.spawn("ffmpeg", [
-          "-i", "pipe:0",
-          "-vn",
-          "-acodec", "libmp3lame",
-          "-ab", "192k",
-          "-ar", "44100",
-          "-f", "mp3",
-          "pipe:1"
-        ]);
+        let hasHandledError = false;
+        try {
+          const ffmpeg = child_process.spawn("ffmpeg", [
+            "-i", "pipe:0",
+            "-vn",
+            "-acodec", "libmp3lame",
+            "-ab", "192k",
+            "-ar", "44100",
+            "-f", "mp3",
+            "pipe:1"
+          ]);
 
-        ffmpeg.stdout.pipe(res);
+          ffmpeg.stdout.pipe(res);
 
-        ffmpeg.on("error", (err) => {
-          console.error("FFmpeg MP3 error:", err);
-          if (!res.headersSent) {
-            res.status(500).send("Error converting media to MP3.");
+          ffmpeg.on("error", (err: any) => {
+            if (hasHandledError) return;
+            hasHandledError = true;
+            if (err?.code === "ENOENT") {
+              setFfmpegAvailableCached(false);
+              console.warn("[MediaEngine] FFmpeg executable not found (ENOENT) during MP3 extraction.");
+              if (!res.headersSent) {
+                res.status(501).json({
+                  error: "Audio (MP3) extraction is temporarily unavailable on this server. The original video can still be downloaded directly as MP4."
+                });
+              }
+            } else {
+              console.error("FFmpeg MP3 error:", err);
+              if (!res.headersSent) {
+                res.status(500).send("Error converting media to MP3.");
+              }
+            }
+          });
+
+          if (response.body) {
+            Readable.fromWeb(response.body as any).pipe(ffmpeg.stdin);
+          } else {
+            ffmpeg.stdin.end();
           }
-        });
-
-        if (response.body) {
-          Readable.fromWeb(response.body as any).pipe(ffmpeg.stdin);
-        } else {
-          ffmpeg.stdin.end();
+          return;
+        } catch (err: any) {
+          if (err?.code === "ENOENT") {
+            setFfmpegAvailableCached(false);
+            if (!res.headersSent) {
+              return res.status(501).json({
+                error: "Audio (MP3) extraction is temporarily unavailable on this server. The original video can still be downloaded directly as MP4."
+              });
+            }
+          }
+          throw err;
         }
-        return;
       }
 
       // 2. JPG / JPEG Image Format Conversion requested
@@ -1108,34 +1148,110 @@ Do not claim that these brand assets guarantee business growth, conversions, or 
           res.setHeader("Cache-Control", "public, max-age=86400");
         }
 
-        // Convert to standard JPEG via FFmpeg to guarantee valid JPG format across browsers/OS
-        const ffmpeg = child_process.spawn("ffmpeg", [
-          "-i", "pipe:0",
-          "-f", "image2",
-          "-vcodec", "mjpeg",
-          "-q:v", "2",
-          "pipe:1"
-        ]);
+        const hasFfmpeg = await checkFfmpegAvailability();
 
-        ffmpeg.stdout.pipe(res);
-
-        ffmpeg.on("error", (err) => {
-          console.error("FFmpeg JPG error:", err);
-          if (!res.headersSent) {
-            res.status(500).send("Error converting image to JPG.");
+        // If FFmpeg is unavailable:
+        // For images (photos, carousels, thumbnails), skip optional transcoding
+        // and stream original media directly as standard JPG.
+        if (!hasFfmpeg) {
+          if (!isVideo) {
+            if (response.body) {
+              Readable.fromWeb(response.body as any).pipe(res);
+            } else {
+              res.end();
+            }
+            return;
+          } else {
+            // Source is a video, but JPG frame extraction was requested
+            return res.status(501).json({
+              error: "JPG conversion is temporarily unavailable on this server. The original media can still be downloaded when supported."
+            });
           }
-        });
-
-        if (response.body) {
-          Readable.fromWeb(response.body as any).pipe(ffmpeg.stdin);
-        } else {
-          ffmpeg.stdin.end();
         }
-        return;
+
+        // FFmpeg is available: Proceed with conversion, handling ENOENT gracefully
+        let hasHandledError = false;
+        try {
+          const ffmpeg = child_process.spawn("ffmpeg", [
+            "-i", "pipe:0",
+            "-f", "image2",
+            "-vcodec", "mjpeg",
+            "-q:v", "2",
+            "pipe:1"
+          ]);
+
+          ffmpeg.stdout.pipe(res);
+
+          ffmpeg.on("error", (err: any) => {
+            if (hasHandledError) return;
+            hasHandledError = true;
+            if (err?.code === "ENOENT") {
+              setFfmpegAvailableCached(false);
+              console.warn("[MediaEngine] FFmpeg executable not found (ENOENT) during JPG conversion. Falling back to direct media stream.");
+              if (!res.headersSent) {
+                if (!isVideo && response.body) {
+                  Readable.fromWeb(response.body as any).pipe(res);
+                  return;
+                }
+                res.status(501).json({
+                  error: "JPG conversion is temporarily unavailable on this server. The original media can still be downloaded when supported."
+                });
+              }
+            } else {
+              console.error("FFmpeg JPG error:", err);
+              if (!res.headersSent) {
+                res.status(500).send("Error converting image to JPG.");
+              }
+            }
+          });
+
+          if (response.body) {
+            Readable.fromWeb(response.body as any).pipe(ffmpeg.stdin);
+          } else {
+            ffmpeg.stdin.end();
+          }
+          return;
+        } catch (err: any) {
+          if (err?.code === "ENOENT") {
+            setFfmpegAvailableCached(false);
+            if (!res.headersSent) {
+              if (!isVideo && response.body) {
+                Readable.fromWeb(response.body as any).pipe(res);
+                return;
+              }
+              return res.status(501).json({
+                error: "JPG conversion is temporarily unavailable on this server. The original media can still be downloaded when supported."
+              });
+            }
+          }
+          throw err;
+        }
       }
 
       // 3. PNG Image Format Conversion requested
       if (requestedFormat === "png") {
+        const hasFfmpeg = await checkFfmpegAvailability();
+        if (!hasFfmpeg) {
+          if (!isVideo && contentType.includes("png")) {
+            res.setHeader("Content-Type", "image/png");
+            if (download === "true") {
+              res.setHeader("Content-Disposition", `attachment; filename="${baseName}.png"; filename*="UTF-8''${encodeURIComponent(baseName)}.png"`);
+            } else {
+              res.setHeader("Cache-Control", "public, max-age=86400");
+            }
+            if (response.body) {
+              Readable.fromWeb(response.body as any).pipe(res);
+            } else {
+              res.end();
+            }
+            return;
+          }
+
+          return res.status(501).json({
+            error: "PNG conversion is temporarily unavailable on this server. The original media can still be downloaded when supported."
+          });
+        }
+
         res.setHeader("Content-Type", "image/png");
         if (download === "true") {
           res.setHeader("Content-Disposition", `attachment; filename="${baseName}.png"; filename*="UTF-8''${encodeURIComponent(baseName)}.png"`);
@@ -1143,28 +1259,53 @@ Do not claim that these brand assets guarantee business growth, conversions, or 
           res.setHeader("Cache-Control", "public, max-age=86400");
         }
 
-        const ffmpeg = child_process.spawn("ffmpeg", [
-          "-i", "pipe:0",
-          "-f", "image2",
-          "-vcodec", "png",
-          "pipe:1"
-        ]);
+        let hasHandledError = false;
+        try {
+          const ffmpeg = child_process.spawn("ffmpeg", [
+            "-i", "pipe:0",
+            "-f", "image2",
+            "-vcodec", "png",
+            "pipe:1"
+          ]);
 
-        ffmpeg.stdout.pipe(res);
+          ffmpeg.stdout.pipe(res);
 
-        ffmpeg.on("error", (err) => {
-          console.error("FFmpeg PNG error:", err);
-          if (!res.headersSent) {
-            res.status(500).send("Error converting image to PNG.");
+          ffmpeg.on("error", (err: any) => {
+            if (hasHandledError) return;
+            hasHandledError = true;
+            if (err?.code === "ENOENT") {
+              setFfmpegAvailableCached(false);
+              console.warn("[MediaEngine] FFmpeg executable not found (ENOENT) during PNG conversion.");
+              if (!res.headersSent) {
+                res.status(501).json({
+                  error: "PNG conversion is temporarily unavailable on this server. The original media can still be downloaded when supported."
+                });
+              }
+            } else {
+              console.error("FFmpeg PNG error:", err);
+              if (!res.headersSent) {
+                res.status(500).send("Error converting image to PNG.");
+              }
+            }
+          });
+
+          if (response.body) {
+            Readable.fromWeb(response.body as any).pipe(ffmpeg.stdin);
+          } else {
+            ffmpeg.stdin.end();
           }
-        });
-
-        if (response.body) {
-          Readable.fromWeb(response.body as any).pipe(ffmpeg.stdin);
-        } else {
-          ffmpeg.stdin.end();
+          return;
+        } catch (err: any) {
+          if (err?.code === "ENOENT") {
+            setFfmpegAvailableCached(false);
+            if (!res.headersSent) {
+              return res.status(501).json({
+                error: "PNG conversion is temporarily unavailable on this server. The original media can still be downloaded when supported."
+              });
+            }
+          }
+          throw err;
         }
-        return;
       }
 
       // 4. Default MP4 Video / Image Stream Passthrough
@@ -1792,6 +1933,8 @@ Do not claim that these brand assets guarantee business growth, conversions, or 
 
   app.listen(PORT, "0.0.0.0", () => {
     console.log(`Server running on http://localhost:${PORT}`);
+    // Non-blocking capability pre-check for media transcoding engine
+    checkFfmpegAvailability().catch(() => {});
   });
 }
 
